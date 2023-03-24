@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - Dialoge</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - Dialoge</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navcurrent">Dialoge<ul class="navul">
+		<li class="navli"><a class="nava" href="#Nachrichtendialoge">Nachrichtendialoge</a></li>
+		<li class="navli"><a class="nava" href="#Dateidialoge">Dateidialoge</a></li>
+		<li class="navli"><a class="nava" href="#Eingabedialoge">Eingabedialoge</a></li>
+		<li class="navli"><a class="nava" href="#Farbdialog">Farbdialog</a></li>		
+	</ul></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2 id="Nachrichtendialoge">Nachrichtendialoge</h2>
+
+
+    <section>
+    <h3>Nachrichtendialoge erzeugen</h3>
+    <p><code class="language-python">ret = mb.dialogtyp(title, message, option)</code></p>
+    <p>Es können folgende Dialogtypen verwendet werden und sie haben jeweils die folgenden Rückgabewerte:</p>
+    <table>
+    <tr><th>Dialogtyp</th><th>Rückgabewert bei entsprechend gedrücktem Knopf</th></tr>
+    <tr><td>askokcancel</td><td>"OK": <code>True</code>, "Abbrechen": <code>False</code></td></tr>
+    <tr><td>askquestion</td><td>"Ja": <code>'yes'</code> "Nein": <code>'no'</code></td></tr>
+    <tr><td>askretrycancel</td><td>"Widerholen": <code>True</code>, "Abbrechen": <code>False</code></td></tr>
+    <tr><td>askyesno</td><td>"Ja": <code>True</code>, "Nein": <code>False</code></td></tr>
+    <tr><td>askyesnocancel</td><td>"Ja" : <code>True</code>, "Nein": <code>False</code>, "Abbrechen": <code>None</code></td></tr>
+    <tr><td>showerror</td><td>"Ok": <code>'ok'</code></td></tr>
+    <tr><td>showinfo</td><td>"Ok": <code>'ok'</code></td></tr>
+    <tr><td>showwarning</td><td>"Ok": <code>'ok'</code></td></tr>
+    </table>
+    <p>Nachrichtendialoge kennen die Optionen:</p>
+    <table>
+    <tr><th>Option</th><th>Mögliche Werte</th><th>Bemerkung</th></tr>
+    <tr><td>default</td><td>mb.CANCEL, mb.IGNORE, mb.NO, mb,OK, mb.RETRY oder mb.YES</td><td>Aktivierter Knopf bei Dialogen</td></tr>
+    <tr><td>icon</td><td>mb.ERROR, mb.INFO, mb.QUESTION oder mb.WARNING</td><td>Dieses Bild wird angezeigt</td></tr>
+    </table>
+    <p>Das folgende Programm erzeugt der Reihe nach alle Dialoge aus der obige Auswahl und
+        schreibt die jeweiligen Rückgabewerte auf die Konsole:</p>
+    <a href="img/t-dialoge/showinfo1.png" target="_blank"><img src="img/t-dialoge/showinfo1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+from tkinter import messagebox as mb
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+        self._runMessages()
+
+    def _createWidgets(self):
+        pass
+
+    def _runMessages(self):
+        ret = mb.askokcancel('askokcancel', 'Wollen Sie abbrechen?', default=mb.CANCEL)
+        print('askokcancel, Return Value:', ret)
+        ret = mb.askquestion('askquestion', 'Darf ich Ihnen eine Frage stellen?')
+        print('askquestion, Return Value:', ret)
+        ret = mb.askretrycancel('askretrycancel', 'Nochmal versuchen?')
+        print('askretrycancel, Return Value:', ret)
+        ret = mb.askyesno('askyesno', 'Ja oder Nein?')
+        print('askyesno, Return Value:', ret)
+        ret = mb.askyesnocancel('askyesnocancel', 'Ja-Nö-Vielleicht')
+        print('askyesnocancel, Return Value:', ret)
+        ret = mb.showerror('showerror', 'Oh, ein Fehler!')
+        print('showerror, Return Value:', ret)
+        ret = mb.showinfo('showinfo', 'Dieses ist nur eine Information!')
+        print('showinfo, Return Value:', ret)
+        ret = mb.showwarning('showwarning', 'Dieses ist eine Warnung!')
+        print('showwarning, Return Value:', ret)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <h2 id="Dateidialoge">Dateidialoge</h2>
+
+
+    <section>
+    <h3>Dateidialoge erzeugen</h3>
+    <p><code class="language-python">ret = fd.dialogtyp(optionen)</code></p>
+    <p>Es werden u.a. die folgenden Dateidialoge unterstützt:</p>
+    <table>
+    <tr><th>Dateidialogtyp</th><th>Beschreibung</th></tr>
+    <tr><td>fd.askdirectory(optionen)</td><td>Es wird nach einem existierenden Verzeichnis
+        gefragt, der Verzeichnispfad wird zurückgeliefert</td></tr>
+    <tr><td>fd.askopenfilename(optionen)</td><td>Es wird nach einer Datei gefragt, der
+        Dateiname wird zurückgeliefert</td></tr>
+    <tr><td>fd.askopenfilenames(optionen)</td><td>Es wird nach (mehreren) Dateien gefragt.
+        Gibt eine Liste von Dateinamen zurück. Gleicher Effekt, wie mit
+        <code>fd.askopenfilename(…)</code> und gesetzter Option <code>multiple</code></td></tr>
+    <tr><td>fd.asksaveasfilename(optionen)</td><td>Standarddialog zum Speichern einer Datei.
+        Es wird beim Versuch, eine Datei zu überschreiben, nachgefragt.</td></tr>
+    </table>
+    <p>Dateidialoge kennen die folgenden Optionen:</p>
+    <table>
+    <tr><th>Option</th><th>Bemerkung</th></tr>
+    <tr><td>defaultextension</td><td>(nur <code>fd.asksaveasfilename(…)</code>)
+        Dateinamenserweiterung wie <code>.txt</code>, die an Dateien ohne Erweiterung angehängt
+        wird. Kein Effekt bei Dateien, die selber einen Punkt "." beinhalten</td></tr>
+    <tr><td>filetypes</td><td>Liste von Dateitypen der Form: <code>[(TYPNAME, MUSTER), …]</code>,
+        auch mit Wildcard. Schränkt Suchergebnisse ein.</td></tr>
+    <tr><td>initialdir</td><td>Anfangsverzeichnis</td></tr>
+    <tr><td>initialfile</td><td>Anfangsdateiname</td></tr>
+    <tr><td>multiple</td><td><code>'true'</code>: mehrere Items können gleichzeitig ausgewählt werden,
+        (nur <code>fd.askopenfilename(…)</code></td></tr>
+    <tr><td>parent</td><td>Parent-Fenster, über dem der Dialog dargestellt wird</td></tr>
+    <tr><td>title</td><td>Titel </td></tr>
+    </table>
+    <p>Das folgende Programm erzeugt der Reihe nach die Dialoge aus der obige Auswahl
+        und schreibt die jeweiligen Rückgabewerte auf die Konsole:</p>
+    <a href="img/t-dialoge/openfile1.png" target="_blank"><img src="img/t-dialoge/openfile1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+from tkinter import filedialog as fd
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+        self._runFiledialoges()
+
+    def _createWidgets(self):
+        pass
+
+    def _runFiledialoges(self):
+        dirname = fd.askdirectory(title='Such dir ein Verzeichnis aus')
+        print('askdirectory:', dirname)
+
+        filename = fd.askopenfilename(title='Öffne Bilddatei',
+            filetypes=[('PNG', '*.png'),('JPG', '*.jpg')],
+            multiple='true' )
+        print('askopenfilename:', filename)
+
+        filenames = fd.askopenfilenames(title='Viele Dateien zum Öffnen')
+        print('askopenfilenames:', filenames)
+
+        filename = fd.asksaveasfilename(title='Speichere eine Datei' )
+        print('asksaveasfilename:', filename)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <h2 id="Eingabedialoge">Eingabedialoge</h2>
+
+
+    <section>
+    <h3>Eingabedialoge erzeugen</h3>
+    <p><code class="language-python">ret = sd.dialogtyp(ttiel, prompt, optionen)</code></p>
+    <p>Es werden u.a. die folgenden Eingabedialoge unterstützt:</p>
+    <table>
+    <tr><th>Eingabedialogetyp</th><th>Beschreibung</th></tr>
+    <tr><td>sd.askfloat (optionen)</td><td>Fragt nach einer Fließkommazahl</td></tr>
+    <tr><td>sd.askinteger (optionen)</td><td>Fragt nach einer ganzen Zahl</td></tr>
+    <tr><td>sd.askstring (optionen)</td><td>Fragt nach einem String</td></tr>
+    </table>
+    <p>Eingabedialoge kennen die folgenden Optionen:</p>
+    <table>
+    <tr><th>Option</th><th>Bemerkung</th></tr>
+    <tr><td>initialvalue</td><td>Angabe eines Wertes, der voreingestellt angezeigt wird</td></tr>
+    <tr><td>minvalue</td><td>Kleinster erlaubter Wert (für Zahlendialoge)</td></tr>
+    <tr><td>maxvalue</td><td>Größter erlaubter Wert (für Zahlendialoge)</td></tr>
+    <tr><td>parent</td><td>Fenster, über dem der Dialog dargestellt werden soll. Diese Angabe
+        sollte man machen, da sonst der Dialog oft hinter anderen Fenstern liegt.</td></tr>
+    </table>
+    <p>Das folgende Programm erzeugt der Reihe nach die Dialoge aus der obige Auswahl
+        und schreibt die jeweiligen Rückgabewerte auf die Konsole:</p>
+    <a href="img/t-dialoge/askinteger1.png" target="_blank"><img src="img/t-dialoge/askinteger1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+from tkinter import simpledialog as sd
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+        self._runSimpleDialoges()
+
+    def _createWidgets(self):
+        pass
+
+    def _runSimpleDialoges(self):
+        a = sd.askfloat('Titel', 'Bitte eine Fließkommazahl eingeben:',
+                        parent=self)
+        b = sd.askinteger('Titel', 'Bitte eine ganze Zahl eingeben:',
+                          parent=self)
+        c = sd.askstring('Titel', 'Bitte etwas Text eingeben:',
+                         parent=self)
+        print(a, b, c)
+
+        a = sd.askinteger('Titel',
+                          'Test von Optionen', initialvalue=42,
+                          minvalue=10, maxvalue=50, parent=self)
+        print(a)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <h2 id="Farbdialog">Farbdialog</h2>
+
+
+    <section>
+    <h3>Farbdialog erzeugen</h3>
+    <p><code class="language-python">ret = c.askcolor(color=None, optionen)</code></p>
+    <p>Der Farbdialog kennt die folgenden Optionen:</p>
+    <table>
+    <tr><th>Option</th><th>Bemerkung</th></tr>
+    <tr><td>initialcolor</td><td>Zeigt diese Farbe im Dialog an. Der Funktionsparameter
+        <code>color</code> hat Vorrang vor dieser Option</td></tr>
+    <tr><td>title</td><td>Angabe eines Wertes, der voreingestellt angezeigt wird</td></tr>
+    <tr><td>parent</td><td>Fenster, über dem der Dialog dargestellt werden soll. Diese Angabe
+        sollte man machen, da sonst der Dialog oft hinter anderen Fenstern liegt.</td></tr>
+    </table>
+    <p>Rückgabewert: Wird der Dialog über Cancel beendet ist der Rückgabewert
+        <code>(None, None)</code>, sonst ein Farbcode wie <code>((0, 128, 0), '#008000')</code>.</p>
+    <p>Das folgende Programm erzeugt einen Farbdialog
+        und schreibt den Rückgabewerte auf die Konsole:</p>
+    <a href="img/t-dialoge/colorchooser1.png" target="_blank"><img src="img/t-dialoge/colorchooser1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+from tkinter import colorchooser  as c
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+        self._runAskColor()
+
+    def _createWidgets(self):
+        pass
+
+    def _runAskColor(self):
+        ret = c.askcolor(color='red', parent=self)
+        print(ret)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <ul>
+    <li><a class="extern" target="_blank" href="https://github.com/python/cpython/blob/master/Lib/tkinter/colorchooser.py">
+        https://github.com/python/cpython/blob/master/Lib/tkinter/colorchooser.py</a></li>
+    <li><a class="extern" target="_blank" href="https://github.com/python/cpython/blob/master/Lib/tkinter/filedialog.py">
+        https://github.com/python/cpython/blob/master/Lib/tkinter/filedialog.py</a></li>
+    <li><a class="extern" target="_blank" href="https://github.com/python/cpython/blob/master/Lib/tkinter/messagebox.py">
+        https://github.com/python/cpython/blob/master/Lib/tkinter/messagebox.py</a></li>
+    <li><a class="extern" target="_blank" href="https://github.com/python/cpython/blob/master/Lib/tkinter/simpledialog.py">
+        https://github.com/python/cpython/blob/master/Lib/tkinter/simpledialog.py</a></li>
+    </ul>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a></p>
+    </footer>
+  </body>
+</html>

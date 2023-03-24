@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - Menü</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - tk.Menu und ttk.Menubutton</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navcurrent">Menuwidgets<ul class="navul">
+		<li class="navli"><a class="nava" href="#Menu">Menu</a></li>
+		<li class="navli"><a class="nava" href="#Menubutton">Menubutton</a></li>
+	</ul></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2 id="Menu">tk.Menu</h2>
+
+
+    <section>
+    <h3>tk.Menu erzeugen</h3>
+    <pre><code class="language-python">menu = tk.Menu(parent, Optionen)
+window['menu'] = menu</code></pre>
+    <p>Die folgende Tabelle enthält die Menüoptionen zum Befehl <code>tk.Menu()</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td colspan="2" class="headline">allgemeine tk-Widget-Optionen</td></tr>
+    <tr><td>activebackground</td><td>Hintergrundfarbe für aktive Elemente</td></tr>
+    <tr><td>activeborderwidth</td><td>Rahmenbreite für aktive Elemente</td></tr>
+    <tr><td>activeforeground</td><td>Vordergrundfarbe für aktive Elemente</td></tr>
+    <tr><td>activerelief</td><td>Rahmenart für aktive Elemente, 
+        Siehe <a target="_blank" href="tkinter-optionen.html#Rahmenoptionen">Rahmenoptionen</a></td></tr>
+    <tr><td>background, bg</td><td>Normale Hintergrundfarbe</td></tr>
+    <tr><td>borderwidth, bd</td><td>Rahmenbreite</td></tr>
+    <tr><td>disabledforeground</td><td>Vordergrundfarbe im state disabled</td></tr>
+    <tr><td colspan="2" class="headline">spezielle tk.Menu-Optionen</td></tr>
+    <tr><td>postcommand</td><td>Funktion, die aufgerufen wird, wenn sich das Menu öffnet</td></tr>
+    <tr><td>selectcolor</td><td>Indikatorfarbe für Check- oder Radiobuttonmenus</td></tr>
+    <tr><td>tearoff</td><td>(Boolean) wenn <code>tk.YES</code>, dann enthält das Menu eine 
+        Tearoff-Zeile, so dass man das Menu abreißen kann. (default)</td></tr>
+    <tr><td>tearoffcommand</td><td>Funktion, wird aufgerufen, wenn das Menü abgerissen wird</td></tr>
+    <tr><td>title</td><td>Titel des Fensters für ein eigenständiges, abgerissenes Menufenster</td></tr>
+    <tr><td>type</td><td><code>menubar</code>, <code>tearoff</code> oder <code>normal</code>, 
+        nur interner Gebrauch</td></tr>
+    </table>
+    <p>tk.Menu kennt außerdem die <a target="_blank" href="tkinter-optionen.html">Standardoptionen</a>:
+        cursor, font, foreground (fg), relief und takefocus</p>
+    </section>
+
+
+    <section>
+    <h3 id="MenuitemErzeugen">Menuitems erzeugen</h3>
+    <pre><code class="language-python">menu = tk.Menu(parent, Optionen)
+menu.add('command', label='Bearbeiten')
+window['menu'] = menu</code></pre>
+    <p>Die folgende Tabelle enthält Menüitemoptionen für den Befehl <code>menu.add(…)</code>, der 
+        weiter unten vorgestellt wird</p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>accelerator</td><td>Zeigt einen Accelerator an, beispielsweise accelerator='^C'. 
+        Accelerator muss noch per <code>bind(…)</code> hinzugefügt werden</td></tr>
+    <tr><td>activebackground</td><td>Hintergrundfarbei im Zustand <code>tk.ACTIVE</code></td></tr>
+    <tr><td>activeforeground</td><td>Vordergrundfarbe im Zustand <code>tk.ACTIVE</code></td></tr>
+    <tr><td>background</td><td>Hintergrundfarbe, nicht aktiviert</td></tr>
+    <tr><td>bitmap</td><td>Anzeige einer Bitmap</td></tr>
+    <tr><td>columnbreak</td><td><code>columnbreak==0</code>: Eintrag erfolgt unterhalb des 
+        letzten Eintrags. Ist <code>columnbreak==1</code>, dann erscheint der Eintrag in 
+        einer neuen Spalte.</td></tr>
+    <tr><td>command</td><td>Callback</td></tr>
+    <tr><td>compound</td><td>Position der Grafik, wenn Grafik und Text gleichzeitig erscheint: 
+        <code>tk.BOTTOM</code>, <code>tk.CENTER</code>, <code>tk.LEFT</code>, 
+        <code>tk.NONE</code>, <code>tk.RIGHT</code>, oder <code>tk.TOP</code></td></tr>
+    <tr><td>font</td><td>ausgewählter Font</td></tr>
+    <tr><td>foreground</td><td>Vordergrundfarbe, wenn das Item nicht ausgewählt ist</td></tr>
+    <tr><td>hidemargin</td><td><code>hidemargin=True</code>: kein Rand um Item</td></tr>
+    <tr><td>image</td><td>Bild für dieses Item</td></tr>
+    <tr><td>indicatoron</td><td>Für Check- und Radiobuttons: (Boolean) <code>True</code>: 
+        Indicator wird angezeigt</td></tr>
+    <tr><td>label</td><td>Text des Items</td></tr>
+    <tr><td>menu</td><td>Submenü</td></tr>
+    <tr><td>offvalue</td><td>Checkbuttons: Wert, wenn er ausgeschaltet ist</td></tr>
+    <tr><td>onvalue</td><td>Checkbuttons: Wert, wenn er eingeschaltet ist</td></tr>
+    <tr><td>selectcolor</td><td>Auswahlfarbe für Check- und Radiobuttons, rot ist default</td></tr>
+    <tr><td>selectimage</td><td>Radio- oder Checkbutton: Image für die Anzeige bei Auswahl</td></tr>
+    <tr><td>state</td><td><code>tk.DISABLED</code> (ausgegraut, deaktiviert), 
+        <code>tk.ACTIVE</code>: Aktiv, Maus über dem Eintrag, 
+        <code>tk.NORMAL</code>: Normale Ansicht</td></tr>
+    <tr><td>underline</td><td>Index des unterstrichenen Buchstabens</td></tr>
+    <tr><td>value</td><td>Radiobutton: Dieser Wert wird in der Variablen gespeichert. Ist dieser 
+        Wert nicht angegeben, dann wird der Label-Text genommen</td></tr>
+    <tr><td>variable</td><td>Check- und Radiobutton: Kontrollvariable</td></tr>
+    </table>
+    <p>Das folgende Programm stellt eine Menüleiste und einige Einträge in dieser Menüleiste vor.
+        Das <code>fileMenu</code> enthält das exit-Menü, mit dem das Programm beendet wird:</p>
+    <a href="img/t-menu/menu-menubar.png" target="_blank"><img src="img/t-menu/menu-menubar.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x200')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        menubar = tk.Menu(self)
+        # Untermenu: Dateimenu
+        fileMenu = tk.Menu(menubar, tearoff=tk.NO,
+                           activebackground='black',
+                           activeforeground='white')
+        fileMenu.add('command', label='Öffnen')
+        fileMenu.add('command', label='Schließen')
+        fileMenu.add('separator')
+        fileMenu.add('command', label='exit', command=self.destroy)
+        # Dateimenu hinzufügen
+        menubar.add('cascade', label='Datei', menu=fileMenu)
+        # weitere Menus
+        menubar.add('command', label='Bearbeiten')
+        menubar.add('command', label='Werkzeuge')
+        # Menubar im Fenster eintragen
+        self['menu'] = menubar
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+ 
+ 
+    <section>
+    <h3>Menü-Methoden</h3>
+    <p><code>miOption</code> sind die Menüitemoptionen aus obiger Tabelle.</p>
+    <p>Indextyp:</p>
+
+    <ul>
+    <li>Nummer: ein Index, wobei 0 den Anfang darstellt</li>
+    <li>@Nummer: Eine y-Koordinate, referenziert das Item, das der Koordinate am nächsten ist</li>
+    <li>ein Pattern mit folgenden Zeichen: <code>*</code>: beliebiger Text, 
+        <code>?</code>: ein beliebiges Zeichen, <code>[A-z]</code>: eine Gruppe von Zeichen 
+        und <code>\x</code>: dem Zeichen 'x'</li>
+    <li><code>'none'</code>: kein Index</li>
+    <li><code>'active'</code>: das aktivierte Element</li>
+    <li><code>'end'</code>, <code>'last'</code>: (synonym) das letzte Element</li>
+    </ul>
+    <table>
+    <tr><th>Funktion</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>m.activate(index)</td><td><code>index</code>: Itemindex</td><td>-</td><td>Setzt 
+        den Menüeintrag mit gegebenem Index auf aktiv. Der aktive Eintrag kann mit 
+        <code>m.index('active')</code> abgefragt werden</td></tr>    <tr><td>m.add(mType, miOption, …)</td><td><code>mType</code>: <code>'cascade'</code>, 
+        <code>'checkbutton'</code>, <code>'command'</code>, <code>'radiobutton'</code> 
+        oder <code>'separator'</code>, <br/><code>miOption, …</code>: Key-Value-Paare</td>
+        <td>-</td><td>Fügt dem Menü ein neues Element hinzu</td></tr>
+    
+	<tr><td>m.add_cascade(miOption, …)</td><td rowspan="5"><code>miOption</code>
+        aus obiger Tabelle, Key-Value-Paare</td><td rowspan="5">-</td>
+        <td rowspan="5">Fügt das Element ein</td></tr>
+    <tr><td>m.add_checkbutton(miOption, …)</td></tr>
+    <tr><td>m.add_checkbutton(miOption, …)</td></tr>
+    <tr><td>m.add_command(miOption, …)</td></tr>
+    <tr><td>m.add_radiobutton(miOption, …)</td></tr>
+    <tr><td>m.add_separator()</td><td>-</td><td>-</td><td>Fügt einen Separator ein</td></tr>
+    <tr><td>m.cget(Option)</td><td colspan="3" class="see">
+        Siehe allgemeine <a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a></td></tr>
+    <tr><td>m.clone(…)</td><td colspan="3" class="todo">Nur interner Gebrauch</td></tr>
+    <tr><td>m.configure(Option…)</td><td colspan="3" class="see">
+        Siehe allgemeine <a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a></td></tr>
+    <tr><td>m.delete(index1, index2=index1)</td><td><code>index1</code>, <code>index2</code>: 
+        Itemindex</td><td>-</td><td>Löscht die Menüitems</td></tr>
+    <tr><td>m.entrycget(index, miOption)</td><td><code>index</code>: Itemindex
+        <code>miOption</code> aus obiger Tabelle</td><td>Wert der Menüitemoption</td><td>Fragt den
+        <code>miOption</code>-Wert des Items an der Stelle <code>index</code> ab</td></tr>
+    <tr><td>m.entryconfigure(index, miOption, …)</td><td><code>index</code>: 
+        Itemindex, <code>miOption</code> aus obiger Tabelle</td><td>-</td>
+        <td>Ändert den <code>miOption</code>-Wert des Items an der Stelle 
+        <code>index</code></td></tr>
+    <tr><td>m.index(index)</td><td><code>index</code>: Itemindex</td><td>Zahl</td>
+        <td>Gibt einen numerischen Index zum <code>index</code> (als Indextyp) zurück</td></tr>
+    <tr><td>m.insert(index, mType, miOption, …)</td><td><code>index</code>: Itemindex, 
+        sonst wie <code>m.add(…)</code></td><td>-</td>
+        <td>Fügt einen neuen Menüeintrag vor <code>index</code> ein. Verhält sich 
+        sonst wie <code>m.add(…)</code></td></tr>
+    <tr><td>m.insert_cascade(…)</td><td colspan="3" class="see">siehe 
+        <code>m.insert(…)</code> und <code>m.add_cascade(…)</code></td></tr>
+    <tr><td>m.insert_checkbutton(…)</td><td colspan="3" class="see">siehe 
+        <code>m.insert(…)</code> und <code>m.add_checkbutton(…)</code></td></tr>
+    <tr><td>m.insert_command(…)</td><td colspan="3" class="see">siehe 
+        <code>m.insert(…)</code> und <code>m.add_command(…)</code></td></tr>
+    <tr><td>m.insert_radiobutton(…)</td><td colspan="3" class="see">siehe 
+        <code>m.insert(…)</code> und <code>m.add_radiobutton(…)</code></td></tr>
+    <tr><td>m.insert_separator(…)</td><td colspan="3" class="see">siehe 
+        <code>m.insert(…)</code> und <code>m.add_separator(…)</code></td></tr>
+    <tr><td>m.invoke(index)</td><td><code>index</code>: Itemindex</td><td>-</td>
+        <td>Callback des Menüeintrags an der Stelle <code>index</code> wird aufgerufen</td></tr>
+    <tr><td>m.post(x, y)</td><td>x, y: Position</td><td>-</td><td>Zeigt das Menü an der Position 
+        (x, y) (Bildschirmkoordinaten!) an. Führt gegebenenfalls die Callback aus, die unter 
+        <code>postcommand</code> in den Menüoptionen angegeben wurde</td></tr>
+    <tr><td>m.postcascade(index)</td><td colspan="3" class="todo">Noch nicht unterstützt?</td></tr>
+    <tr><td>m.type(index)</td><td><code>index</code>: Itemindex</td>
+        <td>Itemtyp (<code>tk.CASCADE</code>, <code>tk.CHECKBUTTON</code>, <code>tk.COMMAND</code>, 
+        <code>tk.RADIOBUTTON</code>, <code>tk.SEPARATOR</code> oder <code>'tearoff'</code>)</td>
+        <td>Gibt den Itemtyp des Menüeintrags am angegebenen Index zurück</td></tr>
+    <tr><td>m.unpost()</td><td>-</td><td>-</td><td>Klappt die mit <code>post(…)</code> 
+        oder per Maus geöffneten Untermenüs wieder zu. Funktioniert nicht unter 
+        MacOS und Windows</td></tr>
+    <tr><td>m.xposition(index)</td><td><code>index</code>: Itemindex</td><td>Pixelabstand</td>
+        <td>Horizontaler Pixelabstand des Menüeintrags relativ zum Menüfenster</td></tr>
+    <tr><td>m.yposition(index)</td><td><code>index</code>: Itemindex</td><td>Pixelabstand</td>
+        <td>Vertikaler Pixelabstand des Menüeintrags relativ zum Menüfenster</td></tr>
+    </table>
+
+    <p>Das folgende Programm stellt Menüitems mit ihren Callbacks vor. Dabei werden Radiobuttons 
+        und Checkbuttons ebenfalls als Einträge benutzt:</p>
+    <a href="img/t-menu/menu-radiobuttons.png" target="_blank"><img src="img/t-menu/menu-radiobuttons.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x200')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        menubar = tk.Menu(self)
+        # Untermenu: Dateimenu
+        fileMenu = tk.Menu(menubar, tearoff=tk.NO,
+                           activebackground='black',
+                           activeforeground='white')
+        fileMenu.add_command(label='Öffnen',
+                             command=lambda x='open':
+                             self._onMenuClick(x))
+        fileMenu.add_command(label='Schließen',
+                             command=lambda x='close':
+                             self._onMenuClick(x))
+        fileMenu.add_separator()
+        fileMenu.add_command(label='exit', command=self.destroy)
+
+        # Untermenu: RadioMenu
+        self.intVar = tk.IntVar(value=2)
+        radioMenu = tk.Menu(menubar, tearoff=tk.NO,
+                            activebackground='white',
+                            activeforeground='black')
+        radioMenu.add_radiobutton(label='Apfel', variable=self.intVar,
+                                  value=1, command=self._onRadioClick)
+        radioMenu.add_radiobutton(label='Birne', variable=self.intVar,
+                                  value=2, command=self._onRadioClick)
+        radioMenu.insert_radiobutton(1, label='egal', variable=self.intVar,
+                                  value=3, command=self._onRadioClick)
+
+        # Untermenu: CheckMenu
+        self.c1Var = tk.IntVar(value=0)
+        checkMenu = tk.Menu(menubar, tearoff=tk.NO)
+        checkMenu.add_checkbutton(label='aufgeräumt', variable=self.c1Var,
+                                  offvalue=0, onvalue=1,
+                                  command=self._onCheck1Click)
+        self.c2Var = tk.IntVar(value=1)
+        checkMenu.add_checkbutton(label='Bad geputzt', variable=self.c2Var,
+                                  offvalue=0, onvalue=1,
+                                  command=self._onCheck2Click)
+        
+        # Untermenüs hinzufügen
+        menubar.add_cascade(label='Datei', menu=fileMenu)
+        menubar.add_cascade(label='RadioMenu', menu=radioMenu)
+        menubar.add_cascade(label='Checkliste', menu=checkMenu)
+
+        # Menubar im Fenster eintragen
+        self['menu'] = menubar
+
+    def _onMenuClick(self, value):
+        print('Dateimenü geklickt:', value)
+
+    def _onRadioClick(self):
+        print('Radiobutton geklickt:', self.intVar.get())
+
+    def _onCheck1Click(self):
+        print('Checkbutton 1 geklickt:', self.c1Var.get())
+
+    def _onCheck2Click(self):
+        print('Checkbutton 2 geklickt:', self.c2Var.get())
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+    
+    <h2 id="Menubutton">ttk.Menubutton</h2>
+
+
+    <section>
+    <h3>ttk.Menubutton erzeugen</h3>
+    <code class="language-python">mb = ttk.Menubutton(parent, Optionen)</code>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td colspan="2" class="headline">spezielle ttk.Menubutton-Optionen</td></tr>
+    <tr><td>direction</td><td>Angabe, wo das Menü positioniert werden soll: <code>'above'</code>,
+        <code>'below'</code> (default), <code>'left'</code>, <code>'right'</code> oder 
+        <code>'flush'</code> (direkt über dem Knopf). </td></tr>
+    <tr><td>menu</td><td>Das tk.Menu, das angezeigt werden soll, wenn der Knopf betätigt 
+        wird. Das Menü sollte den Knopf als parent haben.</td></tr>
+    </table>
+    <p>ttk.Menubutton kennt außerdem die <a target="_blank" href="tkinter-optionen.html">Standardoptionen</a>:
+        class_, compound, cursor, image, state, style, takefocus, text, textvariable, 
+        underline und width</p>
+    <p>Es werden nur die Standardmethoden unterstützt:</p>
+	<ul>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a>: 
+        <code>cget(…)</code> und <code>configure(…)</code></li>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Sonstiges">Sonstige Methoden</a>: 
+        <code>identify(…)</code>, <code>instate(…)</code> und <code>state(…)</code></li>
+    </ul>
+    <p>ttk.Menubutton kennt den Style <code>'Toolbutton'</code>, wie unter 
+        <a target="_blank" href="tkinter-ttk-button.html#Toolbutton">
+        ttk.Button#Toolbutton</a> beschrieben.</p>
+    <p>Das folgende Programm verknüpft einen Menübutton mit einem Menü. Da das Menü den 
+        Menübutton als Parent haben soll, muss man erst den Menübutton und dann erst das 
+        Menü erstellen. Das Menü wird im Anschluss dem Button hinzugefügt.</p>
+    <a href="img/t-menu/menu-menubutton.png" target="_blank"><img src="img/t-menu/menu-menubutton.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x200')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        f = ttk.Frame(self, relief=tk.FLAT)
+        f.pack(side=tk.TOP, fill=tk.X, expand=tk.NO, padx=2, pady=2)
+
+        mb1 = ttk.Menubutton(f, text='Mein Menü', direction='flush')
+        mb1.pack(side=tk.LEFT)
+        # Menu erstellen, parent ist der Menubutton
+        menu = tk.Menu(mb1, tearoff=tk.NO,
+                       activebackground='black',
+                       activeforeground='white')
+        menu.add_command(label='Öffnen',
+                         command=lambda x='open':self._onMenuClick(x))
+        menu.add_command(label='Schließen',
+                         command=lambda x='close':self._onMenuClick(x))
+        menu.add_separator()
+        menu.add_command(label='Exit', command=self.destroy)
+        # Menu dem Menubutton hinzufügen
+        mb1['menu'] = menubar
+
+    def _onMenuClick(self, value):
+        print('Dateimenü geklickt:', value)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <ul>
+    <li><a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/menu.html">
+        https://www.tcl.tk/man/tcl8.7/TkCmd/menu.html</a></li>
+    <li><a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_menubutton.html">
+        https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_menubutton.html</a></li>
+    </ul>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a> </p>
+    </footer>
+  </body>
+</html>

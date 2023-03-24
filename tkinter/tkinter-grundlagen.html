@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - Grundlagen</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - Grundlagen</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navcurrent">Grundlagen</li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>Grundlagen</h2>
+
+
+    <section>
+    <h3>Wie funktioniert Programmierung mit tkinter?</h3>
+    <p>Es werden Widgets erzeugt. Diese Widgets beinhalten Optionen. Einige dieser Optionen
+        beeinflussen das Aussehen, andere das Verhalten. Beispielsweise kann einem Label
+        ein Bild mitgegeben werden, so dass ein Bild neben Text angezeigt wird. Einem Knopf kann
+        eine Callback-Funktion mitgegeben werden, so dass diese Funktion beim Drücken des Knopfes
+        aufgerufen wird.</p>
+    <p>Dieses Widget wird in ein Layout eingefügt - fertig.</p>
+    <p>Es gibt mindestens ein Hauptfenster, in dem Widgets eingebunden werden können.</p>
+    </section>
+
+	
+	<section>
+	<h3>tk und ttk</h3>
+	<p>Tk kennt Widgets ohne Präfix und mit Präfix "ttk". "ttk" steht dabei für "Themed ToolKit".
+		ttk-Widgets, auf die in dieser Doku der Fokus liegt, lassen sich stylen, sie verfügen über die
+		Option <code>style</code> mit der sich das Aussehen verändern lässt. Die weiterhin
+		enthaltenen tk-Widgets lassen sich ebenfalls im Aussehen verändern, haben aber einen anderen
+		Satz an Optionen, insbesondere mehr und andere Optionen.</p>
+	</section>
+
+
+    <section>
+    <h3>Tags</h3>
+    <p>In vielen Bereichen von Tk, wie etwa Canvas-Items, findet man die zusätzliche Angabe von Tags.
+        Bei Tags handelt es sich um Tupel von frei-definierbaren Strings, die nicht mit einer
+        Ziffer beginnen. Sie dienen dazu, Informationen über Elemente zu speichern, oder Elemente
+        auszuzeichnen. So bekommt beispielsweise ein Canvas-Item den Tag <code>'current'</code>
+        wenn es unter dem Mauszeiger liegt. Auf der Basis von Tags lassen sich Konfigurationen vornehmen,
+        beispielsweise alle ungeraden Zeilen in einem ttk.Treeview besonders einfärben.</p>
+    </section>
+
+
+    <section>
+    <h3>Ist tkinter vorhanden?</h3>
+    <p>Möchte man herausfinden, ob tkinter bereits installiert ist, kann man das
+        folgendermaßen tun:</p>
+    <pre><code class="language-python">import tkinter as tk
+tk._test()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Version und Patchlevel von tkinter ermitteln</h3>
+    <p>Mit Python Version 3.11.2 erhält man als Ausgabe: 8.6.12.</p>
+    <pre><code class="language-python">import tkinter as tk
+tcl = tk.Tcl()
+print(tcl.call('info', 'patchlevel'))</code></pre>
+    <p>Alternativ funktioniert spätestens seit Version 3.11:</p>
+    <pre><code class="language-python">import tkinter as tk
+tcl = tk.Tcl()
+tcl.info_patchlevel()
+# Ausgabe: _VersionInfoType(major=8, minor=6, micro=12, releaselevel='final', serial=0)</code></pre>
+    </section>
+    
+    
+
+    <section>
+    <h3>Einführendes Beispiel</h3>
+
+    <pre class="line-numbers"><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+if __name__ == '__main__':
+    window = tk.Tk()
+    button = ttk.Button(window, text='Destroy', command=window.destroy)
+    button.pack()
+    window.geometry("300x300")
+    window.mainloop()</code></pre>
+
+    <p>In den Zeilen 1 und 2 binden wir die benötigten Module ein. <strong>ttk</strong> ist
+        die modere Tk-Variante: ttk-Widgets lassen sich stylen.</p>
+    <p>Mit <code class="language-python">tk.Tk()</code> wird das Hauptfenster erzeugt, dem
+        ein Button hinzugefügt wird. Der Button enthält als Optionen einen Verweis auf das
+        Hauptfenster, einen Text und einen Verweis auf eine Callback-Funktion.</p>
+    <p>Mit <code class="language-python">button.pack()</code> wird der Knopf einem sehr
+        einfachen Layout hinzugefügt.</p>
+    <p>Das Hauptfenster selber wird mit
+        <code class="language-python">window.geometry("300x300")</code> vergrößert, anschließend
+        beginnt mit <code class="language-python">window.mainloop()</code> die
+        Event-Verarbeitung.</p>
+
+    <p>Dasselbe Programm in objektorientierter Schreibweise, wie es auf diesen Seiten in
+        ähnlicher Weise benutzt wird:</p>
+    <a href="img/t-grundlagen/beispiel1.png" target="_blank"><img src="img/t-grundlagen/beispiel1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x300")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        button = ttk.Button(self, text='Destroy', command=self._onDestroy)
+        button.pack()
+
+    def _onDestroy(self):
+        self.destroy()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a> </p>
+    </footer>
+  </body>
+</html>

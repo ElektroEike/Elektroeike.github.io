@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter</h1>
+    <p class="center">Version: 20230308</p>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+	<li class="navcurrent">Startseite</li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>Worum geht's hier?</h2>
+
+
+    <section>
+    <h3>Grundlegendes</h3>
+    <p>Hier entsteht eine deutschsprachige Dokumentation über tkinter.</p>
+    <p>Tkinter ist ein Python-Modul mit dessen Hilfe sich grafische Benutzeroberflächen
+        erstellen lassen. Es ist in den meisten Installationen einfach dabei und kann
+		sofort genutzt werden. Einige Details von Tkinter sind nicht so leicht zu finden,
+		man muss für einen Teil der Informationen die Github-Quelltexte durchsuchen und
+		manchmal Dinge einfach ausprobieren.</p>
+	<p>Für Nachnutzung: Diese Doku ist unter der
+		<a class="extern" target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a> lizensiert.</p>
+    </section>
+
+
+    <section>
+    <h3>Verweise</h3>
+	<p>Diese Doku ist nicht die einzige Doku im Netz, und auch sicher nicht die einzige
+		deutschsprachige Dokumentation. Die folgenden Seiten wurden von mir benutzt:</p>
+    <ul>
+    <li>Beschreibung von tkinter auf python.org: <a class="extern" target="_blank" href="https://docs.python.org/3/library/tkinter.html">
+        Python interface to Tcl/Tk</a>,</li>
+    <li>Beschreibungen im <a class="extern" target="_blank" href="https://wiki.python.org/moin/TkInter">Python-Wiki</a>,</li>
+    <li>die leider aufgegebene Doku <a class="extern" target="_blank" href="https://tkdocs.com/shipman/index-2.html">von Shipman</a>,
+        welche Grundlage für die Gliederung und den Inhalt auf diesen Seiten ist,</li>
+    <li>der Tkinter-<a class="extern" target="_blank" href="https://github.com/python/cpython/tree/master/Lib/tkinter">Quelltext auf Github</a>,</li>
+	<li>und nicht zuletzt die <a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/index.html">Tcl/Tk</a>-Webseite.</li>
+    </ul>
+    </section>
+
+
+	<section>
+    <h3>Historie</h3>
+    <ul>
+    <li>20230308: Minikleine Änderungen, noch nicht vollständig durchgesehen. Python 3.11.2 und tcl/tk Version 8.6.12</li>
+    <li>20211011: Stichprobenartige Überprüfung mit Python 3.10 und tcl/tk Version 8.6.10</li>
+    <li>20210608: Die Kapitel Widgetmethoden, tk.Text und Events ergänzt, Überall: Korrekturen</li>
+	<li>20210518: Kapitel Bilder hinzugefügt</li>
+	<li>20210328-20210511: Diese Seiten grundlegend erstellt</li>
+	</ul>
+	</section>
+
+
+    </main>
+
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a><span style="float:right"><a href="tkinter-projektseite.html">…</a></span></p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - ttk.Entry</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - ttk.Entry</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navcurrent">Entry</li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>ttk.Entry</h2>
+
+
+    <section>
+    <h3>ttk.Entry erzeugen</h3>
+    <p><code class="language-python">entry = ttk.Entry(parent, Optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>exportselection</td><td><code>tk.YES</code>: Ausgewählter Text kann per
+        <code>STRG-C</code> ins Clipboard exportiert werden (default)</td></tr>
+    <tr><td>invalidcommand</td><td>Eine Funktion, die ausgeführt wird, wenn die Validierungsfunktion unter der Option <code>validatecommand</code> 0 (Null) oder False zurückliefert</td></tr>
+    <tr><td>justify</td><td>Ausrichtung des Textes: <code>tk.LEFT</code>, <code>tk.CENTER</code> oder <code>tk.RIGHT</code></td></tr>
+    <tr><td>show</td><td>wenn gesetzt, dann wird der Text selbst ersetzt durch Folgen von '*' oder ähnlichem. Nützlich für Passwort-Felder</td></tr>
+    <tr><td>state</td><td><code>'readonly'</code>: Entry ist nicht editierbar, <code>'normal'</code>: Entry ist editierbar (default) oder
+        <code>'disabled'</code>: Text kann nicht editiert oder ausgewählt werden, keine Interaktion möglich</td></tr>
+    <tr><td>textvariable</td><td>Variable, die den Text des Eingabefeldes festhält</td></tr>
+    <tr><td>validate</td><td><code>none</code> (default), <code>focus</code>, <code>focusin</code>, <code>focusout</code>, <code>key</code> oder <code>all</code>, bestimmt, wann validiert wird</td></tr>
+    <tr><td>validatecommand</td><td>Funktion die den Text validiert, muss einen Boolean zurückliefern</td></tr>
+    <tr><td>width</td><td>Breite des Eingabefeldes in mittlere Zeichenbreite</td></tr>
+    </table>
+    <p>ttk.Entry kennt die <a target="_blank" href="tkinter-optionen.html">Standardoptionen</a>: class_,
+        cursor, font, foreground, placeholder, style, takefocus und xscrollcommand</p>
+    <p>Das folgende Programm stellt ein Eingabefeld als Passwort-Feld vor. Der Text wird in einem Label angezeigt:</p>
+	<a href="img/ttk-entry/entry-passwort.png" target="_blank"><img src="img/ttk-entry/entry-passwort.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x200")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.svar = tk.StringVar()
+        self.entry = ttk.Entry(self,
+                               textvariable=self.svar,
+                               show='?')
+        self.entry.pack()
+        ttk.Label(self, textvariable=self.svar, background='yellow', width=20).pack()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Validierung</h3>
+    <p>Die folgende Tabelle zeigt die Validierungsmodi zur Option <code>validate</code>:</p>
+    <table>
+    <tr><th>Modi</th><th>Beschreibung</th></tr>
+    <tr><td>none</td><td>keine automatische Validierung</td></tr>
+    <tr><td>key</td><td>Pre-Validierung, bevor ein neues Zeichen eingefügt/gelöscht wird. Änderung wird abgewiesen, wenn Validierung scheitert</td></tr>
+    <tr><td>focus</td><td>Re-Validierung, wenn das Eingabefeld den Fokus erhält oder abgibt</td></tr>
+    <tr><td>focusin</td><td>Re-Validierung, wenn das Eingabefeld den Fokus erhält</td></tr>
+    <tr><td>focusout</td><td>Re-Validierung, wenn das Eingabefeld den Fokus abgibt</td></tr>
+    <tr><td>all</td><td>alle obengenannten Modi</td></tr>
+    </table>
+    <p>Die folgende Tabelle zeigt die Substituierungen zur Validierungsfunktion:</p>
+    <table>
+    <tr><th>Substituierung</th><th>Beschreibung</th></tr>
+    <tr><td>%d</td><td>Typ: <code>1</code> Eingabevalidierung, <code>0</code> Löschvalidierung oder <code>-1</code> Revalidierung</td></tr>
+    <tr><td>%i</td><td>Index, der hinzugefügt oder gelöscht wird. Ungültige Werte werden mit -1 gekennzeichnet</td></tr>
+    <tr><td>%P</td><td>für den Mode <code>key</code> (Prevalidierung): Neuer Wert im Entry, wenn die Prevalidierung akzeptiert wurde, sonst: Inhalt des Eingabefeldes (Revalidierung)  </td></tr>
+    <tr><td>%s</td><td>Inhalt vor der Änderung</td></tr>
+    <tr><td>%S</td><td>Eingefügter oder gelöschter Text, sofern vorhanden</td></tr>
+    <tr><td>%v</td><td>Wert der Option <code>validate</code></td></tr>
+    <tr><td>%V</td><td>Beschreibung des Modes, das die Validierung angestoßen hat: <code>key</code>, <code>focus</code>…</td></tr>
+    <tr><td>%W</td><td>Name des Eingabefeldes in Tcl/Tk-Notation</td></tr>
+    </table>
+    <p>Die Umsetzung der Tcl/Tk-Validierung erfolgt mit Hilfe einer Validierungsfunktion, 
+		die man zuerst registrieren muss. Dafür ist die 
+        Zeile <code class="language-python">validateFunc = self.register(self._entryValidate)</code> da. 
+		Das folgende Programm erlaubt nur Ziffern:</p>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x200")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        validateFunc = self.register(self._entryValidate)
+        self.svar = tk.StringVar()
+        self.entry = ttk.Entry(self,
+                               textvariable=self.svar,
+                               invalidcommand=self._onInvalid,
+                               validate='all',
+                               validatecommand=(validateFunc, '%d', '%s', '%S'))
+        self.entry.pack()
+        ttk.Label(self, textvariable=self.svar, background='yellow', width=20).pack()
+
+    def _onInvalid(self):
+        print('invalid')
+
+    def _entryValidate(self, reason, oldText, editText):
+        """Nur Ziffern"""
+        r = int(reason)
+        if reason == '0':
+            print('Delete Text:', editText, 'from: ', oldText)
+            return True
+        if reason == '1':
+            print('Insert Text:', editText, 'to: ', oldText)
+            return editText in '0123456789'
+        return True
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+	<section>
+    <h3 id="EntryMethoden">Entry-Methoden</h3>
+    <p>Indices:</p>
+    <ul>
+    <li>Zahl: numerischer Index des Zeichens im Entry, startet bei 0</li>
+	<li><code>@Zahl</code>: X-Position eines Zeichens</li>
+	<li><code>end</code>: gedachte Position hinter dem letzten Zeichen</li>
+	<li><code>insert</code>: das Zeichen hinter der Einfügemarke</li>
+	<li><code>sel.first, sel.last</code>: Anfang und Ende der Auswahl</li>
+	</ul>
+
+    <table>
+    <tr><th>Funktion</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+	<tr><td>bbox(index)</td><td>Index</td><td>Rechteck</td><td>Gibt ein Rechteck (Pixel-Koordinaten) aus, das das Zeichen am <code>index</code> enthält</td></tr>
+	<tr><td>delete(anfang, ende=None) </td><td><code>anfang, ende</code>: Indices</td><td>-</td><td>Löscht die Zeichen von <code>anfang</code> bis <code>ende</code> oder nur das einzelne Zeichen</td></tr>
+	<tr><td>get()</td><td>-</td><td>String</td><td>Gibt den Inhalt der Textzeile zurück</td></tr>
+	<tr><td>icursor(index)</td><td>Index</td><td>-</td><td>Setzt die Einfügemarke auf die mit <code>index</code> angegebene Position</td></tr>
+	<tr><td>index(index)</td><td>Index</td><td>numerischer Index</td><td>Gibt den Index des Zeichens am angegebenen Index zurück</td></tr>
+	<tr><td>insert(index, text)</td><td>Index und Text</td><td>-</td><td>fügt Text vor dem Index ein</td></tr>
+	<tr><td>selection_clear()</td><td>-</td><td>-</td><td>Entfert die Auswahl-Markierung</td></tr>
+	<tr><td>selection_present()</td><td>-</td><td>Boolean</td><td><code>True</code>: Entry enthält Textauswahl</td></tr>
+	<tr><td>selection_range(anfang, ende)</td><td><code>anfang, ende</code>: Indices</td><td>-</td><td>Text zwischen den Indices wird ausgewählt</td></tr>
+	<tr><td>validate()</td><td>-</td><td>0 oder 1</td><td>Revalidiert. Rückgabewert <code>0</code>: Validierung scheiterte.</td></tr>
+	</table>
+	
+	<p>Weiterhin werden die folgenden allgemeinen Widgetmethoden unterstützt:</p>
+    <ul>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a>: <code>cget(…)</code> und <code>configure(…)</code></li>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Sonstiges">Sonstige Methoden</a>: <code>identify(…)</code>, <code>instate(…)</code> und <code>state(…)</code></li>
+    </ul>
+	</section>
+
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_entry.html">
+        https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_entry.html</a>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a> </p>
+    </footer>
+  </body>
+</html>

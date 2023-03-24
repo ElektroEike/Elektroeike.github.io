@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - ttk.Button</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - ttk.Button</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navcurrent">Button</li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>ttk.Button</h2>
+
+
+    <section>
+    <h3>ttk.Button erzeugen</h3>
+    <p><code class="language-python">button = ttk.Button(parent, Optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>default</td><td>"normal", "active" oder "disabled". Zusätzlicher Status
+        für Knöpfe in Dialogfenstern, in denen es einen "default"-Knopf gibt.</td></tr>
+    <tr><td>width</td><td>Breite des Knopfes in Zeichenbreite. Negative Werte bedeuten
+        Mindestbreite.</td></tr>
+    </table>
+    <p>ttk.Button kennt die <a target="_blank" href="tkinter-optionen.html">Standardoptionen</a>:class_, compound,
+        cursor, image, justify, state, style, takefocus, text, textvariable, underline und command</p>
+    <p>Das folgende Programm stellt einen Knopf bereit und reagiert auf Knopfdruck:</p>
+    <a href="img/ttk-button/ersterbutton.png" target="_blank"><img src="img/ttk-button/ersterbutton.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("200x200")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        button1 = ttk.Button(self, text='Erster Button', command=self._onButtonPress)
+        button1.pack(fill=tk.BOTH, expand=tk.YES)
+
+        self._labelText = tk.StringVar(value='warte...')
+        label = ttk.Label(self, textvariable=self._labelText)
+        label.pack(fill=tk.BOTH, expand=tk.YES)
+
+    def _onButtonPress(self):
+        self._labelText.set('Knopf 1 gedrückt')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Methoden</h3>
+    <ul>
+    <li>ttk.Button kennt die Methode <code>b.invoke()</code>: Ruft die zum Button gehörende Callback auf</li>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a>: <code>cget(…)</code> und <code>configure(…)</code></li>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Sonstiges">Sonstige Methoden</a>: <code>identify(…)</code>, <code>instate(…)</code> und <code>state(…)</code></li>
+    </ul>
+    </section>
+
+
+    <section>
+    <h3>Mehrere Knöpfe - eine Callback</h3>
+    <p>Möchte man mit mehrerren Knöpfen auf eine Callback zielen, dann ist es hilfreich,
+        die Knöpfe unterscheiden zu können. Hierbei hilft
+        <code class="language-python">lambda</code>:
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("200x200")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        button1 = ttk.Button(self, text='Erster Button',
+                             command=lambda x=1: self._onButtonPress(x))
+        button1.pack(fill=tk.BOTH, expand=tk.YES)
+
+        button2 = ttk.Button(self, text='Zweiter Button',
+                             command=lambda x=2: self._onButtonPress(x))
+        button2.pack(fill=tk.BOTH, expand=tk.YES)
+
+        self._labelText = tk.StringVar(value='warte...')
+        label = ttk.Label(self, textvariable=self._labelText)
+        label.pack(fill=tk.BOTH, expand=tk.YES)
+
+    def _onButtonPress(self, whichOne):
+        if whichOne == 1:
+            self._labelText.set('Knopf 1 gedrückt')
+        else:
+            self._labelText.set('Knopf 2 gedrückt')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3 id="Toolbutton">Toolbutton</h3>
+    <p>Für eine schnelle Style-variante ohne Rahmen kann man auf <code>Toolbutton</code>
+        zurückgreifen. Hier die zwei Styles im Vergleich:</p>
+    <a href="img/ttk-button/toolbutton.png" target="_blank"><img src="img/ttk-button/toolbutton.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("200x200")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        button1 = ttk.Button(self, style='Toolbutton', text='Erster Button')
+        button1.pack()
+
+        button2 = ttk.Button(self, text='Zweiter Button')
+        button2.pack()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_button.html">
+        https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_button.html</a>
+    </section>
+
+
+    </main>
+
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a></p>
+    </footer>
+  </body>
+</html>

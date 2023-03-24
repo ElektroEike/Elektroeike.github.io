@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - tk.Text</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - tk.Text</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navcurrent">Text</li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>tk.Text</h2>
+	<p>Hierbei handelt es sich um ein Editorwidget.</p>
+	<p>Auf Bereiche vom Text kann per Indices zugegriffen werden, das sind Positionen zwischen
+		zwei Zeichen. </p>
+	<p>Text kann ausgezeichnet werden mit Markierungen (mark) und Tags, es können Images und
+		Windows eingefügt werden.</p>
+	<p>Ferner gibt es einen eingebauten Undo/Redo-Mechanismus, der Undos/Redos als Block bis
+		zu einem Separator ausführt.</p>
+	<p>Als Besonderheit gibt es so genannte "Peer Windows", das sind zweite, untergeordnete
+		Textwidgets, die sich auf denselben Textinhalt beziehen.</p>
+
+
+    <section>
+    <h3>tk.Text erzeugen</h3>
+    <p><code class="language-python">t = tk.Text(parent, Optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td colspan="2" class="headline">allgemeine tk-Widget-Optionen</td></tr>
+    <tr><td>background</td><td>Normale Hintergrundfarbe</td></tr>
+    <tr><td>exportselection</td><td><code>tk.YES</code>: Ausgewählter Text kann per
+        <code>STRG-C</code> ins Clipboard exportiert werden (default)</td></tr>
+    <tr><td>highlightbackground, highlightcolor, highlightthickness</td><td>Einstellungen für den 
+        <a target="_blank" href="tkinter-optionen.html#Highlightoptionen">Highlightrahmen</a></td></tr>
+    <tr><td>insertbackground</td><td>Hintergrundfarbe in der Umgebung des Einfügecursors,
+		überschreibt ggf. andere gesetze Farben in der Umgebung, wie etwa die
+		Hintergrundfarbe</td></tr>
+	<tr><td>insertborderwidth</td><td>Breite des Rahmens um den Einfügecursor.
+		Siehe auch <a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionen</a></td></tr>
+	<tr><td>insertofftime</td><td>Blinkt der Einfügecursor, dann ist dieses die Zeit (in ms),
+		die der Cursor aus ist</td></tr>
+	<tr><td>insertontime</td><td>Blinkt der Einfügecursor, dann ist dieses die Zeit (in ms),
+		die der Cursor an ist</td></tr>
+	<tr><td>insertwidth</td><td>Breite des Einfügecursors. Siehe auch
+		<a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionen</a></td></tr>
+	<tr><td>padx, pady</td><td>Abstand des Widgets vom Parent, Extra Platz. Siehe auch
+		<a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionen</a></td></tr>
+    <tr><td>selectbackground</td><td>Hintergrundfarbe, wenn Elemente ausgewählt werden</td></tr>
+    <tr><td>selectborderwidth</td><td>Rahmenbreite, wenn Elemente ausgewählt werden.
+		Siehe auch <a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionen</a></td></tr>
+    <tr><td>selectforeground</td><td>Vordergrundfarbe, wenn Elemente ausgewählt werden</td></tr>
+    <tr><td>setgrid</td><td><code>tk.YES</code>: Widget verändert seine Größe in Vielfachen 
+        der Zeichen- oder Zeilengröße</td></tr>
+    <tr><td colspan="2" class="headline">spezielle tk.Text-Optionen</td></tr>
+	<tr><td>autoseparators</td><td>Wenn <code>undo</code> eingeschaltet ist, dann werden
+		bei einer Undo-Operation Bereiche bis zu einem "Separator" vom Undo-Stack entnommen.
+		Diese Option regelt, ob automatisch (<code>tk.YES</code>) Separatoren auf den Stack
+		gelegt werden sollen.</td></tr>
+    <tr><td>blockcursor</td><td>Wenn <code>tk.YES</code>, dann wird der Einfügecursor
+		als Block mit einer Zeichenbreite angezeigt, sonst als Strich (default)</td></tr>
+   	<tr><td>endline</td><td>Zeilenindex: ab der Zeile wird nichts mehr im Textfeld angezeigt.
+		Damit kann sich die Eingabe von Text auf einen Bereich beschränken.</td></tr>
+    <tr><td>height</td><td>Höhe des Fensters in Vielfachen der Font-Höhe</td></tr>
+	<tr><td>inactiveselectbackground</td><td>Hintergrundarbe von ausgewähltem Text, wenn
+		das Widget nicht den Eingabefokus hat</td></tr>
+	<tr><td>insertunfocussed</td><td>Beeinflusst Darstellung des Einfügecursors, wenn das
+		Widget nicht den Fokus hat: <code>'none'</code>: Keine Cursordarstellung,
+		<code>'hollow'</code>: hohler Blockcursor und <code>'solid'</code>: Blockcursor.
+		(Option <code>blockcursor</code> sollte bei den letzten beiden Optionen
+		ebenfalls gesetzt sein)</td></tr>
+	<tr><td>maxundo</td><td>Größe des Undo-Stacks. 0 oder negativer Wert bedeuten unbegrenzte
+		Größe</td></tr>
+	<tr><td>spacing1</td><td>Extra-Abstand von 2 Zeilen ohne Line-Wrap </td></tr>
+	<tr><td>spacing2</td><td>Extra-Abstand von 2 Zeilen, bei Line-Wrap </td></tr>
+	<tr><td>spacing3</td><td> Extra-Abstand nach einer Textzeile, ohne Line-Wrap </td></tr>
+	<tr><td>startline</td><td>Zeilenindex: vor der Zeile wird nichts mehr im Textfeld
+		angezeigt. Damit kann sich die Eingabe von Text auf einen Bereich beschränken.</td></tr>
+	<tr><td>state</td><td><code>tk.NORMAL</code> oder <code>tk.DISABLED</code></td></tr>
+	<tr><td>tabs</td><td>Legt Tabulator-Abstände im Text fest, siehe
+		<a href="#Tabulatoren">Abschnitt Tabulatoren</a></td></tr>
+	<tr><td>tabstyle</td><td>Legt fest, wie Tabulatoren im Fließtext zu behandeln sind,
+		<code>'tabular'</code>: das N-te Tab-Zeichen stimmt mit dem N-ten Tabstop überein.
+		<code>'wordprocessor'</code>: Tabs werden relativ zu den vorherigen Zeichen angewandt.
+		Siehe <a href="#Tabulatoren">Abschnitt Tabulatoren</a></td></tr>
+	<tr><td>undo</td><td><code>tk.YES</code>: Undo-Stack wird eingeschaltet.</td></tr>
+    <tr><td>width</td><td>Breite in Vielfachen des Zeichens 0 (Null)</td></tr>
+	<tr id="OptionWrap"><td>wrap</td><td>Beschreibt, wie überlange Zeilen zu behandeln sind:
+		<code>'none'</code>: Zeilen werden in derselben Zeile fortgesetzt,
+		<code>'char'</code>: Zeile wird an einem Zeichen umgebrochen,
+		<code>'word'</code>: Zeile wird an einem Wort umgebrochen</td></tr>
+    </table>
+    <p>tk.Text kennt außerdem die <a target="_blank" href="tkinter-optionen.html">Standardoptionen</a>:
+		borderwidth, cursor, font,
+        foreground, relief, takefocus, xscrollcommand und yscrollcommand</p>
+    <p>Das folgende Programm stellt ein einfaches Textwidget bereit und nutzt einige der Konfigurationen
+		aus obiger Tabelle:</p>
+    <a href="img/tk-text/text-schwarz-01.png" target="_blank"><img src="img/tk-text/text-schwarz-01.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('800x800')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        t = tk.Text(self, background='black', foreground='white',
+                    insertbackground='blue', insertwidth=5,
+                    font=('Courier', 30, tk.NORMAL))
+        t.pack(expand=tk.YES, fill=tk.BOTH)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()
+</code></pre>
+    </section>
+
+
+	<section>
+    <h3 id="Tabulatoren">Tabulatoren</h3>
+	<p>Tabulatoren werden mit den Optionen <code>tabs</code> und <code>tabstyle</code> gesetzt.
+		Für die Option <code>tabs</code> gelten folgende Parameter, wobei auch hier
+		<a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionen</a> genutzt
+		werden können:</p>
+	<ul>
+    <li>Grundeinstellung: Alle 8 Zeichen,</li>
+    <li>tabs=('5c', '5i') würde Tabulatoren bei 5 cm und 5 Zoll positionieren,
+    <li>Normalerweise wird Text mit seiner linken Ecke positioniert, das kann geändert werden:<ul>
+        <li>tk.CENTER: Text wird am Tabstop zentriert,
+        <li>tk.LEFT: Linke Ecke wird am Tabstop ausgerichtet,
+        <li>tk.NUMERIC: Dezimalpunkte werden untereinander positioniert,
+        <li>tk.RIGHT: Rechte Textecke wird am Tabstop positioniert</li></ul></li>
+    <li>tabs=('5c', tk.CENTER, '5i', tk.RIGHT): 5 cm, Text zentriert und 5 Zoll,
+		rechts ausgerichtet</li>
+	</ul>
+	<p>Im folgenden Programm wird die Tabbreite auf vier Zeichen angepasst. Bei dem gewählten
+		Font "Courier" sind alle Zeichen gleich breit. Für andere Fonts kann man die
+		Zeichenbreite der Null oder eines Leerzeichens wählen:</p>
+    <a href="img/tk-text/text-tabs-01.png" target="_blank"><img src="img/tk-text/text-tabs-01.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+from tkinter import font
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('800x800')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        f = font.Font(family='Courier', size=30)
+        size = f.measure('ABCD')
+        t = tk.Text(self, insertwidth=5, font=f,
+                    tabs=(size, 2*size, 3*size))
+        t.pack(expand=tk.YES, fill=tk.BOTH)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+	</section>
+
+
+	<section>
+    <h3>Undo</h3>
+	<ul>
+    <li>Jedes Einfügen / Löschen wird als Operation auf den Undo-Stack gelegt.</li>
+    <li>Separatoren können ebenfalls auf den Stack gefügt werden.</li>
+    <li>Wird ein „undo“ ausgeführt, werden Teile vom Stack genommen und in den Text eingefügt,
+		sowohl Lösch- wie auch Einfügeopertionen. Es werden so viele Teile vom Stack genommen,
+		bis ein Separator erreicht wird oder das Stackende erreicht wird.</li>
+    <li>Redo funktioniert nur, wenn nicht vorher Text editiert wurde.</li>
+    <li>Undo/Redo muss explizit über Optionen eingeschaltet werden.</li>
+	</ul>
+	<p>Mit <code>STRG-Z</code> (unter Windows 10) lässt sich eingegebener oder gelöschter
+		Text im folgenden Beispiel wieder herstellen, auch die Texteingabe lässt sich rückgängig machen:</p>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('800x800')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        t = tk.Text(self, insertwidth=5, undo=tk.YES, autoseparators=tk.YES)
+        t.pack(expand=tk.YES, fill=tk.BOTH)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+	</section>
+
+
+	<section>
+    <h3>Indextyp</h3>
+	<p>Indices beziehen sich auf Position innerhalb des Textes. Sie sind Marken zwischen zwei Zeichen.</p>
+	<table>
+	<tr><th>Typ</th><th>Beschreibung</th></tr>
+    <tr><td>'zeile.zeichen'</td><td>Zeilen zählen ab 1, Zeichen ab 0. '1.0' bezeichnet die Stelle
+		vor dem allersten Zeichen im Text</td></tr>
+	<tr><td>'@x,y'</td><td>Vor dem Zeichen, das der Position x,y am nächsten ist</td></tr>
+	<tr><td>tk.END</td><td>Hinter dem letzten Zeichen im Textdokument</td></tr>
+	<tr><td>markname</td><td>Das Zeichen nach der <a href="#Textmarken">Textmarke</a>
+		mit dem Namen <code>markname</code></td></tr>
+    <tr><td>'tagname.first', 'tagname.last'</td><td>Unmittelbar vor oder nach mit einem
+		<a href="#Tags">Tagnamen</a> <code>tagname</code> versehen Text</td></tr>
+	<tr><td>fensterName, bildName</td><td>Position des eingebetteten Fensters oder Bildes</td></tr>
+    <tr><td>'zeile.end'</td><td>Am Ende der Zeile, unmittelbar vor dem Newline-Zeichen</td></tr>
+    <tr><td>tk.CURRENT</td><td>Textposition, die dem Mauscursor am nächsten ist</td></tr>
+    <tr><td>tk.INSERT</td><td>An der Einfügemarke</td></tr>
+    <tr><td>tk.SEL_FIRST, tk.SEL_LAST</td><td>Unmittelbar vor/nach ausgewähltem Text.
+		Ist nichts ausgewählt, wird eine Exception geworfen</td></tr>
+	</table>
+	<p>Hinzu kommen Sprungbefehle:</p>
+	<table>
+	<tr><th>Typ</th><th>Beschreibung</th></tr>
+    <tr><td>'… + n chars'</td><td>Es wird von der Position aus n Zeichen nach rechts gesprungen</td></tr>
+    <tr><td>'… - n chars'</td><td>Es wird von der Position aus n Zeichen nach links gesprungen</td></tr>
+	<tr><td>'… + n indices'</td><td>Es wird von der Position aus n Indexpositionen nach rechts gesprungen</td></tr>
+    <tr><td>'… - n indices'</td><td>Es wird von der Position aus n Indexpositionen nach links gesprungen</td></tr>
+    <tr><td>'… + n lines'</td><td>Es wird n Zeilen nach unten gesprungen</td></tr>
+    <tr><td>'… - n lines'</td><td>Es wird n Zeilen nach oben gesprungen</td></tr>
+    <tr><td>'… linestart', '… lineend'</td><td>Sprung zum Zeilenanfang, Zeilenende</td></tr>
+    <tr><td>'… wordstart', '…wordend'</td><td>Springt vor den Anfang / nach dem Ende eines Wortes</td></tr>
+	</table>
+	</section>
+
+
+	<section>
+	<h3 id="Tags">Tags</h3>
+	<p>Hierbei handelt es sich um Annotationen zu Text</p>
+	<ul>
+    <li>Text kann mit Tags versehen werden, dieses sind Namen (keine Leerzeichen, keine "+" oder "-"),
+    <li><code>SEL</code> ist die Marke, mit der die aktuelle Textauswahl gekennzeichnet ist,</li>
+    <li>es gibt einen Tag-Stack, später hinzugefügte Tags haben mehr Gewicht als Frühere,</li>
+    <li>der Tag-Stack kann umgebaut werden.</li>
+	</ul>
+	<p>Tags können Optionen haben:</p>
+	<table>
+	<tr><th>Option</th><th>Bedeutung</th></tr>
+    <tr><td>background</td><td>Hintergrundfarbe</td></tr>
+    <tr><td>bgstipple</td><td>Bitmap, Hintergrundstipple, Muster</td></tr>
+    <tr><td>borderwidth</td><td>Rahmendicke, voreingestellt: 0</td></tr>
+    <tr><td>elide</td><td>Ausgeblendeter Bereich, <code>tk.YES</code>, <code>tk.NO</code></td></tr>
+	<tr><td>fgstipple</td><td>Bitmap, Hintergrundstipple, Muster</td></tr>
+    <tr><td>font</td><td>Gewählter Font</td></tr>
+    <tr><td>foreground</td><td>Textfarbe</td></tr>
+    <tr><td>justify</td><td>Textausrichtung: tk.CENTER, tk.LEFT (voreingestellt) oder tk.RIGHT</td></tr>
+    <tr><td>lmargin1</td><td>Zeileneinzug erste Zeile. Siehe auch
+		<a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionen</a></td></tr>
+    <tr><td>lmargin2</td><td>Zeileneinzug aller weiteren Zeilen. Siehe auch
+		<a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionen</a></td></tr>
+	<tr><td>lmargincolor</td><td>Hintergrundfarbe für Bereiche, die mit lmargin1,
+		lmargin2 ausgezeichnet sind und keinen Text beinhalten</td></tr>
+    <tr><td>offset</td><td>Texterhöhung oder -erniedrigung auf der Grundlage der Basislinie</td></tr>
+    <tr><td>overstrike</td><td>overstrike=1: Durchgestrichenen Text</td></tr>
+    <tr><td>overstrikefg</td><td>Textfarbe durchgestrichener Text</td></tr>
+    <tr><td>relief</td><td>tk.FLAT (voreingestellt), tk.GROOVE, tk.RAISED, tk.RIDGE oder tk.SUNKEN</td></tr>
+    <tr><td>rmargin</td><td>Rechter Rand, voreingestellt: 0</td></tr>
+    <tr><td>rmargincolor</td><td>Hintergrundfarbe für Bereiche, die keinen Text
+		beinhalten und mit rmargin verschoben wurden</td></tr>
+    <tr><td>selectbackground, selectforeground </td><td>Farben für ausgewählten Text</td></tr>
+    <tr><td>spacing1</td><td>Zusätzlicher Platz über der Zeile, ohne Wrap, voreingestllt 0</td></tr>
+    <tr><td>spacing2</td><td>Zusätzlicher Platz über der Zeile, mit Wrap, voreingestllt 0</td></tr>
+    <tr><td>spacing3</td><td>Zusätzlicher Platz unter der Zeile, ohne Wrap, voreingestllt 0</td></tr>
+    <tr><td>tabs, tabstyle</td><td>Tab-Spezifikation wie im
+		<a href="#Tabulatoren">Abschnitt Tabulatoren</a> vorgestellt</td></tr>
+    <tr><td>underline</td><td>underline=1: Text wird unterstrichen gezeichnet</td></tr>
+    <tr><td>underlinefg</td><td>Farbe unterstrichener Text</td></tr>
+    <tr><td>wrap</td><td>siehe die spezielle <a href="#OptionWrap">Optione wrap</a> des Widgets</td></tr>
+	</table>
+
+	<h3 id="Textmarken">Textmarken</h3>
+	<p>Hierbei handelt es sich auch um Annotationen zu Text, die eher wie Lesezeichen wirken.</p>
+	<ul>
+    <li>Textmarken kann ein Name gegeben werden (keine Leerzeichen, Punkte^, "+" oder "-"-Zeichen),</li>
+    <li><code>tk.CURRENT</code> und <code>tk.INSERT</code> sind zwei Textmarken,</li>
+    <li>Markierungen fließen mit den Texten mit und sind keine fixen Positionen,</li>
+    <li>Property: <code>gravity</code>:<ul>
+		<li><code>tk.RIGHT</code>: Fügt man Text an einer Textmarke an, steht die
+			Marke hinterher hinter dem eingefügten Text,</li>
+        <li><code>tk.LEFT</code>: Fügt man Text an einer Textmarke an, steht die
+			Marke hinterher vor dem eingefügten Text</li></ul>
+    <li>Löscht man Text um Marken, entfernt man nicht automatisch die Textmarke mit</li>
+	</ul>
+
+    <h3 id="Window">Window</h3>
+	<p>Hierbei handelt es sich auch um Annotationen zu Text. Diese sind kleine Fenster, die neben dem Text
+        erscheinen. Sie werden in den Text durch (unsichtbare) Zeichen eingebunden und haben damit auch
+        einen Index. Sie können entfernt werden, indem der Text, auf den sich das Window bezieht, gelöscht wird.</p>
+    <p>Windows werden mit <code>t.window_create(index, option, …)</code> erzeugt. Folgende Window-Optionen gelten:</p>
+    <table>
+	<tr><th>Option</th><th>Bedeutung</th></tr>
+    <tr><td>align</td><td><code>tk.TOP</code>, <code>tk.BASELINE</code>, <code>tk.BOTTOM</code>
+        oder <code>tk.CENTER</code></td></tr>
+	<tr><td>create </td><td><strong>TODO</strong></td></tr>
+	<tr><td>padx, pady</td><td>Extra Platz, Siehe auch
+        <a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionen</a></td></tr>
+	<tr><td>stretch</td><td><code>tk.YES</code>: Das Fenster wird auf mindestens eine Zeilenhöhe vergrößert</td></tr>
+	<tr><td>window</td><td>Angabe eines Widgets, in dem die Annotation angezeigt werden soll.</td></tr>
+	</table>
+
+    <h3 id="Image">Image</h3>
+	<p>Hierbei handelt es sich auch um Annotationen zu Text. Diese sind Bilder, die neben dem Text
+        erscheinen. Sie werden in den Text durch (unsichtbare) Zeichen eingebunden und haben damit auch
+        einen Index. Sie können entfernt werden, indem der Text, auf den sich das Image bezieht, gelöscht wird.</p>
+    <p>Images werden mit <code>t.image_create(index, option)</code> erzeugt. Folgende Image-Optionen gelten:</p>
+    <table>
+	<tr><th>Option</th><th>Bedeutung</th></tr>
+    <tr><td>align</td><td><code>tk.TOP</code>, <code>tk.BASELINE</code>, <code>tk.BOTTOM</code>
+        oder <code>tk.CENTER</code></td></tr>
+	<tr><td>name</td><td>Name des Bildes in der Annotation</td></tr>
+	<tr><td>padx, pady</td><td>Extra Platz, Siehe auch
+        <a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionen</a></td></tr>
+	<tr><td>stretch</td><td><code>tk.YES</code>: Das Fenster wird auf mindestens eine Zeilenhöhe vergrößert</td></tr>
+	<tr><td>image</td><td>Angabe eines Images. <strong>TODO</strong></td></tr>
+	</table>
+
+	<p>Das folgende Programm erzeugt zwei Tags, die für farbige Hervorhebung sorgen. Ein Tag wird
+		an den Text gebunden, sobald er eingefügt wird, der Andere wird später dem Text hinzugefügt.
+		Der Tag <code>'justyellow'</code> wird an Ereignisse gebunden, die ausgelöst werden wenn die Maus
+		in den getaggten Bereich gelangt oder aus ihm verschwindet. In dem Fall werden Hintergrundfarben
+		angepasst.</p>
+	<a href="img/tk-text/text-tag_configure-01.png" target="_blank"><img src="img/tk-text/text-tag_configure-01.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.t = tk.Text(self, insertwidth=5)
+        self.t.pack(expand=tk.YES, fill=tk.BOTH)
+
+        self.t.tag_configure('justgrey', background='lightgrey')
+        self.t.tag_configure('justyellow', background='yellow')
+        self.t.insert('end', 'Hallo, Welt!', ('justgrey',))
+        self.t.insert('1.0', 'Dieser Text kommt an den Anfang')
+        self.t.tag_add('justyellow', '1.0', '1.8 wordend')
+
+        self.t.tag_bind('justyellow', '&lt;Enter>', self._onTagMouseOver)
+        self.t.tag_bind('justyellow', '&lt;Leave>', self._onTagMouseOver)
+
+    def _onTagMouseOver(self, event):
+        """Maus bewegt sich auf den Tag oder vom Tag weg"""
+        if event.type == tk.EventType.Enter:
+            self.t.tag_configure('justyellow', background='black',
+                                 foreground='yellow')
+        else:
+            self.t.tag_configure('justyellow', background='yellow',
+                                 foreground='black')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+
+
+	<p>Das folgende Programm setzt mit der <code>F1</code>-Taste eine Textmarke. Es kann mit
+		<code>STRG-1</code> an die Stelle der Textmarke gesprungen werden. Wird an die Bookmark
+		gesprungen, ohne dass sie vorher gesetzt wurde, dann wird eine Fehlermeldung auf der
+		Konsole ausgegeben:</p>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.t = tk.Text(self, insertwidth=5, undo=tk.YES, autoseparators=tk.YES)
+        self.t.pack(expand=tk.YES, fill=tk.BOTH)
+
+        self.t.bind('&lt;F1>', self._onSetBookmark)
+        self.t.bind('&lt;Control-KeyPress-1>', self._onGoBookmark)
+
+    def _onSetBookmark(self, event):
+        # Bookmark setzen
+        self.t.mark_set('mybookmark', 'current')
+        # alle Textmarken ausgeben
+        print(self.t.mark_names())
+
+    def _onGoBookmark(self, event):
+        # Scrolle zum Bookmark
+        self.t.see('mybookmark')
+        # Einfügecursor an Bookmark setzen
+        self.t.mark_set('insert', 'mybookmark')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+
+	<p>Das folgende Programm stellt ein neues Window mit einem Label vor:</p>
+    <a href="img/tk-text/text-window_create-01.png" target="_blank"><img src="img/tk-text/text-window_create-01.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        t = tk.Text(self, insertwidth=5)
+        t.pack(expand=tk.YES, fill=tk.BOTH)
+
+        t.insert('end', 'Hallo, \nWelt!')
+        t.window_create(
+            '2.2',
+            window=ttk.Label(
+                t,
+                text='Anmerkung in einem neuen Fenster',
+                background='green',
+                foreground='white'))
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+	</section>
+
+
+	<section>
+    <h3 id="Peer">Peer-Widget</h3>
+	<p>Peers sind neue Ansichten desselben Textes. Sie können den gesamten Text oder auch nur einen
+		Teil davon beinhalten.</p>
+	<p>Jeder Peer hat seine eigene <code>current</code>- und <code>insert</code>-Marke, der
+		<code>sel</code>-Tag für Textauswahl kann für jeden Peer separat konfiguriert werden.
+		<a href="#Window">Windows</a> und <a href="#Image">Images</a> werden nicht geteilt.</p>
+	<p>Hinweise darauf, wie man Peer-Widgets erstellt, findet man auf
+		<a class="extern" target="_blank" href="https://stackoverflow.com/questions/58286794/how-to-enter-text-into-two-text-widgets-by-just-entring-into-same-widget">
+		stackoverflow.com</a></p>
+    </section>
+
+
+    <section>
+    <h3>Text-Methoden</h3>
+    <table>
+    <tr><th>Funktion</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>    <tr><td>t.bbox(index)</td><td>index</td>
+        <td>4-Tupel (Rechteck: x, y, w, h) oder leere Liste</td>
+        <td>Es wird ein Rechteck um das Zeichen bei index als 4-Tupel
+        zurückgegeben. Das Zeichen muss sichtbar sein und es sollte
+        <code>win.update_idletasks()</code> zuvor aufgerufen worden sein.
+        Ist das Zeichen nicht sichtbar, wird eine leere Liste zurückgegeben</td></tr>
+    <tr><td>t.cget(…)</td><td colspan="3" class="see">Siehe allgemeine <a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a></td></tr>
+
+	<tr><td>t.compare(index1, op, index2)</td>
+        <td><code>index1, index2</code>: Indices, <code>op</code>: String,
+        Vergleichsoperator ('&lt;', '&lt;=', '!=', …)</td>
+        <td>1 oder 0</td><td>Vergleicht 2 Indices anhand des Operators miteinander.
+        Ist der Vergleich wahr, wird 1 zurückgeliefert</td></tr>
+    <tr><td>t.configure(…)</td><td colspan="3" class="see">Siehe allgemeine <a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a></td></tr>
+	<tr><td>t.count(COptions, index1, index2)</td><td><code>COption</code>:<ul>
+        <li>chars: Es werden alle Zeichen gezählt</li>
+        <li>displaychars: Alle Zeichen in nicht versteckten (Option <code>elide</code>)
+            Zeichen werden gezählt</li>
+        <li>displayindices: Alle nicht versteckten Zeichen, Text-Windows und Bilder werden gezählt</li>
+        <li>displaylines: Zählt alle Zeilen</li>
+        <li>indices: Zählt alle Zeichen, Text-Fenster und Bilder</li>
+        <li>lines: Zählt alle Zeilen, gewrappte Zeilen zählen 1. Zeilen müssen nicht sichtbar sein.</li>
+        <li>xpixels: Anzahl horizontaler Pixel</li>
+        <li>ypixels: Anzahl vertikaler Pixel</li></ul>
+        <code>index1, index2</code>:Indices</td>
+        <td>Liste von Zahlen</td><td>Es werden Dinge gezählt, für jedes Ding wird ein Element in
+        die Rückgabeliste geschrieben. Ist index1 > index2, werden negative Zahlen
+        zurückgegeben</td></tr>
+    <tr><td>t.debug(dbg)</td><td><code>dbg</code>:Boolean</td><td>-</td><td>Konsistenz-Check</td></tr>
+    <tr><td>t.delete(index1, index2=None)</td>
+        <td><code>index1, index2</code>: Indices, <code>index1</code>&lt;<code>index2</code>,
+        <td>-</td>
+        <td>Löscht von index1 bis index2. Fehlt index2, wird nur ein Zeichen gelöscht.</td></tr>
+    <tr><td>t.dlineinfo(index)</td><td>Index</td><td>5-Tupel</td><td>Gibt (x, y, w, h, baseline)
+        zurück und berücksichtigt <code>wrap</code></td></tr>
+    <tr><td>t.dump(switch, index1, index2)</td><td><code>switch</code>:<ul>
+        <li>all: alle Informationen (default)</li>
+        <li>command:Für jedes Ergebnis, rufe eine Callback auf mit den Parametern: key, value, und index</li>
+        <li>image: Beziehe Images mit ein</li>
+        <li>mark: Beziehe Markierungen mit ein</li>
+        <li>tag: Beziehe Tags mit ein</li>
+        <li>text: Gibt den Text mit aus</li>
+        <li>window: Beziehe Text-Windows mit ein</li></ul>, <code>index1, index2</code>:Indices</td>
+        <td>key1 value1 index1, …</td><td>Gibt Informationen über den Text zwischen den
+        Indices aus</td></tr>
+    <tr><td>t.edit_modified(arg=None)</td><td>arg: Boolean oder nichts</td>
+        <td>Boolean oder nichts</td>
+        <td>Ohne Argumente wird abgefragt, ob sich der Text geändert hat.
+        Das Argument dient dazu explizit mitzuteilen, dass sich der Text
+        (nicht: False) geändert hat</td></tr>
+    <tr><td>t.edit_redo()</td><td>-</td><td>-</td><td>Es wird ein Redo ausgeführt</td></tr>
+    <tr><td>t.edit_reset()</td><td>-</td><td>-</td><td>Der Undo- und Redo-Stack wird gelöscht</td></tr>
+    <tr><td>t.edit_separator()</td><td>-</td><td>-</td>
+        <td>Ein Separator wird auf den Undo-Stack gelegt. Dieses begrenzt die
+        Undo-Operation auf Stackelemente bis zum Separator</td></tr>
+    <tr><td>t.edit_undo()</td><td>-</td><td>-</td>
+        <td>Führt ein Undo aus. Undo wird bis zum nächsten Separator oder bis zum
+        Ende des Stacks ausgeführt. Ist der Stack leer, ist dieses ein Fehler</td></tr>
+    <tr><td>t.get(index1, index2=None)</td><td>index1, index2: Indices</td>
+        <td>Text</td><td>Gibt den Text zwischen den Indices zurück.
+        Wird nur ein Index angegeben, dann gibt die Funktion nur ein Zeichen zurück</td></tr>
+    <tr><td>t.image_cget(index, option)</td>
+        <td>index: Index: Stelle des Bildes, option: vgl. <code>t.image_create(…)</code></td>
+        <td>Wert der Option</td><td>Gibt den Wert der Option für ein Bild an der
+        Stelle <code>index</code> zurück. Siehe auch: t.image_create(…)</td></tr>
+    <tr><td>t.image_configure(index, option, …)</td>
+        <td>index: Index, option: Option oder Option-Wert-Paare</td>
+        <td>Nichts oder Dictionary</td>
+        <td>Ohne Optionen erhält man für ein Bild an der Stelle index ein Dictionary
+        mit allen option=value-Elementen. Man kann mit der Methode Optionen setzen.</td></tr>
+    <tr><td>t.image_create(index, option)</td>
+        <td>index: Index, option: Optionen sind:
+        align: (vertikales Alignment) top, center, bottom und baseline;
+        image: Das zu benutzende Bild; name: Bildname; padx und pady: Innenabstand zum Bild</td>
+        <td>id</td><td>Fügt ein Bild ein und gibt eine Id zurück</td></tr>
+    <tr><td>t.image_names()</td><td>-</td><td>Tupel</td>
+        <td>Tupel mit Namen eingebetteter Bilder</td></tr>
+    <tr><td>t.index(index)</td><td><code>index</code>: Index</td><td>zeile.zeichen</td>
+        <td>Übersetzt einen Index in eine Textstelle der Form <code>zeile.zeichen</code></td></tr>
+    <tr><td>t.insert(index, text, tags=None, …)</td>
+        <td><code>index</code>: Index, <code>text</code>, <code>tags</code>: Tupel von einem
+        oder mehreren Tags, <code>…</code>:Folgen von Text und Taglisten</td>
+        <td>-</td><td>Fügt Text am Index ein.
+        Ohne Tags gelten die vorhandenen Tags an der Einfügeposition. Mit Tag-Argument gelten
+        nur diese für den eingefügten Text.</td></tr>
+    <tr><td>t.mark_gravity(mark, gravity=None)</td>
+        <td>mark: Textmarke, gravity: aus tk.LEFT, tk.RIGHT</td>
+        <td>Nichts oder Gravity</td>
+        <td>Fragt ab oder ändert die Gravity der Marke. Ohne gravity-Argument wird die Gravity
+        zurückgegeben</td></tr>
+    <tr><td>t.mark_names()</td><td>-</td><td>Sequenz</td>
+        <td>Gibt die Namen aller Textmarken zurück</td></tr>
+    <tr><td>t.mark_next(index)</td><td>index: Index oder Name einer Textmarke</td><td>Textmarke</td>
+        <td>Gibt den Namen der Textmarke am oder nach dem Index zurück</td></tr>
+    <tr><td>t.mark_previous(index)</td><td>index: Index oder Name einer Textmarke</td>
+        <td>Textmarke</td>
+        <td>Gibt den Namen der dem Index vorhergehenden Textmarke zurück, oder einen leeren
+        String, wenn keine Marke vorher gefunden werden kann.</td></tr>
+    <tr><td>t.mark_set(mark, index)</td><td>mark: Textmarke, index: Index</td><td>-</td>
+        <td>Erzeugt eine neue Marke am index, wenn der Name der Marke noch nicht verwendet wurde.
+        Sonst wird die Marke zum Index verschoben</td></tr>
+    <tr><td>t.mark_unset(mark…)</td><td>mark: Textmarke(n)</td>
+        <td>-</td>
+        <td>Entfernt die Textmarke mark. tk.CURRENT und tk.INSERT werden nicht gelöscht</td></tr>
+    <tr><td>t.peer_create(path, Options)</td><td><code>path</code>:<strong>TODO</strong>,
+        <code>Options</code>:Textwidget Optionen</td><td>-</td>
+        <td>Erzeugt ein neues Peer-Fenster, das sich genau so verhält wie das originale Textwidget</td></tr>
+    <tr><td>t.peer_names()</td><td>-</td><td>Liste</td><td>Liste von Peer-Fenstern zu diesem Textwidget</td></tr>
+    <tr><td>t.pendingsync</td><td colspan="3" class="todo">Zur Zeit nicht unterstützt</td></tr>
+    <tr><td>t.replace(index1, index2, chars, tagList[,chars, taglist]*)</td>
+        <td><code>index1, index2</code>:Indices, <code>tagList</code>: Liste von Tags,
+        <code>chars</code>: Text</td>
+        <td>-</td><td>Ersetzt Zeichen zwischen <code>index1</code> und <code>index2</code>
+        durch <code>chars</code> und setzt die Tags entsprechend neu.</td></tr>
+    <tr><td>t.scan_dragto(x, y), t.scan_mark(x, y)</td><td>x,y: Mauspositionen</td><td>-</td>
+        <td>Ermöglicht schnelles Scrollen mit der Maus auf der Fläche: <code>scan_mark(…)</code> wird
+        an einen Mausknopf gebunden, &lt;Motion> wird an <code>scan_dragto(…)</code> gebunden.
+        <code>x,y</code> sind die jeweils übergebenen Mauspositionen. Bei &lt;Motion> ist darauf
+        zu achten, dass der Mausknopf weiterhin gedrückt ist.</td></tr>
+    <tr><td>t.search(pattern, index, stopindex=None,
+           forwards=None, backwards=None, exact=None,
+           regexp=None, nocase=None, count=None, elide=None)</td>
+        <td><code>pattern</code>: String oder Regulärer Ausdruck, nach dem gesucht wird, 
+            <code>index, stopIndex</code>: Start- und Endindex der Suche, <code>index</code> 
+            muss vor <code>stopIndex</code> liegen, bei Rückwärtssuche anders herum.
+            <code>forwards</code>: Vorwärtssuche, schneller als Rückwärtssuche,
+            <code>backwards</code>: Rückwärtssuche, diese Option hat Vorrang vor <code>forwards</code>,
+            <code>exact</code>: Exaktes Finden statt Mustersuche (default),
+            <code>regexp</code>: <code>pattern</code> ist ein regulärer Ausdruck,
+            <code>nocase</code>: Case-Insensitiv,
+            <code>count variable</code>: Variable hält die Anzahl der gematchten Zeichen fest 
+            (ohne ausgeblendeten Text), vom Typ <a target="_blank" href="tkinter-optionen.html#Kontrollvariablen">tk.IntVar()</a>,
+            <code>elide</code>: Findet auch ausgeblendeten Text</td>
+        <td>Index oder leerer String</td>
+        <td>Sucht nach pattern im gegebenen Indexbereich. Siehe auch <a href="#TextSuchen">Abschnitt Text Suchen</a></td></tr>    
+    <tr><td>t.see(index)</td><td>index: Index</td><td>-</td>
+        <td>Scrollt so, dass index sichtbar wird.</td></tr>
+    <tr><td>t.sync</td><td colspan="3" class="todo">Zur Zeit nicht unterstützt</td></tr>
+    <tr><td>t.tag_add(tagName, index1, index2=None, …)</td>
+        <td>tagName: Tagname, index1, index2…: Indices</td>
+        <td>-</td>
+        <td>Der Bereich von <code>index1</code> bis vor <code>index2</code> (und weitere Indexgruppen)
+        wird mit dem Tag <code>tagName</code> versehen</td></tr>
+    <tr><td>t.tag_bind(tagName, sequence, func, add=None)</td>
+        <td>tagName: Tagname, sequence: Event, func: Callback, add='+': Zusätzliches Event,
+        sonst Ersetzung</td><td>Nichts, Funktion oder Liste</td>
+        <td>Bindet eine Callback an einen Tag. Fragt Events ab, wenn nur ein Argument
+        verwendet wird. Fragt Funktion ab, wenn zwei Argumente verwendet werden</td></tr>
+    <tr><td>t.tag_cget(tagName, option)</td><td>tagName: Tagname, option: Tagoption</td>
+        <td>Wert der Option</td><td>Gibt den Optionswert zurück</td></tr>
+    <tr><td>t.tag_configure(tagName, option, …)</td>
+        <td>tagName: Tagname, option: Tagoption als Schlüssel-Wert-Paar</td>
+        <td>Nichts, Wert oder Dictionary</td>
+        <td>Gibt ein Dictionary mit Optionen und Wert aus, wenn die Funktion mit
+        nur einem Argument aufgerufen wird. Sonst wird Eine Option gesetzt oder abgefragt</td></tr>
+    <tr><td>t.tag_delete(tagName, …)</td><td>tagName: Tagnamen</td><td>-</td>
+        <td>Löscht Tags und damit auch ggf. vorhandene Bindungen</td></tr>
+    <tr><td>t.tag_lower(tagName, belowThis=None)</td><td>tagName, belowThis: Tagnamen</td>
+        <td>-</td><td>Ein Argument: tagName kommt nach ganz unten auf den Tag-Stack,
+        sonst kommt tagName unter belowThis. Damit wird die Priorität der
+        Tags verändert: höhere Tags haben auch höhere Priorität</td></tr>
+    <tr><td>t.tag_names(index=None)</td><td>index: Index</td>
+        <td>Sequenz mit Tag-Namen</td>
+        <td>Kein Argument: Gibt alle Tagnamen des Widgets aus,
+        sonst die Tagnamen des Zeichens am Index</td></tr>
+    <tr><td>t.tag_nextrange(tagName, index1, index2=None)</td>
+        <td>tagName: Tagname, index1, index2: Textindex</td>
+        <td>Liste mit 2 Elemente</td>
+        <td>Sucht nach dem Start des Tags mit <code>tagname</code>.
+        Anfang ist <code>index1</code>, Ende entweder <code>index2</code> oder
+        das Ende des Dokuments. Diese Methode gibt 2 Indices zurück:
+        Index des ersten und des letzten getaggten Zeichens. Ist die Suche
+        nicht erfolgreich, wird ein leerer String zurückgegeben</td></tr>
+    <tr><td>t.tag_prevrange(tagName, index1, index2=None)</td><td colspan="3" class="see">
+        wie <code>tag_nextrange(…)</code>, nur umgekehrt</td></tr>
+    <tr><td>t.tag_raise(tagName, aboveThis=None)</td>
+        <td colspan="3" class="see">wie <code>tag_lower(…)</code>, nur umgekehrt</td></tr>
+    <tr><td>t.tag_ranges(tagName)</td><td>tagName: Tagname</td>
+        <td>Liste</td><td>Alle mit tagName getaggten Bereiche werden als
+        Liste ausgegeben. Die Liste enthält die Textindeces
+        vor dem Beginn und nach dem Ende</td></tr>
+    <tr><td>t.tag_remove(tagName, index1, index2=None, …)</td>
+        <td>tagName: Tagname, index1, index2: Textindex</td><td>-</td>
+        <td>Entfernt den angegebenen Tag im angegebenen Bereich. Ist <code>index2</code>
+        nicht angegeben, wird der Tag nur von einem Zeichen entfernt</td></tr>
+    <tr><td>t.tag_unbind(tagName, sequence, funcid=None)</td>
+        <td>tagName: Tagname, sequence: Event, funcid: Callback</td><td>-</td>
+        <td>Entfernt die Event-Bindung vom Tag. Gibt es mehrere Bindungen, kann
+        mit dem dritten Argument angegeben werden, welche Bindung entfernt werden soll</td></tr>
+    <tr><td>t.window_cget(index, option)</td><td>index: Index, option: Window-Option</td>
+        <td>Wert der Option</td><td>Gibt den Wert der Option vom eingebtteten
+        Window zurück.</td></tr>
+    <tr><td>t.window_configure(index, option, …)</td><td>index: Index, option=value:
+        Window-Optionen eines eingebetteten Widgets</td>
+        <td>nichts oder Dictionary</td><td>Setzt Optionen und Werte für eingebettete Widgets.
+        Fehlt <code>option</code>, so erhält man ein Dictionary aller Optionen und Werte. Kann
+        Werte zu Window-Optionen abfragen, indem man <code>value</code> nicht angibt</td></tr>
+    <tr><td>t.window_create(index, option, …)</td><td colspan="3" class="see">Siehe
+        Abschnitt <a href="#Window">Window</a></td></tr>
+    <tr><td>t.window_names()</td><td>-</td><td>Sequenz</td><td>Sequenz aller Namen von
+        eingebtteten Windows</td></tr>
+    <tr><td>t.xview(tk.MOVETO, fraction)</td><td>fraction: 0…1</td><td>-</td>
+        <td>Wird typisch Scrollbar command gebunden: Scrollt in horizontaler
+        Richtung zur relativen Position</td></tr>
+    <tr><td>t.xview(tk.SCROLL, n, what)</td><td>n: Zahl, what:tk.UNITS oder tk.PAGES</td>
+        <td>-</td><td>Scrollt Textwidget links/rechts um <code>n</code> <code>what</code></td></tr>
+    <tr><td>t.xview_moveto(fraction)</td><td colspan="3" class="see">
+        siehe <code>t.xview(tk.MOVETO, fraction)</code></td></tr>
+    <tr><td>t.xview_scroll(n, what)</td><td colspan="3" class="see">
+        siehe <code>t.xview(tk.SCROLL, n, what)</code></td></tr>
+    <tr><td>t.yview(tk.MOVETO, fraction)</td><td colspan="3" class="see">
+        siehe <code>t.xview(tk.MOVETO, fraction)</code></td></tr>
+    <tr><td>t.yview(tk.SCROLL, n, what)</td><td colspan="3" class="see">
+        siehe <code>t.xview(tk.SCROLL, n, what)</code></td></tr>
+    <tr><td>t.yview_moveto(fraction)</td><td colspan="3" class="see">
+        siehe <code>t.xview_moveto(fraction)</code></td></tr>
+    <tr><td>t.yview_scroll(n, what)</td><td colspan="3" class="see">
+        siehe <code>t.xview_scroll(n, what)</code></td></tr>
+    </table>
+    </section>
+
+
+    <section>
+    <h3 id="TextSuchen">Text suchen</h3>
+    <p>Text im Editor findet man mit Hilfe der Methode <code>t.search(…)</code>. Das folgende 
+        Beispiel findet im Editor eingegebenen Text, wobei die Suche per regulärem Ausdruck erfolgen kann. 
+        Einen Überblick über reguläre Ausdrücke, wie sie von tkinter verstanden werden, findet man
+        in der Doku von Tcl/Tk.
+        Im Beispiel wird die erste gefundene Textstelle markiert.</p>
+    <a href="img/tk-text/text-finden-01.png" target="_blank"><img src="img/tk-text/text-finden-01.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self._text = tk.Text(self, width=40, height=20)
+        self._text.pack(side=tk.TOP, expand=tk.YES, fill=tk.BOTH)
+        self._text.tag_configure('found-tag', background='lightgreen')
+        frame = ttk.Frame(self)
+        frame.pack(side=tk.TOP, expand=tk.YES, fill=tk.X)
+        self._entry = ttk.Entry(frame)
+        self._entry.pack(side=tk.LEFT, expand=tk.YES, fill=tk.X)
+        button = ttk.Button(frame, text='Finde', command=self._onFind)
+        button.pack(side=tk.LEFT, fill=tk.X)
+
+    def _onFind(self):
+        searchText = self._entry.get()
+        if len(searchText) == 0:
+            return
+        var = tk.IntVar()
+        foundIndex = self._text.search(searchText, '1.0', stopindex=tk.END,
+                                       nocase=tk.YES, count=var,
+                                       regexp=tk.YES)
+        if len(foundIndex) == 0:
+            return
+        count = var.get()
+        lastIndex = self._text.index(f'{foundIndex} + {count}c')
+        self._text.tag_remove('found-tag', '1.0', tk.END)
+        self._text.tag_add('found-tag', foundIndex, lastIndex)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+	</section>
+
+
+	<section>
+    <h3>Virtuelle Ereignisse</h3>
+    <p>tk.Text kennt die folgenden virtuellen Ereignisse:</p>
+	<ul>
+	<li>'&lt;&lt;Modified>>': Der Text wurde nach dem letzten Speichern verändert. Siehe auch <code>t.edit_modified(…)</code></li>
+	<li>'&lt;&lt;Selection>>': Die Textauswahl ändert sich, das <code>sel</code>-Tag enthält den Bereich der Textauswahl</li>
+	<li>'&lt;&lt;UndoStack>>': Es wird das erste Element auf den Undo-Stack gelegt oder der Undo-Stack wird geleert</li>
+	<li>'&lt;&lt;WidgetViewSync>>': Das Text-Widget berechnet(e) die Linienhöhe neu</li>
+	</ul>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <ul>
+        <li><a class="extern" target="_blank" href="https://tcl.tk/man/tcl8.7/TkCmd/text.html">
+        https://tcl.tk/man/tcl8.7/TkCmd/text.html</a></li>
+        <li>Reguläre Ausdrücke für <code>t.search(…)</code>:<a class="extern" target="_blank" href="https://tcl.tk/man/tcl8.7/TclCmd/re_syntax.html">
+        https://tcl.tk/man/tcl8.7/TclCmd/re_syntax.html</a></li>
+    </ul>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a></p>
+    </footer>
+  </body>
+</html>

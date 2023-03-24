@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - Events</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - Events</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navcurrent">Events<ul class="navul">
+		<li class="navli"><a class="nava" href="#Events">Events</a></li>
+		<li class="navli"><a class="nava" href="#Eventtypen">Eventtypen</a></li>
+		<li class="navli"><a class="nava" href="#EventMethoden">EventMethoden</a></li>
+        <li class="navli"><a class="nava" href="#Bindtags">Bindtags</a></li>
+	</ul></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2 id="Events">Events</h2>
+    <p>Events sind etwa Mausklicks, oder Tastatureingaben. Diese werden mit Methoden
+        an beispielsweise Widgets gebunden. Diese Bindung enthält den Empfänger des
+        Events (z. B. ein Widget), das Ereignis (z. B. Mausklick) und eine Callback.</p>
+    <p>Ereignisse werden grundsätzlich von einem Widget zum Nächsten weitergereicht,
+        bis zu einem Empfänger. Der Abschnitt
+        <a href="#Bindtags">Bindtags</a> erläutert das genauer.</p>
+
+
+    <section>
+    <h3>Empfänger von Event-Bindungen</h3>
+    <p>Events werden mit Methoden an unterschiedliche Bereiche eines Programmes gebunden:</p>
+    <table>
+    <tr><th>Ziel</th><th>Erläuterung</th></tr>
+    <tr><td>App-Bindung</td><td>Der gesamten App wird ein Ereignis mit
+        <code>root.bind_all(…)</code> zugeordnet</td></tr>
+    <tr><td>Class-Bindung</td><td>Allen Widgets, die eine gemeinsame
+        <code>class_</code>-Option benutzen, kann mit <code>bind_class(…)</code>
+        eine gemeinsame Menge an Events zugeordnet werden</td></tr>
+    <tr><td>Tag-Bindung</td><td>Beispiel Tags von Canvas- oder Treeviewitems: Werden mit
+        Methoden wie <code>w.tag_bind(…)</code> erzeugt und beziehen
+        sich alleine auf Tags. Siehe auch das Beispiel
+		<a target="_blank" href="tkinter-ttk-treeview.html#tag-click-beispiel">Tag Click</a> im
+		Treeview-Kapitel</td></tr>
+    <tr><td>Widget-Bindung</td><td>Einzelnen Widgets kann per
+        <code>w.bind(…)</code> ein Ereignis zugeordnet werden</td></tr>
+    </table>
+
+    <p>Das folgende Programm zeigt die obigen Bindungen. Das Label
+        <code>la</code> wird als Ziel an das Ereignis
+        <code>'&lt;Button-1>'</code> (linker Mausknopf) gebunden, die Klasse
+        <code>foobar</code> erhält eine Klassenbindung an den linken Mausknopf und
+        die App wird an die Tastenkombination <code>STRG-q</code> gebunden.</p>
+    <a href="img/t-events/e-click-labels-1.png" target="_blank"><img src="img/t-events/e-click-labels-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+from tkinter import filedialog as fd
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        # Ereignis wird an genau das Label gebunden
+        la = ttk.Label(self, text='Klick mich', relief=tk.SUNKEN )
+        la.pack(side=tk.TOP, fill=tk.BOTH, expand=tk.YES)
+        la.bind('&lt;Button-1>', self._label1Click)
+
+        lf = ttk.Labelframe(self, text='Class Labels')
+        lf.pack(side=tk.TOP, fill=tk.BOTH, expand=tk.YES)
+
+        # Ereignis wird an die Klasse (Gruppe) gebunden
+        lb = ttk.Label(lf, class_='foobar', text='klickbar1', relief=tk.SUNKEN)
+        lb.pack(side=tk.LEFT, fill=tk.BOTH, expand=tk.YES)
+        lc = ttk.Label(lf, class_='foobar', text='klickbar2', relief=tk.SUNKEN)
+        lc.pack(side=tk.RIGHT, fill=tk.BOTH, expand=tk.YES)
+        lb.bind_class('foobar', '&lt;Button-1>', self._label2Click)
+
+        # Anzeige, wohin geklickt wurde
+        self.labelInfoVar = tk.StringVar(value='Wer klickt was?')
+        ld = ttk.Label(self, textvariable=self.labelInfoVar, relief=tk.SUNKEN)
+        ld.pack(side=tk.TOP, fill=tk.X)
+
+        b = ttk.Button(self, text="Ende!", command=self.destroy)
+        b.pack(side=tk.BOTTOM)
+
+        # Ereignis wird an App gebunden
+        self.bind_all('&lt;Control-KeyPress-q>', self._goodbye)
+
+    def _label1Click(self, event):
+        self.labelInfoVar.set('Label A wurde geklickt')
+
+    def _label2Click(self, event):
+        self.labelInfoVar.set('Gruppenklick, B oder C')
+
+    def _goodbye(self, event):
+        print('Googbye...')
+        self.destroy()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Weiterverarbeitung von Events abbrechen</h3>
+	<p>Im folgenden Beispiel wird die Eingabe von <code>'1'</code> in ein Entry an eine Callback gebunden.
+		Diese Callback soll die Eingabe verarbeiten, die Eins soll aber nicht im Entry erscheinen. Die
+		Weiterverarbeitung der Eingabe im Entry wird unterbunden mit <code>return 'break'</code>:</p>
+	<pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('200x200')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.entry = ttk.Entry(self)
+        self.entry.pack()
+        self.entry.bind('&lt;KeyPress-1>', self._onOne)
+
+    def _onOne(self, event):
+        self.entry.delete(0, 'end')
+        self.entry.insert(0, '1 gedrückt')
+        return 'break'
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+    <h2 id="Eventtypen">Eventtypen</h2>
+
+
+    <section>
+    <h3>Mausereignisse</h3>
+    <p>Mausereignisse entstehen, wenn die Maus bewegt wird, über bestimmte
+        Bereiche fährt oder Mausknöpfe betätigt werden.</p>
+    <table>
+    <tr><th>Ereignisname</th><th>Beschreibung</th></tr>
+    <tr><td>'&lt;Button>'</td><td>Ein Mausknopf wurde gedrückt</td></tr>
+    <tr><td>'&lt;Button-1>', '&lt;1>'</td><td>Der erste Mausknopf wurde gedrückt</td></tr>
+    <tr><td>'&lt;ButtonRelease>'</td><td>Ein Mausknopf wurde losgelassen</td></tr>
+    <tr><td>'&lt;ButtonRelease-1>'</td><td>Der erste (linke?) Mausknopf wurde losgelassen</td></tr>
+    <tr><td>'&lt;Enter>'</td><td>Die Maus wird in einen Bereich, ein Widget hinein bewegt</td></tr>
+    <tr><td>'&lt;Leave>'</td><td>Die Maus wird aus einen Bereich, ein Widget heraus bewegt</td></tr>
+    <tr><td>'&lt;Motion>'</td><td>Die Maus über einem Bereich, einem Widget bewegt</td></tr>
+    <tr><td>'&lt;MouseWheel>'</td><td>Das Mausrad wurde bewegt</td></tr>
+    </table>
+    <p>Hinweis: Unter Linux wird <code>'&lt;MouseWheel>'</code> nicht erkannt.
+        Hier ist das Ereignis stattdessen <code>'&lt;Button-4>'</code> für Mausrad rauf und
+        <code>'&lt;Button-5>'</code> für Mausrad runter.</p>
+    <p>Das folgende Programm stellt einige Mausevents vor. Es wird dabei auch die String-Repräsentation
+        der <code>event</code>-Parameter ausgegeben:</p>
+    <a href="img/t-events/e-click-ereignislabel-1.png" target="_blank"><img src="img/t-events/e-click-ereignislabel-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        label = ttk.Label(self, text='Ereignisfeld', relief=tk.SUNKEN)
+        label.pack(side=tk.TOP, fill=tk.BOTH, expand=tk.YES)
+        label.bind('&lt;Button-1>', self._onClick)
+        label.bind('&lt;Enter>', self._onEnterLeave)
+        label.bind('&lt;Leave>', self._onEnterLeave)
+
+        self.labelInfoVar = tk.StringVar(value='Beschreibung')
+        labelInfo = ttk.Label(self, textvariable=self.labelInfoVar)
+        labelInfo.pack(side=tk.TOP, fill=tk.BOTH, expand=tk.YES)
+
+    def _onClick(self, event):
+        msg = F'Click: {event.x} {event.y} \n{event}'
+        self.labelInfoVar.set(msg)
+
+    def _onEnterLeave(self, event):
+        if event.type == tk.EventType.Enter:
+            msg = F'Enter: {event}'
+            self.labelInfoVar.set(msg)
+        else:
+            msg = F'Enter: {event}'
+            self.labelInfoVar.set(msg)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Tastaturereignisse</h3>
+    <p>Tastaturereignisse entstehen bei Tastendrücken auf der Tastatur. Manche Tasten, wie
+        etwa <code>STRG</code>, <code>NumLock</code> oder <code>ALT</code> dienen dabei als
+        "Modifier".</p>
+    <table>
+    <tr><th>Ereignisname</th><th>Beschreibung</th></tr>
+    <tr><td>'&lt;KeyPress>'</td><td>Eine Taste wurde gedrückt</td></tr>
+    <tr><td>'x'</td><td>Die Taste <code>x</code> wurde gedrückt</td></tr>
+    <tr><td>'&lt;Control-KeyPress-x>'</td><td>Die Taste <code>x</code> wurde zusammen
+        mit der <code>STRG</code>-Taste gedrückt</td></tr>
+    <tr><td>'&lt;KeyRelease>'</td><td>Taste wurde losgelassen </td></tr>
+    </table>
+    <p>Tastaturereignisse liefern <code>event.keysym</code> (ein symbolischer Name für die Taste),
+        <code>event.keycode</code> (Zahlencode der reinen Taste), und
+        <code>event.keysym_num</code> (Zahlencode unter Berücksichtigung eventuell
+        gedrückter Modifier) zurück. Zudem noch mit <code>event.char</code> das eigentliche
+        Zeichen.</p>
+    <p>Das folgende Programm wertet allgemein den <code>event</code>-Parameter aus, indem
+        Felder des Parameters untersucht werden:</p>
+    <a href="img/t-events/e-click-ereignislabel-2.png" target="_blank"><img src="img/t-events/e-click-ereignislabel-2.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.bind_all('&lt;KeyPress>', self._onKeypress)
+
+        self.labelInfoVar = tk.StringVar(value='Beschreibung')
+        labelInfo = ttk.Label(self, textvariable=self.labelInfoVar)
+        labelInfo.pack(side=tk.TOP, fill=tk.BOTH, expand=tk.YES)
+
+    def _onKeypress(self, event):
+        self.labelInfoVar.set(F'KeyPress\nkeysym={event.keysym}\n'
+                              F'keycode={event.keycode}\n'
+                              F'keysym_num={event.keysym_num}\n'
+                              F'char={event.char}\n'
+                              F'Modifier={event.state}')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Weitere Ereignisse</h3>
+    <table>
+    <tr><th>Ereignisname</th><th>Beschreibung</th></tr>
+    <tr><td>'&lt;Configure>'</td><td>Widget verändert seine Größe</td></tr>
+    <tr><td>'&lt;Destroy>'</td><td>Widget wird endgültig entfernt, weil beispielsweise
+        die App beendet wird</td></tr>
+    <tr><td>'&lt;Expose>'</td><td>Wird aufgerufen, wenn Teile des Widgets/Fensters neu
+        gezeichnet werden müssen</td></tr>
+    <tr><td>'&lt;FocusIn>', '&lt;FocusOut>'</td><td>Ein Widget bekommt oder verliert
+        den (Eingabe-)Fokus</td></tr>
+    <tr><td>'&lt;Map>', '&lt;Unmap>'</td><td>Widget wird sichtbar, weil es in ein Layout
+        eingefügt wird oder unsichtbar, weil es aus diesem wieder entfernt wird</td></tr>
+    <tr><td>'&lt;Visibility>'</td><td>Fenster wird sichtbar, weil es minimiert war oder
+        gerade erst erzeugt wurde, oder maximiert</td></tr>
+    </table>
+
+    <p>Das folgende Programm stellt einige dieser Ereignisse vor:</p>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        labelEvent = ttk.Label(self, text='Ereignis', relief=tk.SUNKEN)
+        labelEvent.pack(side=tk.TOP, fill=tk.BOTH, expand=tk.YES)
+        labelEvent.bind('&lt;Configure>', self._onResize)
+        labelEvent.bind('&lt;Expose>', self._onExpose)
+        labelEvent.bind('&lt;Visibility>', self._onVisibility)
+
+        # Um dieses Ereignis auszulösen springt man mit der Tab-Taste in das entry
+        # und wieder hinaus in das entry2
+        entry = ttk.Entry(self)
+        entry.pack(side=tk.TOP, fill=tk.X, expand=tk.YES)
+        entry.bind('&lt;FocusIn>', self._onFocus)
+        entry.bind('&lt;FocusOut>', self._onFocus)
+        entry2 = ttk.Entry(self)
+        entry2.pack(side=tk.TOP, fill=tk.X, expand=tk.YES)
+
+    def _onVisibility(self, event):
+        print('Visibility ')
+
+    def _onResize(self, event):
+        print('Resize: ', event.width, event.height)
+
+    def _onExpose(self, event):
+        print('Expose: ', event.width, event.height)
+
+    def _onFocus(self, event):
+        print('Focus: %s' % ('bekommen', 'verloren')[int(event.type != tk.EventType.FocusIn)] )
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Übersicht Eventfelder</h3>
+    <p>Der <code>event</code>-Parameter der Callbacks kennt die folgenden Felder,
+        die je nach Ereignis gesetzt sind:</p>
+    <table>
+    <tr><th>Feld</th><th>Beschreibung</th></tr>
+    <tr><td>.char</td><td>Das eigentlich Zeichen bei KeyPress, KeyRelease</td></tr>
+    <tr><td>.delta</td><td>MouseWheel: Änderung des Mausrades, plattformabhängig</td></tr>
+    <tr><td>.height, .width</td><td>Configure: Neue Höhe/Breite des Widgets</td></tr>
+    <tr><td>.keycode, .keysym, .keysym_num</td><td>KeyPress, KeyRelease: Beschreibung der gedrückten Taste</td></tr>
+    <tr><td>.num</td><td>Der gedrückte Mausknopf</td></tr>
+    <tr><td>.serial</td><td>Seriennummer</td></tr>
+    <tr><td>.state</td><td>Beschreibung der gedrückten Modifier bei Maus- und Tastaturereignissen. Plattformabhängig</td></tr>
+    <tr><td>.time</td><td>Wird jede Millisekunde um 1 erhöht</td></tr>
+    <tr><td>.type</td><td>Der Event-Typ, kann verglichen werden mit <code>tk.EventType.eventName</code></td></tr>
+    <tr><td>.widget</td><td>Das Widget, welches das Event verursacht hat</td></tr>
+    <tr><td>.x, .y</td><td>Mausposition relativ zum Widget</td></tr>
+    <tr><td>.x_root, .y_root</td><td>Mausposition relativ zum Fenster</td></tr>
+    </table>
+    </section>
+
+
+    <section>
+    <h3>Übersicht Modifier</h3>
+    <p>Die folgenden Modifier können ergänzend zu Maus- und Tastaturereignissen gesetzt werden,
+        beispielsweise <code>w.bind('&lt;Alt-Button-1>', self.onClick)</code>:</p>
+    <table>
+    <tr><th>Modifier</th><th>Beschreibung</th></tr>
+    <tr><td>Alt</td><td>Alt-Taste wird gedrückt</td></tr>
+    <tr><td>Control</td><td>Strg-Taste</td></tr>
+    <tr><td>Double</td><td>Doppelklick</td></tr>
+    <tr><td>Lock</td><td>ShiftLock-Taste wurde gedrückt</td></tr>
+    <tr><td>Shift</td><td>Shift-Taste</td></tr>
+    <tr><td>Triple</td><td>Dreifachklick</td></tr>
+    </table>
+    </section>
+
+
+    <section>
+    <h3>Virtuelle Events</h3>
+    <p>Virtuelle Events erweitern das Konzept von Events durch Namen für bestimmte Aktionen, die nicht
+        unmittelbar aus den physischen Ereignissen, wie beispielsweise Mausevents, hervorgehen.
+        Virtuelle Events kommen von Widgets, können aber auch an diese gesendet werden.</p>
+    <p>Beispiele für solche virtuellen Ereignisse sind <code>&lt;&lt;Cut>></code>,
+        <code>&lt;&lt;Copy>></code> und <code>&lt;&lt;Paste>></code> in Textwidgets.</p>
+    <p>Das folgende Programm stellt erzeugt ein neues Ereignis namens
+        <code>&lt;&lt;TestEvent>></code>. Dieses Ereignis wird einerseits ausgelöst, indem
+        der linke Mausknopf gedrückt wird, andererseits durch Drücken der Taste
+        <code>1</code>(Eins).</p>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+from tkinter import filedialog as fd
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        # Binde Taste "1" an _onKeyPressOne
+        self.bind('1', self._onKeyPressOne)
+        # Erstelle &lt;&lt;TestEvent>> auf der Basis von Event:Linke Maustaste
+        self.event_add('&lt;&lt;TestEvent>>', '&lt;Button-1>')
+        # Binde &lt;&lt;TestEvent>> an _onTestEvent
+        self.bind('&lt;&lt;TestEvent>>', self._onTestEvent)
+
+    def _onKeyPressOne(self, event):
+        print('_onKeyPressOne')
+        # &lt;&lt;TestEvent>> wird in die Ereigniswarteschlange geworfen
+        self.event_generate('&lt;&lt;TestEvent>>')
+
+    def _onTestEvent(self, event):
+        # Informationen über events ausgeben:
+        print('_onTestEvent: ', self.event_info('&lt;&lt;TestEvent>>'), self.event_info() )
+
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <h2 id="EventMethoden">Event-Methoden</h2>
+
+    <section>
+    <h3>Übersicht Event-Methoden</h3>
+    <table>
+    <tr><th>Methode</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+	<tr><td>w.bind(sequenz, callback, add)</td><td>sequenz: Ereignisname, callback Funktion mit einem event-Parameter (optional), add kann <code>'+'</code> sein, dann werden Ereignisse angehängt, sonst ersetzt</td><td>-</td><td>Ruft eine Callback auf, wenn Ereignis eintritt. Kann vorhandene Ereignisse ersetzen oder ergänzen</td></tr>
+	<tr><td>w.bind_all(sequenz, callback, add)</td><td>wie <code>w.bind(…)</code></td><td>-</td><td>Ereignis wird für alle Widgets in der Anwendung verarbeitet</td></tr>
+	<tr><td>w.bind_class(className, sequenz, callback, add)</td><td>className Klasse (Gruppe) von Widgets, auf die sich die Verarbeitung bezieht, sonst wie <code>w.bind(…)</code></td><td>-</td><td>Ereignis wird für alle Widgets der Klasse (Gruppe) in der Anwendung verarbeitet</td></tr>
+	<tr><td>w.bindtags(bindtags)</td><td colspan="3" class="see">Siehe <a href="#Bindtags">Abschnitt Bindtags</a></td></tr>
+    <tr><td>w.event_add(virtualEvent, *physischesEvent)</td><td>virtualEvent: neues virtuelles Event, physischesEvent: Liste physischer Events oder <code>'None'</code></td><td>-</td><td>Erzeugt ein neues virtuelles Event auf der Basis physischer vorhandener Events</td></tr>
+	<tr><td>w.event_delete(virtualEvent, *physischesEvent)</td><td>wie <code>w.event_add(…)</code></td><td>-</td><td>Entfernt ein physisches Event vom virtuellen Event. Wurde das letze Event entfernt, kann das virtuelle Event nicht mehr ausgelöst werden</td></tr>
+	<tr><td>w.event_generate(event, **kw)</td><td>event: ein beliebiges Event, kw eine Liste von Schlüsselwörtern, die das Event beschreiben</td><td>-</td><td>Erzeugt ein neues Event mit den angegebenen Parametern aus kw</td></tr>
+	<tr><td>w.event_info(virtual=None)</td><td>virtual: Optionales virtuelles Event</td><td>-</td><td>Ohne Parameter werden alle virtuellen Events ausgegeben. Ansonsten werden die physischen Events zum angegebenen virtuellen Events ausgegeben</td></tr>
+	<tr><td>w.mainloop()</td><td>-</td><td>-</td><td>Messageloop, verarbeitet alle Nachrichten und wird mit <code>w.quit()</code> verlassen</td></tr>
+	<tr><td>w.quit()</td><td>-</td><td>-</td><td>Verlässt die Messageloop, beendet damit zumeist das Programm</td></tr>
+	<tr><td>w.unbind(sequenz, callback)</td><td>wie <code>w.bind(…)</code></td><td>-</td><td>Entfernt die Ereignisbearbeitung</td></tr>
+	<tr><td>w.unbind_all(sequenz, callback)</td><td>wie <code>w.bind_all(…)</code></td><td>-</td><td>Entfernt Ereignisbearbeitung für sequenz für alle Widgets</td></tr>
+	<tr><td>w.unbind_class(className, sequenz)</td><td>wie <code>w.bind_class(…)</code></td><td>-</td><td>Entfernt Ereignisbearbeitung für sequenz für alle Widgets der Gruppe className</td></tr>
+	<tr><td>w.update()</td><td>-</td><td>-</td><td>Displayupdate, sollte nicht aus Ereignisbearbeitung aufgerufen werden</td></tr>
+	<tr><td>w.update_idletasks()</td><td>-</td><td>-</td><td>Idletasks werden bearbeitet: Displayupdate, Resizing</td></tr>
+    </table>
+	</section>
+
+
+    <section>
+    <h3>Klassenbindung</h3>
+    <p>Mit <code>w.bind_class(…)</code> können Klassen, also Widgets mit gemeinsamer
+        <code>class_</code>-Option, an Ereignisse gebunden werden. Widgets haben grundsätzlich
+        voreingestellte Klassennamen, die sich ändern lassen.</p>
+    <p>Das folgende Beispiel bindet die Tab-Taste an ttk.Entry-Widgets, so dass Tabulatoren
+        eingefügt werden. Das Standardverhalten ist sonst, den Fokus von einem Widget zum Nächsten
+        zu bewegen. Die hier vorgestellte Implementierung überschreibt vorhandene Textmarkierungen
+        (Textauswahl) nicht, das ist anders als bei der Standardimplementierung.</p>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('200x200')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        edit1 = ttk.Entry(self)
+        edit1.pack(fill=tk.BOTH, expand=tk.YES)
+        edit2 = ttk.Entry(self)
+        edit2.pack(fill=tk.BOTH, expand=tk.YES)
+
+        self.bind_class('TEntry', '&lt;KeyPress-Tab>', self._insertTab)
+
+    def _insertTab(self, event):
+        event.widget.insert(tk.INSERT, '\t')
+        return 'break'
+
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <h2 id="Bindtags">Bindtags</h2>
+
+
+    <section>
+    <h3>Weitergabe von Ereignissen</h3>
+    <p>Events werden grundsätzlich weitergereicht, bis sie zu ihrem Empfänger gelangt sind.
+        Für ein Widget, das den Eingabefokus hat, ist diese Reihenfolge:</p>
+    <ol>
+        <li>das Widget schaut, ob es mit dem Event, beispielsweise einem Tastendruck, etwas
+            anfangen kann. Das eigentliche Widget kann in der Regel nur dann etwas mit dem Ereignis
+            anfangen, wenn per <code>w.bind(…)</code> eine Bindung erzeugt wurde.</li>
+        <li>Kann das Widget nichts mit dem Ereignis anfangen oder bricht es nach dem Empfang die
+            Weitergabe nicht ab (per <code>return 'break'</code>), dann landet es bei der Klasse
+            (<code>class_</code>-Option oder Standardklasse). Die Klasse besteht unter Umständen
+            aus vielen Widgets, die ihrerseits nun prüfen, ob das Ereignis für sie bestimmt ist.
+            Dasjenige Widget, das den Eingabefokus hat und zur Klasse gehört erhält nun den
+            Zuschlag. Dieses Widget kann seinerseits die Weitergabe abbrechen
+            (per <code>return 'break'</code>).</li>
+        <li>Kann die Klasse nicht mit dem Ereignis anfangen oder wurde die Weitergabe nicht
+            abgebrochen, wird es weitergereicht an die App. In der Regel endet die Weitergabe hier.</li>
+        <li>Wurde das Ereignis mit <code>w.bind_all(…)</code> gebunden, wird das Ereignis
+            weitergereicht, so dass die all-Bindung das Ereignis verarbeiten kann.</li>
+    </ol>
+    <p>Für ttk.Entry und weitere Widgets ist die Klassenbindung verantwortlich für die
+        Verarbeitung von Tastatureingaben. Bindet man das Ereignis per
+        <code>w.bind_class(…)</code>, dann wird
+        unter Umständen das entsprechende Zeichen nicht im Editor angezeigt.</p>
+    <p>Das folgende Beispiel zeigt die Weitergabe eines Tastaturereignisses am Beispiel <code>Tastendruck-x</code>.
+        Kommentiert man die Zeile <code>entry.bind_class(…)</code> aus, dann wird <code>x</code> im ttk.Entry
+        dargestellt, sonst nicht.</p>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('200x200')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        entry = ttk.Entry(self)
+        entry.pack(fill=tk.BOTH, expand=tk.YES)
+
+        entry.bind('&lt;KeyPress-x>', self._printHelloEntry)
+        entry.bind_class('TEntry', '&lt;KeyPress-x>', self._printHelloClass)
+        self.bind('&lt;KeyPress-x>', self._printHelloApp)
+        self.bind_all('&lt;KeyPress-x>', self._printHelloAll)
+
+    def _printHelloEntry(self, event):
+        print('Hello Entry')
+
+    def _printHelloClass(self, event):
+        print('Hello Class')
+
+    def _printHelloApp(self, event):
+        print('Hello App')
+
+    def _printHelloAll(self, event):
+        print('Hello All')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Bindtags</h3>
+    <p>Die Reihenfolge, mit der Ereignisse bearbeitet werden, liefert die Methode
+        <code>w.bindtags()</code>. Ruft man sie mit dem ttk.Entry aus obigem Beispiel auf,
+        liefert sie etwa <code>('.!entry', 'TEntry', '.', 'all')</code>. Die vier Elemente
+        des Tupels bedeuten: Das Widget in Tcl-Schreibweise, die Klasse (TEntry), die App
+        (in Tcl-Schreibweise nur ein Punkt) und die All-Bindung.</p>
+    <p>Toplevel-Fenster und die App haben nur drei Elemente, beispielsweise
+        <code>('.', 'Tk', 'all')</code>, der Name des Fensters ist identisch zum Punkt.</p>
+    <p>Die obengenannte Reihenfolge der Ereignisbearbeitung lässt sich verändern, beispielsweise
+        umkehren. Ruft man <code>w.bindtags(liste)</code> mit einer Liste von Bindtags auf, dann
+        gilt diese Reihenfolge. Folgendes Programm zeigt, wie man die Reihenfolge der
+        Ereignisbearbeitung umkehrt:</p>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('200x200')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        entry = ttk.Entry(self)
+        entry.pack(fill=tk.BOTH, expand=tk.YES)
+
+        print('Bindtags der App:', self.bindtags())
+        print('Bindtags des Entry:', entry.bindtags())
+
+        bt = list(entry.bindtags())
+        bt.reverse()
+        entry.bindtags(bt)
+        print('Bindtags des Entry nach Umkehrung:', entry.bindtags())
+
+        entry.bind('&lt;KeyPress-x>', self._printHelloEntry)
+        entry.bind_class('TEntry', '&lt;KeyPress-x>', self._printHelloClass)
+        self.bind('&lt;KeyPress-x>', self._printHelloApp)
+        self.bind_all('&lt;KeyPress-x>', self._printHelloAll)
+
+    def _printHelloEntry(self, event):
+        print('Hello Entry')
+
+    def _printHelloClass(self, event):
+        print('Hello Class')
+
+    def _printHelloApp(self, event):
+        print('Hello App')
+
+    def _printHelloAll(self, event):
+        print('Hello All')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <ul>
+    <li><a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/keysyms.htm">https://www.tcl.tk/man/tcl8.7/TkCmd/keysyms.htm</a></li>
+    <li><a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/bind.htm">https://www.tcl.tk/man/tcl8.7/TkCmd/bind.htm</a></li>
+    <li><a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/event.htm">https://www.tcl.tk/man/tcl8.7/TkCmd/event.htm</a></li>
+    <li><a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/bindtags.htm">https://www.tcl.tk/man/tcl8.7/TkCmd/bindtags.htm</a></li>
+    <li><a class="extern" target="_blank" href="https://github.com/python/cpython/blob/master/Lib/tkinter/__init__.py">
+        https://github.com/python/cpython/blob/master/Lib/tkinter/__init__.py</a>,
+        siehe dort die Klassen <code>EventType</code> und <code>Event</code></li>
+    </ul>
+    </section>
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a></p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - tk.Canvas</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - tk.Canvas</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navcurrent">Canvas
+    <ul class="navul">
+		<li class="navli"><a class="nava" href="#Canvas">Canvas</a></li>
+		<li class="navli"><a class="nava" href="#CanvasItems">Canvas-Items</a></li>
+		<li class="navli"><a class="nava" href="#ArcItem">Arc Item</a></li>
+		<li class="navli"><a class="nava" href="#BitmapItem">Bitmap Item</a></li>
+		<li class="navli"><a class="nava" href="#ImageItem">Image Item</a></li>
+		<li class="navli"><a class="nava" href="#LineItem">Line Item</a></li>
+        <li class="navli"><a class="nava" href="#OvalItem">Oval Item</a></li>
+        <li class="navli"><a class="nava" href="#PolygonItem">Polygon Item</a></li>
+        <li class="navli"><a class="nava" href="#RectangleItem">Rectangle Item</a></li>
+        <li class="navli"><a class="nava" href="#TextItem">Text Item</a></li>
+        <li class="navli"><a class="nava" href="#WindowItem">Window Item</a></li>
+	</ul></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2 id="Canvas">tk.Canvas</h2>
+	<p>Auf einem Canvas-Item lassen sich Items wie Linien, Rechtecke usw. anzeigen. Jedes
+		Item verfügt dabei über eine eindeutige "Item-Id" (iid). Jede Menge an Items kann
+		mit Tags versehen werden. Tags sind einfache Namen, die beispielsweise Gruppen von
+		Items zugewiesen werden können. Items mit diesen Tags können als Gruppe gestylt werden
+		und können eigene Event-Bindungen haben. Es gibt spezielle Tags: <code>current</code>
+		bezeichnet das Item, über dem die Maus liegt, <code>all</code> sind alle Items.</p>
+
+
+    <section>
+    <h3>tk.Canvas erzeugen</h3>
+    <p><code class="language-python">canvas = tk.Canvas(parent, Optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>borderwidth, cursor, relief, takefocus, xscrollcommand und yscrollcommand</td>
+		<td>Wie unter <a target="_blank" href="tkinter-optionen.html">Optionen</a>
+        beschrieben</td></tr>
+	<tr><td>highlightbackground, highlightcolor, highlightthickness</td><td>Einstellungen für den <a target="_blank" href="tkinter-optionen.html#Highlightoptionen">Highlightrahmen</a></td></tr>
+    
+    <tr><td colspan="2" class="headline">allgemeine tk-Widget-Optionen</td></tr>
+    <tr><td>background</td><td>Normale Hintergrundfarbe</td></tr>
+    <tr><td>insertbackground</td><td>Hintergrundfarbe Einfügecursor</td></tr>
+    <tr><td>insertborderwidth</td><td>Rahmenbreite Einfügecursor</td></tr>
+    <tr><td>insertofftime</td><td>Einfügecursor, Aus-Zeit (ms) beim Blinken</td></tr>
+    <tr><td>insertontime</td><td>Einfügecursor, Ein-Zeit (ms) beim Blinken</td></tr>
+    <tr><td>insertwidth</td><td>Breite Einfügecursor</td></tr>
+    <tr><td>selectbackground</td><td>Hintergrundfarbe, wenn Elemente ausgewählt werden</td></tr>
+    <tr><td>selectborderwidth</td><td>Rahmenbreite, wenn Elemente ausgewählt werden</td></tr>
+    <tr><td>selectforeground</td><td>Vordergrundfarbe, wenn Elemente ausgewählt werden</td></tr>
+    <tr><td colspan="2" class="headline">spezielle Canvas-Optionen</td></tr>
+    <tr><td>closeenough</td><td>Abstand zu einem Element, um als "im Element" zu gelten (default: 1.0)</td></tr>
+    <tr><td>confine</td><td>True: Canvas View darf auch Bereiche außerhalb der Scrollregion anzeigen</td></tr>
+    <tr><td>height, width</td><td>Höhe und Breite des Canvas, wie sie vom LLayoutmanager angefordert werden</td></tr>
+    <tr><td>scrollregion</td><td>Rechteck: (links, oben, rechts, unten): wird als Grenze beim Scrollen des Canvas angenommen</td></tr>
+    <tr><td>state</td><td><code>normal</code>, <code>disabled</code> oder <code>hidden</code></td></tr>
+    <tr><td>xscrollincrement, yscrollincrement</td><td>Zahl, um die gescrollt wird</td></tr>
+    </table>
+    <p>Das folgende Programm stellt ein scrollbares Canvas vor:</p>
+    <a href="img/tk-canvas/canvas-scroll-line1.png" target="_blank"><img src="img/tk-canvas/canvas-scroll-line1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("500x500")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
+        # Canvas erzeugen
+        self.canvas = tk.Canvas(self, width=1000, height=1000, scrollregion=(0, 0, 1000, 1000))
+        self.canvas.grid(column=0, row=0, sticky=tk.N+tk.S+tk.W+tk.E)
+
+        # Horizontale Scrollbar
+        scrollX = ttk.Scrollbar(self, orient=tk.HORIZONTAL, command=self.canvas.xview)
+        scrollX.grid(column=0, row=1, sticky=tk.W+tk.E)
+
+        # Vertikale Scrollbar
+        scrollY = ttk.Scrollbar(self, orient=tk.VERTICAL, command=self.canvas.yview)
+        scrollY.grid(row=0, column=1, sticky=tk.N+tk.S)
+
+        # Canvas mit Scrollbar verbinden
+        self.canvas.configure(xscrollcommand=scrollX.set, yscrollcommand=scrollY.set)
+
+        # Eine Linie, damit man was sieht
+        self.canvas.create_line(10, 10, 990, 990, fill='red')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Canvas-Methoden ohne Tags oder Ids</h3>
+    <table>
+    <tr><th>Methode</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>c.canvasx(screenx, gridspacing=None)</td><td>Screen X-Koordinate, optionales Gridspacing</td><td>Koordinate relativ zum Canvas</td><td>Gibt die Koordinate relativ zum Canvas zurück. Ist Gridspacing gesetzt, wird zum nächten Vielfachen von Gridspacing gerundet</td></tr>
+    <tr><td>c.canvasy(screeny, gridspacing=None)</td><td colspan="3" class="see">wie c.canvasx(…)</td></tr>
+    <tr><td>c.cget(option)</td><td colspan="3" class="see">Siehe <a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a></td></tr>
+    <tr><td>c.configure(optionen)</td><td colspan="3" class="see">Siehe <a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a></td></tr>
+    <tr><td>c.image(??)</td><td colspan="3" class="todo">Zur Zeit nicht unterstützt?</td></tr>
+    <tr><td>c.postscript(**kw)</td><td>Keyword-Argumente: colormap, colormode, file, fontmap,
+        height, pageanchor, pageheight, pagewidth, pagex, pagey,
+        rotate, width, x, y</td><td>-</td><td>Schreibt ein Postscript-File mit dem Inhalt des Canvas</td></tr>
+    <tr><td>c.scan_dragto(x, y, gain=10.0), c.scan_mark(x, y)</td><td>x, y-Koordinaten,
+        gain: Faktor</td><td>-</td><td>Ermöglicht
+        schnelles Scrollen über den Bildschirm mit gedrückter Maus: <code>c.scan_dragto(…)</code>
+        wird mit dem MausPress-Ereignis
+        verknüpft, <code>c.scan_mark(…)</code> mit dem MausMove-Ereignis. Mausbewegungen werden um den
+        Faktor <code>gain</code> vergrößert.</td></tr>
+    <tr><td>c.xview(tk.MOVETO, fraction)</td><td>fraction: 0…1 </td><td>-</td><td>Wird an Scrollbar command gebunden:
+        Scrollt in horizontaler Richtung zur relativen Position fraction</td></tr>
+    <tr><td>c.xview(tk.SCROLL, n, what)</td><td>n: Zahl, what:tk.UNITS oder tk.PAGES</td><td>-</td><td> Scrollt Canvas links/rechts um n what. </td></tr>
+    <tr><td>c.xview_moveto(fraction)</td><td colspan="3" class="see">Siehe c.xview(tk.MOVETO, fraction)</td></tr>
+    <tr><td>c.xview_scroll(n, what)</td><td colspan="3" class="see">Siehe c.xview(tk.SCROLL, n, units)</td></tr>
+    <tr><td>c.yview(tk.MOVETO, fraction)</td><td colspan="3" class="see">Siehe c.xview(tk.MOVETO, fraction)</td></tr>
+    <tr><td>c.yview(tk.SCROLL, n, what)</td><td colspan="3" class="see">Siehe c.xview(tk.SCROLL, n, units)</td></tr>
+    <tr><td>c.yview_moveto(fraction)</td><td colspan="3" class="see">Siehe c.xview_moveto(fraction)</td></tr>
+    <tr><td>c.yview_scroll(n, what)</td><td colspan="3" class="see">Siehe c.xview_scroll(n, units)</td></tr>
+    </table>
+    </section>
+
+
+    <section>
+    <h3 id="CanvasMethodenTagID">Canvas-Methoden, die sich auf Tags oder Ids beziehen</h3>
+
+    <p>Innerhalb dieses Abschnitts wird von einem Textindex gesprochen. In der Regel ist damit folgendes gemeint:</p>
+    <ul>
+    <li>numerischer Index: 0 ist das erste Zeichen, 1…</li>
+    <li>tk.END: die Stelle nach dem letzten Zeichen im Text</li>
+    <li>tk.INSERT: die Stelle an der die Einfügemarke steht</li>
+    <li>tk.SEL_FIRST: die Stelle vor dem ersten ausgewählten Zeichen</li>
+    <li>tk.SEL_LAST: die Stelle vor dem letzten ausgewählten Zeichen</li>
+    <li>'@x,y': Position in der Nähe dieser Koordinate</li>
+    </ul>
+    <p>Bis auf <code>tk.INSERT</code> können Textindices auch für Linien und Polygone benutzt werden.</p>
+
+    <table>
+    <tr><th>Methode</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>c.addtag_above(newTag, tagOrId)</td>
+        <td>newTag: hinzuzufügender Tag, tagOrId: ElementId oder Tag, </td>
+        <td>-</td>
+        <td>fügt allen Items oberhalb von <code>tagOrId</code> den neuen Tag <code>newTag</code>
+        hinzu.</td></tr>
+    <tr><td>c.addtag_all(newTag)</td>
+        <td>newTag: neuer Tag</td>
+        <td>-</td>
+        <td>fügt allen Elementen den Tag <code>newTag</code> hinzu</td></tr>
+    <tr><td>c.addtag_below(newTag, tagOrID)</td>
+        <td>newTag: hinzuzufügender Tag, tagOrId: ElementId oder Tag</td>
+        <td>-</td>
+        <td>fügt allen Items unterhalb von <code>tagOrId</code> den neuen
+        Tag <code>newTag</code> hinzu.</td></tr>
+    <tr><td>c.addtag_closest(newTag, x, y, halo=None, start=None)</td>
+        <td>newTag: neuer Tag, x, y: Suchort, halo: optionaler Abstand, start: optionale ID</td>
+        <td>-</td>
+        <td>Fügt das Tag newTag dem Element am nächsten zu (x,y) hinzu.
+        <code>halo</code> erweitert den Suchradius auf die angegebenen Pixel rund um (x, y),
+        <code>start</code> sucht unterhalb dieser ID und wählt das qualifizierteste Element
+        aus</td></tr>
+    <tr><td>c.addtag_enclosed(newTag, x1, y1, x2, y2)</td>
+        <td>newTag: neuer Tag, (x1, y1, x2, y2) Rechteck</td>
+        <td>-</td>
+        <td>alle Elemente im Rechteck erhalten das Tag</td></tr>
+    <tr><td>c.addtag_overlapping(newTag, x1, y1, x2, y2)</td>
+        <td>newTag: neuer Tag, (x1, y1, x2, y2) Rechteck</td>
+        <td>-</td>
+        <td>alle Elemente, die das Rechteck überlappen, erhalten das Tag</td></tr>
+    <tr><td>c.addtag_withtag(newTag, tagOrId)</td>
+        <td>tagOrId: Elemente, newTag: neuer Tag</td>
+        <td>-</td>
+        <td>alle Elemente mit <code>tagOrId</code> erhalten das Tag <code>newTag</code></td></tr>
+    <tr><td>c.bbox(*tagOrIds)</td><td>tagOrIds: Elemente oder Tags</td>
+        <td>Rechteck: (x1, y1, x2, y2)</td>
+        <td>Gibt ein Rechteck (x1, y1, x2, y2) zurück, das alle Elemente umfasst,
+        welche in <code>*tagOrId</code> enthalten sind. Passt keines, so wird ein
+        leerer String zurückgegeben.</td></tr>
+    <tr><td>c.coords(tagOrId, x0, y0, x1, y1, …, xn, yn)</td>
+        <td>tagOrId: Tag oder ElementId, x0..yn: Optionale Koordinaten</td>
+        <td>Ohne Koordinaten: Gibt Koordinaten von <code>tagOrId</code> (dem ersten passenden Element) zurück</td>
+        <td>Setzt die Koordinaten des Elementes mit der Id <code>tagOrId</code> auf die angegebenen Werte. Werden durch
+        <code>tagOrId</code> mehrere Elemente referenziert, wird das Erste genommen. Ohne Koordinatenangabe werden die
+        aktuellen Koordinaten ausgegeben.</td></tr>
+    <tr><td>c.dchars(tagOrId, first, last=first)</td>
+        <td>tagOrId: Textitem, Lineitem oder Polygonitem, first: Index, last: Index, optional</td>
+        <td>-</td><td>entfernt Zeichen (Textitem) oder Koordinaten <code>first</code> bis
+        <code>last</code> aus einem Item</td></tr>
+    <tr><td>c.delete(*tagOrIds)</td><td>tagOrIds: Elemente</td>
+        <td>-</td>
+        <td>Entfernt und löscht die durch <code>tagOrIds</code> angegebenen Elemente</td></tr>
+    <tr><td>c.dtag(tagOrId, tagToDelete=tagOrId)</td>
+        <td>tagOrId: Elemente, tagToDelete: Tag</td>
+        <td>-</td>
+        <td>entfernt das Tag <code>tagToDelete</code> von den Elementen.</td></tr>
+    <tr><td>c.find_above(tagOrId)</td>
+        <td>tagOrId: Tag oder Element Id</td>
+        <td>Liste</td>
+        <td>Gibt die Id des des über tagOrId liegenden Elementes als Tupel mit einem Element zurück.
+            Wird keines gefunden, dann wird ein leeres Tupel zurückgegeben.</td></tr>
+    <tr><td>c.find_all()</td>
+        <td>-</td>
+        <td>Liste</td>
+        <td>Gibt Liste aller Ids im Canvas zurück, vom tifsten Element zum Höchsten</td></tr>
+    <tr><td>c.find_below(tagOrId)</td>
+        <td colspan="3" class="see">Siehe c.find_above(…)</td></tr>
+    <tr><td>c.find_closest(x, y, halo=None, start=None)</td>
+        <td colspan="2" class="see">Siehe c.addtag_closest(…)</td>
+        <td>Findet das nächste Element, das am nächsten zu (x, y) liegt.</td></tr>
+    <tr><td>c.find_enclosed(x1, y1, x2, y2)</td>
+        <td>Rechteck</td>
+        <td>Liste</td>
+        <td>es werden alle Ids zurückgegeben, die sich im Rechteck befinden</td></tr>
+    <tr><td>c.find_overlapping(x1, y1, x2, y2)</td>
+        <td>Rechteck</td>
+        <td>Liste</td>
+        <td>es werden alle Ids zurückgegeben, die das Rechteck überlappen</td></tr>
+    <tr><td>c.find_withtag(tagOrId)</td>
+        <td>tagOrId</td>
+        <td>Liste</td>
+        <td>es werden alle Ids zurückgegeben, die auf <code>tagOrId</code> passen</td></tr>
+    <tr><td>c.focus(tagOrId=None)</td>
+        <td>tagOrId (optional), Textitem</td>
+        <td>Id </td>
+        <td>bewegt den Tastaturfokus auf dasjenige Element, das auf tagOrId passt.
+        Gibt es mehrere solche Objekte, dann auf das Nächste mit Einfügemarke.
+        Gibt es keine solchen Objekte, wird der Fokus nicht verschoben.
+        Ist das Argument ein leerer String, dann wird der Tastaturfokus von allen Elementen entfernt.
+        Ohne Argumente wird die Id des aktuellen Fokus-Elementes zurückgegeben</td></tr>
+    <tr><td>c.gettags(tagOrId)</td>
+        <td>tagOrId: Element Id</td>
+        <td>Liste von Tags</td>
+        <td>Ist tagOrId eine Id, dann wird eine Liste von Tags dieses Elementes zurückggeben.
+        Ist tagOrId ein Tag, dann wird diese Liste für das erste Element mit diesem Tag zurückgegeben.</td></tr>
+    <tr><td>c.icursor(tagOrId, index)</td>
+        <td>tagOrId (Textelement), index</td>
+        <td>-</td>
+        <td>Setzt die Einfügemarke (Cursor) für das Textelement <code>tagOrId</code> auf die Stelle vor dem
+        Zeichen mit dem Index
+        <code>index</code>, der auch <code>'end'</code> lauten kann. Hat keinen Effekt auf Items,
+        die keine Einfügemarke haben.</td></tr>
+    <tr><td>c.imove(…)</td><td colspan="3" class="todo">aktuell von tkinter nicht unterstützt</td></tr>
+    <tr><td>c.index(tagOrId, index)</td><td>tagOrId, index: Textindex wie
+        tk.INSERT (Position der Einfügemarke), tk.END (Position nach dem letzten Zeichen),
+        tk.SEL_FIRST (Position vor Selection), tk.SEL_LAST (Position nach Selection),
+        „@x,y“ (Position in der Näche dieser Koordinate)</td>
+        <td>String mit numerischem Index</td>
+        <td>Gibt die Textposition innerhalb eines Textelementes (oder des Untersten bei mehreren) als Zahl an,
+        der sich durch den Textindex ausdrückt. Übersetzt also Textindex in Positionsangaben.</td></tr>
+    <tr><td>c.insert(tagOrIds, beforeThis , text)</td><td>tagOrIds: Textitem(s),
+        beforeThis : tk.INSERT (Position der Einfügemarke),
+        tk.END (Position nach dem letzten Zeichen),
+        tk.SEL_FIRST (Position vor Selection),
+        tk.SEL_LAST (Position nach Selection), text: einzufügender Text</td>
+        <td>-</td>
+        <td>Fügt <code>text</code> ein, an der durch den <code>beforeThis</code>
+        ausgedrückten Position. <code>tagOrIds</code> sind dabei Textitems</td></tr>
+    <tr><td>c.itemcget(tagOrId, option)</td><td>tagOrId: Element oder das Tiefste von vielen,
+        option: Itemoption</td>
+        <td>Wert der option</td>
+        <td>Gibt den Wert der Itemoption zurück</td></tr>
+    <tr><td>c.itemconfigure(tagOrId, option, …)</td>
+        <td>tagOrId: Element oder das Tiefste von vielen,
+        option (optional, Key-Value)</td>
+        <td>Ohne <code>option</code>-Argument: dict mit aktueller Itemkonfiguration</td>
+        <td>Setzt Itemoption auf der Basis von <code>key=value</code>. Ist der Key gesetzt, aber
+        kein value angegben, dann gibt die Methode den Wert zum Key zurück.
+        Gibt ohne <code>option</code> ein dict mit Key-Values aller Itemoptionen von
+        <code>tagOrId</code> zurück.</td></tr>
+    <tr><td>c.move(tagOrId, dx, dy)</td>
+        <td>tagOrId: Elemente, dx,dy: Pixel</td>
+        <td>-</td>
+        <td>Verschiebt Elemente um dx, dy</td></tr>
+    <tr><td>c.moveto(tagOrId, x='', y='')</td>
+        <td>tagOrId: Elemente, x, y: Pixel</td>
+        <td>-</td>
+        <td>Legt das erste Koordinatenpaar des untersten Elements von <code>tagOrId</code>
+        auf den Wert (x, y) und sorgt dafür, dass alle Elemente von <code>tagOrId</code> dieselbe
+        relative Lage beibehalten</td></tr>
+    <tr><td>c.rchars (…)</td><td colspan="3" class="todo">aktuell von tkinter nicht unterstützt</td></tr>
+    <tr><td>c.rotate (…)</td><td colspan="3" class="todo">aktuell nicht unterstützt, kommt mit tcl/tk Version 8.7</td></tr>
+    <tr><td>c.scale(tagOrId, xOrigin, yOrigin, xScale, yScale)</td>
+        <td>tagOrId: Elemente, xOrigin, yOrigin: Ursprung der Skalierung,
+        xScale, yScale: 1.0 basierte Skalierungsfaktoren</td>
+        <td>-</td>
+        <td>Für jede Koordinate eines jeden Elementes aus <code>tagOrId</code>: Der Abstand der
+        Koordinaten vom Origin wird skaliert.</td></tr>
+    <tr><td>c.select_adjust(tagOrId , index)</td>
+        <td>tagOrId : Id eines Textelementes, index: Textindex, siehe c.insert(…)</td>
+        <td>-</td>
+        <td>Textauswahl wird um index erweitert und geht damit vom Ankerpunkt zum <code>index</code></td></tr>
+    <tr><td>c.select_clear()</td><td>-</td><td>-</td><td>Alle Textauswahl wird entfernt</td></tr>
+    <tr><td>c.select_from(tagOrId, index)</td>
+        <td>tagOrId: Id Textelement, index: Textindex, siehe c.insert(…)</td>
+        <td>-</td>
+        <td>Textauswahl beinhaltet einen Start- und Endwert der Auswahl wie auch einen „Anker“.
+        Diese Funktion ändert den Anker, ändert die Textauswahl aber nicht.</td></tr>
+    <tr><td>c.select_item()</td>
+        <td>-</td>
+        <td>Objekt-ID oder None</td>
+        <td>Gibt die Id des Elementes zurück, in dem es eine Textauswahl gibt</td></tr>
+    <tr><td>c.select_to(tagOrId, index)</td>
+        <td>tagOrId: Id eines Textelementes, index: Textindex, siehe c.insert(…)</td>
+        <td>-</td>
+        <td>Textauswahl von Anker bis index</td></tr>
+    <tr><td>c.tag_bind(tagOrId, sequence=None, func=None, add=None)</td>
+        <td>tagOrId: Elemente, sequence: Event (optional), function: optionale Callback,
+        add: (optional, kann &quot;+&quot; oder <code>True/False</code> sein)</td>
+        <td>-</td>
+        <td>Bindet ein Ereignis an eine Callback. Ist <code>add==True</code>, dann wird das Event
+        ergänzt, sonst ersetzt</td></tr>
+    <tr><td>c.tag_lower(tagOrId, belowThis)</td>
+        <td>tagOrId:Elemente, belowThis: Element oder „unterstes“ Element bei vielen</td>
+        <td>-</td>
+        <td>Es werden die Elemente <code>tagOrId</code> unter die Elemente <code>belowThis</code> verschoben.</td></tr>
+    <tr><td>c.tag_raise(tagOrId, aboveThis)</td>
+        <td>tagOrId: Elemente, aboveThis: Element oder „höchstes“ Element bei vielen</td>
+        <td>-</td>
+        <td>Die Elemente <code>tagOrId</code>werden oberhalb des obersten Elementes von <code>aboveThis</code> plaziert.</td></tr>
+    <tr><td>c.tag_unbind(tagOrId, sequence, funcId=None)</td><td>tagOrId: Elemente, sequence: Event, funcId: optionale Callback</td><td>-</td><td>Entfernt die Event-Bindung</td></tr>
+    <tr><td>c.type(tagOrId)</td>
+        <td>tagOrId: Elemente (oder das erste)</td>
+        <td>'arc', 'bitmap', 'image', 'line', 'oval', 'polygon', 'rectangle', 'text', oder 'window'</td>
+        <td>Gibt den Typ des Elementes als String zurück</td></tr>
+    </table>
+
+    <p>Im folgenden Beispiel werden einige Rechtecke erzeugt und deren Tags 
+		auf der Konsole ausgegeben. Das Item unter der Maus, also das "aktive" Item,
+		wird jeweils besonders dargestellt (Option: <code>activefill</code>):</p>
+    <a href="img/tk-canvas/rechtecke-tags-1.png" target="_blank"><img src="img/tk-canvas/rechtecke-tags-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("420x420")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight = 1)
+        self.grid_rowconfigure(0, weight = 1)
+
+        self.canvas = tk.Canvas(self, width=200, height=200,
+                                scrollregion=(0, 0, 400, 400),
+                                background='black')
+        self.canvas.grid(column=0, row=0, sticky=tk.N+tk.S+tk.W+tk.E)
+
+        r1 = self.canvas.create_rectangle(10, 10, 60, 50,
+                                     fill='darkred', activefill='red',
+                                     tags=('my-rect', 'rect-1'))
+
+        r2 = self.canvas.create_rectangle(10, 50, 60, 90,
+                                     fill='darkgreen', activefill='green',
+                                     tags=('my-rect', 'rect-2'))
+
+        r3 = self.canvas.create_rectangle(10, 90, 60, 130,
+                                     fill='darkblue', activefill='blue',
+                                     tags=('my-rect', 'rect-3'))
+        # Alle Ids -> (1, 2, 3)
+        print(self.canvas.find_all())
+        # Einzelne Id als Tupel -> (3,)
+        print(self.canvas.find_above('rect-2'))
+        # -> 'rectangle'
+        print(self.canvas.type(r1))
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    <p>Im folgenden Beispiel wird sowohl eine einzelne Id wie auch ein Tag an das MausPress-Ereignis
+        gebunden. Das jeweils aktivierte Rechteck bekommt intern ein zusätzliches Tag namens
+        <code>'current'</code>. So lässt sich schnell herausfinden, welches Rechteck angeklickt wurde.</p>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("420x420")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight = 1)
+        self.grid_rowconfigure(0, weight = 1)
+
+        self.canvas = tk.Canvas(self, width=200, height=200,
+                                scrollregion=(0, 0, 400, 400),
+                                background='black')
+        self.canvas.grid(column=0, row=0, sticky=tk.N+tk.S+tk.W+tk.E)
+
+        r1 = self.canvas.create_rectangle(10, 10, 60, 50,
+                                     fill='darkred', activefill='red',
+                                     tags=('my-rect', 'rect-1'))
+
+        r2 = self.canvas.create_rectangle(10, 50, 60, 90,
+                                     fill='darkgreen', activefill='green',
+                                     tags=('my-rect', 'rect-2'))
+
+        r3 = self.canvas.create_rectangle(10, 90, 60, 130,
+                                     fill='darkblue', activefill='blue',
+                                     tags=('my-rect', 'rect-3'))
+
+        self.canvas.tag_bind(r1, '&lt;Button-1>', self._onR1Press)
+        self.canvas.tag_bind('my-rect', '&lt;Button-1>', self._onRectPress)
+
+    def _onR1Press(self, event):
+        print('Rechteck 1 wurde gedrückt')
+
+    def _onRectPress(self, event):
+        print('Es wurde ein Rechteck gedrückt')
+        ids = self.canvas.find_withtag('current')
+        print(' id des gedrückten Rechtecks:', ids[0])
+        tags = self.canvas.gettags(ids[0])
+        print(' tags des gedrückten Rechtecks:', tags)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <h2 id="CanvasItems">Canvas Items</h2>
+
+
+    <section>
+    <h3>Allgemeine Itemoptionen</h3>
+    <p>Canvas-Items haben ebenfalls Optionen, mit denen sie erstellt werden. Hier werden allgemeine Optionen vorgestellt:</p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>activedash</td><td><code>dash</code> im Zustand <code>tk.ACTIVE</code> (Maus über Item)</td></tr>
+    <tr><td>activefill</td><td><code>fill</code> im Zustand <code>tk.ACTIVE</code> (Maus über Item)</td></tr>
+    <tr><td>activeoutline</td><td><code>outline</code> im Zustand <code>tk.ACTIVE</code> (Maus über Item)</td></tr>
+    <tr><td>activeoutlinestipple</td><td><code>outlinestipple</code> im Zustand <code>tk.ACTIVE</code> (Maus über Item)</td></tr>
+    <tr><td>activestipple</td><td><code>stipple</code> im Zustand <code>tk.ACTIVE</code> (Maus über Item)</td></tr>
+    <tr><td>activewidth</td><td><code>width</code> im Zustand <code>tk.ACTIVE</code> (Maus über Item)</td></tr>
+    <tr><td>dash</td><td>Dash-Pattern, wird aus den Zeichen &quot;,.-_&quot; gebildet und ermöglicht es, besonders Ränder strichpunktiert zu zeichnen</td></tr>
+    <tr><td>dashoffset</td><td>Offset innerhalb von <code>dash</code>, wenn man nicht mit dem ersten Zeichen starten möchte</td></tr>
+    <tr><td>disableddash</td><td><code>dash</code> im Zustand <code>tk.DISABLED</code></td></tr>
+    <tr><td>disabledfill</td><td><code>fill</code> im Zustand <code>tk.DISABLED</code></td></tr>
+    <tr><td>disabledoutline</td><td><code>outline</code> im Zustand <code>tk.DISABLED</code></td></tr>
+    <tr><td>disabledoutlinestipple</td><td><code>outlinestipple</code> im Zustand <code>tk.DISABLED</code></td></tr>
+    <tr><td>disabledstipple</td><td><code>stipple</code> im Zustand <code>tk.DISABLED</code></td></tr>
+    <tr><td>disabledwidth</td><td><code>width</code> im Zustand <code>tk.DISABLED</code></td></tr>
+    <tr><td>fill</td><td>Füllfarbe oder <code>''</code> (default) für transparent</td></tr>
+    <tr><td>offset</td><td>Offset im <code>stipple</code>, können auch Himmelsrichtungen und x,y-Koordinaten sein.</td></tr>
+    <tr><td>outline</td><td>Randfarbe, schwarz ist default</td></tr>
+    <tr><td>outlinestipple</td><td>Stipple-Bitmap der Umrandung, <code>outline</code> muss gesetzt sein</td></tr>
+    <tr><td>state</td><td><code>tk.NORMAL</code>: normal, <code>tk.HIDDEN</code>: versteckt, <code>tk.DISABLED</code>: keine Events möglich und ausgegraut</td></tr>
+    <tr><td>stipple</td><td>Stipple für die Innenfläche, Bitmap. <code>''</code> füllt die Fläche ganz. <code>fill</code> muss ebenfalls gesetzt sein. Es gibt eine Reihe vordefinierter Bitmaps:
+        (error, gray75, ,gray50 ,gray25, gray12, hourglass, info, questhead, question, warning, document, stationery, edition, application, accessory, folder, pfolder, trash,
+        floppy, ramdisk, cdrom, preferences, querydoc, stop, note, caution )</td></tr>
+    <tr><td>tags</td><td>Angabe von Tags, mehrere als Tupel</td></tr>
+    <tr><td>width</td><td>Rahmenbreite</td></tr>
+    </table>
+    <p>Einige der Itemoptionen werden im folgenden Beispiel vorgestellt. Um die Auswirkung
+		einiger Optionen zu sehen, muss man mit der Maus über die Ränder und in die
+		Flächen fahren:</p>
+    <a href="img/tk-canvas/rechtecke-allgemeine_itemoptionen-1.png" target="_blank"><img src="img/tk-canvas/rechtecke-allgemeine_itemoptionen-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("600x400")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
+        # Canvas erzeugen
+        self.canvas = tk.Canvas(self, width=400, height=400, scrollregion=(0, 0, 400, 400))
+        self.canvas.grid(column=0, row=0, sticky=tk.N+tk.S+tk.W+tk.E)
+
+        # Rechtecke, ändern "dash" beim Überfahren mit der Maus über den Rand
+        self.canvas.create_rectangle(50, 50, 150, 150, width=5, activedash='.', dash='-.-')
+        self.canvas.create_rectangle(200, 50, 300, 150, width=5, activedash='-', dash='.')
+        self.canvas.create_rectangle(350, 50, 450, 150, width=5, activedash=',_', dash='_')
+
+        self.canvas.create_rectangle(50, 200, 150, 300, width=5, outline='red', fill='blue',
+                                     activewidth=10, activeoutline='green', activefill='yellow')
+        self.canvas.create_rectangle(200, 200, 300, 300, width=1, fill='green',
+                                     stipple='gray12', activestipple='gray75')
+        self.canvas.create_rectangle(350, 200, 450, 300, width=1, fill='green',
+                                     stipple='gray12', activestipple='questhead')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3 id="ArcItem">Arc Item</h3>
+    <p>Zeichnet einen Kreisbogen im Rechteck <code>x0, y0, x1, y1</code></p>
+    <p><code class="language-python">id = c.create_arc(x0, y0, x1, y1, option, …)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>extent</td><td>Winkel in Grad, gemessen von <code>start</code>. Es wird Modulo 360 gerechnet, so dass man einen Vollkreis nicht mit 360° angeben kann.</td></tr>
+    <tr><td>start</td><td>Startwinkel in Grad</td></tr>
+    <tr><td>style</td><td><code>tk.PIESLICE</code> -- Bogen mit Verbindung zum Mittelpunkt (default), <code>tk.ARC</code> -- nur der Bogen, <code>tk.CHORD</code> -- Bogen mit Sekante</td></tr>
+    </table>
+    <p>Dazu sind die folgenden allgemeinen Itemoptionen bekannt:dash, activedash, disableddash, dashoffset, fill, activefill, disabledfill, offset, outline, activeoutline,
+        disabledoutline, outlinestipple, activeoutlinestipple, disabledoutlinestipple, stipple, activestipple, disabledstipple, state, tags, width, activewidth und disabledwidth</p>
+    <p>Das folgende Programm zeigt einige Bögen mit unterschiedlichen Parametern:</p>
+    <a href="img/tk-canvas/arc-item-1.png" target="_blank"><img src="img/tk-canvas/arc-item-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("600x400")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
+        # Canvas erzeugen
+        self.canvas = tk.Canvas(self, width=400, height=400, scrollregion=(0, 0, 400, 400))
+        self.canvas.grid(column=0, row=0, sticky=tk.N+tk.S+tk.W+tk.E)
+
+        # Arcs zeichnen, erste Reihe
+        self.canvas.create_arc(  0, 50, 100, 150)
+        self.canvas.create_arc(150, 50, 250, 150, start=90, extent=180)
+        self.canvas.create_arc(300, 50, 400, 150, start=90, extent=300)
+        self.canvas.create_arc(450, 50, 550, 150, start=0, extent=359.99)
+        # zweite Reihe
+        self.canvas.create_arc(  0, 200, 100, 300, style=tk.PIESLICE, start=90, extent=270)
+        self.canvas.create_arc(150, 200, 250, 300, style=tk.ARC, start=90, extent=270)
+        self.canvas.create_arc(300, 200, 400, 300, style=tk.CHORD, start=90, extent=270)
+        self.canvas.create_arc(450, 200, 550, 300, start=90, extent=270)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3 id="BitmapItem">Bitmap Item</h3>
+    <p>Stellt ein Bitmap (2-farbiges XPM) dar.</p>
+    <p><code class="language-python">id = c.create_bitmap(x, y, optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>activebackground</td><td>0-Farbe im Zustand <code>tk.ACTIVE</code></td></tr>
+    <tr><td>activebitmap</td><td>die darzustellende Bitmap im Zustand <code>tk.ACTIVE</code></td></tr>
+    <tr><td>activeforeground </td><td>Farbe für den 1-Wert im Zustand <code>tk.ACTIVE</code></td></tr>
+    <tr><td>anchor</td><td>Welcher Punkt der Bitmap soll an welche Stelle positioniert werden. Kann Himmelsrichtungen (tk.N, …) und <code>tk.CENTER</code> annehmen</td></tr>
+    <tr><td>background</td><td>Farbe für den 0(Null)-Wert von Bitmaps</td></tr>
+    <tr><td>bitmap</td><td>die darzustellende Bitmap. Hierbei kann es sich um eine vordefinierte Bitmap handelt oder um einen Dateinamen, dem man ein @ voranstellt</td></tr>
+    <tr><td>disabledbackground</td><td>0-Farbe im Zustand <code>tk.DISABLED</code></td></tr>
+    <tr><td>disabledbitmap</td><td>die darzustellende Bitmap im Zustand <code>tk.DISABLED</code></td></tr>
+    <tr><td>disabledforeground </td><td>Farbe für den 1-Wert im Zustand <code>tk.DISABLED</code></td></tr>
+    <tr><td>foreground</td><td>Farbe für den 1(Eins)-Wert von Bitmaps</td></tr>
+    </table>
+    <p>Dazu sind die folgenden allgemeinen Itemoptionen bekannt:state und tags</p>
+    <p>Das folgende Programm zeigt einige Bitmaps und eine Auswahl der Optionen. Es muss hierfür ein
+		Bitmap mit dem Namen <code>test.xbm</code> im XBM-Format vorliegen. Das Bitmap <code>info</code>
+		ist ein internes Bitmap:</p>
+    <a href="img/tk-canvas/bitmap-item-1.png" target="_blank"><img src="img/tk-canvas/bitmap-item-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("250x250")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
+        # Canvas erzeugen
+        self.canvas = tk.Canvas(self, width=400, height=400, scrollregion=(0, 0, 400, 400))
+        self.canvas.grid(column=0, row=0, sticky=tk.N+tk.S+tk.W+tk.E)
+
+        # Bitmaps darstellen
+        self.canvas.create_bitmap(20, 20, bitmap="@test.xbm", anchor=tk.NW, background='red')
+        self.canvas.create_bitmap(248,248, bitmap="@test.xbm", anchor=tk.SE, foreground='red')
+        self.canvas.create_bitmap(20, 150, bitmap='info', activebitmap='error', activebackground='green')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3 id="ImageItem">Image Item</h3>
+    <p>Plaziert ein mehrfarbiges Bild auf dem Canvas.</p>
+    <p><code class="language-python">id = c.create_image(x, y, optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>activeimage</td><td>Image im Zustand <code>tk.ACTIVE</code></td></tr>
+    <tr><td>disabledimage</td><td>Image im Zustand <code>tk.DISABLED</code></td></tr>
+    <tr><td>image</td><td>darzustellendes Image</td></tr>
+    </table>
+    <p>Dazu sind die folgenden allgemeinen Itemoptionen bekannt:anchor, state und tags</p>
+    <p>Das folgende Programm zeigt, wie man ein Bild lädt und es auf dem Canvas darstellt:</p>
+    <a href="img/tk-canvas/image-item-1.png" target="_blank"><img src="img/tk-canvas/image-item-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("400x200")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
+        # Canvas erzeugen
+        self.canvas = tk.Canvas(self, width=400, height=400, scrollregion=(0, 0, 400, 400))
+        self.canvas.grid(column=0, row=0, sticky=tk.N+tk.S+tk.W+tk.E)
+
+        # Bitmaps darstellen
+        self.img = tk.PhotoImage(file='test.png')
+        self.canvas.create_image(20, 20, image=self.img, anchor=tk.NW)
+        ttk.Label(text='Bildherkunft: https://upload.wikimedia.org/wikipedia/commons/5/51/Static_CMOS_Inverter.png').grid()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3 id="LineItem">Line Item</h3>
+    <p>Zeichnet eine Linie oder mehrere Linienabschnitte auf dem Canvas.</p>
+    <p><code class="language-python">id = c.create_line(x1, y1, …, xn, yn, optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>arrow</td><td><code>tk.FIRST</code> zeichnet eine Pfeil am Anfang, 
+		<code>tk.LAST</code> zeichnet einen Pfeil am Ende und 
+		<code>tk.BOTH</code> zeichnet an beiden Enden einen Pfeil</td></tr>
+    <tr><td>arrowshape</td><td>Bestimmt, wie der Pfeil aussieht<code>(u, v, w)</code> mit 
+		<code>u</code> der rückwärtigen Verlängerung entlang der Linie, 
+		<code>v</code>: dem Auszug der Pfeilflügel nach hinten, 
+		<code>w</code>: der Breite des Pfeiles senkrecht zur Linie. 
+		(Siehe auch: <a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionsangaben</a>)</td></tr>
+    <tr><td>capstyle</td><td>Darstellung von Linienenden: <code>tk.BUTT</code>: gerader Abschluss, 
+		<code>tk.PROJECTING</code>: wie <code>tk.BUTT</code>, aber länger, 
+		<code>tk.ROUND</code>: runde Linienenden</td></tr>
+    <tr><td>joinstyle</td><td>Darstellung der Linienverbindung bei mehr als zwei Punkten:
+		<code>tk.BEVEL</code>: abgeschrägte Verbindung, <code>tk.MITER</code>: spitze Verbindung, 
+		<code>tk.ROUND</code>: (default) abgerundete Linienverbindung</td></tr>
+    <tr><td>smooth</td><td>Bei mehr als zwei Punkten: <code>tk.YES</code>: Punkte werden 
+		kurvig angenähert, sonst: <code>tk.NO</code></td></tr>
+    <tr><td>splinesteps</td><td>Anzahl der Liniensegmente, die intern für die 
+		Spline herangezogen werden. Höhere Werte ergeben eine weichere Kurve. 
+		<code>smooth</code> muss ebenfalls gesetzt sein</td></tr>
+    </table>
+    <p>Dazu sind die folgenden allgemeinen Itemoptionen bekannt:dash, activedash, 
+		disableddash, dashoffset, fill, activefill,
+        disabledfill, stipple, activestipple, disabledstipple, state, tags, width, 
+		activewidth und disabledwidth</p>
+    <p>Das folgende Programm zeigt, wie wie sich <code>joinstyle</code>, 
+		<code>smooth</code> und <code>splinesteps</code> auswirken:</p>
+    <a href="img/tk-canvas/line-item-kurvig-1.png" target="_blank"><img src="img/tk-canvas/line-item-kurvig-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("450x250")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
+        # Canvas erzeugen
+        self.canvas = tk.Canvas(self, width=400, height=400, scrollregion=(0, 0, 400, 400))
+        self.canvas.grid(column=0, row=0, sticky=tk.N+tk.S+tk.W+tk.E)
+
+        # Linie darstellen mit joinstyle
+        self.canvas.create_line(20, 20, 100, 20, 100, 50, width=10)
+        self.canvas.create_line(20, 60, 100, 60, 100, 90, width=10, joinstyle=tk.BEVEL)
+        self.canvas.create_line(20, 100, 100, 100, 100, 130, width=10, joinstyle=tk.MITER)
+        self.canvas.create_line(20, 140, 100, 140, 100, 170, width=10, joinstyle=tk.ROUND)
+
+        # Linie darstellen mit smooth
+        self.canvas.create_line(120, 20, 200, 20, 200, 50, 250, 50, smooth=tk.NO)
+        self.canvas.create_line(120, 60, 200, 60, 200, 90, 250, 90, smooth=tk.YES)
+
+        # Linie darstellen mit splinesteps
+        self.canvas.create_line(300, 20, 350, 20, 350, 50, 400, 50,
+                                smooth=tk.YES, splinesteps=2)
+        self.canvas.create_line(300, 60, 350, 60, 350, 90, 400, 90,
+                                smooth=tk.YES, splinesteps=4)
+        self.canvas.create_line(300, 100, 350, 100, 350, 130, 400, 130,
+                                smooth=tk.YES, splinesteps=100)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    <p>Das folgende Programm zeigt, wie wie sich <code>capstyle</code> auswirkt:</p>
+    <a href="img/tk-canvas/line-item-capstyle-1.png" target="_blank"><img src="img/tk-canvas/line-item-capstyle-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("450x250")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
+        # Canvas erzeugen
+        self.canvas = tk.Canvas(self, width=400, height=400, scrollregion=(0, 0, 400, 400))
+        self.canvas.grid(column=0, row=0, sticky=tk.N+tk.S+tk.W+tk.E)
+
+        # Linie darstellen mit arrow
+        self.canvas.create_line(20, 20, 100, 20, width=15)
+        self.canvas.create_line(20, 40, 100, 40, width=15, capstyle=tk.BUTT)
+        self.canvas.create_line(20, 60, 100, 60, width=15, capstyle=tk.PROJECTING)
+        self.canvas.create_line(20, 80, 100, 80, width=15, capstyle=tk.ROUND)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    <p>Das folgende Programm zeigt, wie wie sich <code>arrow</code> und <code>arrowshape</code> auswirken:</p>
+    <a href="img/tk-canvas/line-item-arrow-1.png" target="_blank"><img src="img/tk-canvas/line-item-arrow-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("450x250")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
+        # Canvas erzeugen
+        self.canvas = tk.Canvas(self, width=400, height=400, scrollregion=(0, 0, 400, 400))
+        self.canvas.grid(column=0, row=0, sticky=tk.N+tk.S+tk.W+tk.E)
+
+        # Linie darstellen mit arrow
+        self.canvas.create_line(20, 20, 100, 20, arrow=tk.FIRST)
+        self.canvas.create_line(20, 120, 100, 120, arrow=tk.LAST)
+        self.canvas.create_line(20, 220, 100, 220, arrow=tk.BOTH)
+        # Linie mit arrowshape
+        self.canvas.create_line(120, 20, 200, 20, arrow=tk.BOTH,
+                                arrowshape=(10, 10, 10))
+        self.canvas.create_line(120, 120, 200, 120, arrow=tk.BOTH,
+                                arrowshape=(20, 10, 10))
+        self.canvas.create_line(120, 220, 200, 220, arrow=tk.BOTH,
+                                arrowshape=(30, 10, 10))
+        self.canvas.create_line(220, 20, 300, 20, arrow=tk.BOTH,
+                                arrowshape=(10, 10, 10))
+        self.canvas.create_line(220, 120, 300, 120, arrow=tk.BOTH,
+                                arrowshape=(10, 20, 10))
+        self.canvas.create_line(220, 220, 300, 220, arrow=tk.BOTH,
+                                arrowshape=(10, 30, 10))
+        self.canvas.create_line(320, 20, 400, 20, arrow=tk.BOTH,
+                                arrowshape=(10, 10, 10))
+        self.canvas.create_line(320, 120, 400, 120, arrow=tk.BOTH,
+                                arrowshape=(10, 10, 20))
+        self.canvas.create_line(320, 220, 400, 220, arrow=tk.BOTH,
+                                arrowshape=(10, 10, 30))
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3 id="OvalItem">Oval Item</h3>
+    <p>Zeichnet ein Oval auf dem Canvas. Parameter sind ein Rechteck, in dem das Oval 
+		eingefasst wird. Dieses Item ist
+        auch sehr gut zum Zeichnen von geschlossenen Kreisen geeignet und dafür leichter 
+		zu handhaben als Kreisbögen.</p>
+    <p><code class="language-python">id = c.create_oval(x1, y1, x2, y2, optionen)</code></p>
+    <p>Es sind die folgenden allgemeinen Itemoptionen bekannt:dash, activedash, disableddash, 
+		dashoffset, fill,
+        activefill, disabledfill, offset, outline, activeoutline, disabledoutline, outlinestipple, 
+		activeoutlinestipple,
+        disabledoutlinestipple, stipple, activestipple, disabledstipple, state, tags, width, 
+		activewidth und disabledwidth</p>
+    <p>Das folgende Programm zeigt einige Ovale</p>
+    <a href="img/tk-canvas/oval-item-1.png" target="_blank"><img src="img/tk-canvas/oval-item-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x400")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
+        # Canvas erzeugen
+        self.canvas = tk.Canvas(self, width=400, height=400, scrollregion=(0, 0, 400, 400))
+        self.canvas.grid(column=0, row=0, sticky=tk.N+tk.S+tk.W+tk.E)
+
+        # Ovale darstellen
+        self.canvas.create_oval(100, 50, 200, 150, width=5, fill='red')
+        self.canvas.create_oval(100, 150, 200, 350, width=5, fill='green')
+        self.canvas.create_oval(20, 200, 100, 250, width=2, fill='blue')
+        self.canvas.create_oval(200, 200, 280, 250, width=2, fill='blue')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3 id="PolygonItem">Polygon Item</h3>
+    <p>Zeichnet ein geschlossenes Polygon. Es wird vom letzten zum ersten Punkt automatisch 
+		zurückgezeichnet. </p>
+    <p><code class="language-python">id = c.create_polygon(x1, y1, …, xn, yn, optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>joinstyle</td><td>Siehe hierzu <a href="#LineItem">LineItem</a></td></tr>
+    <tr><td>smooth</td><td>Siehe hierzu <a href="#LineItem">LineItem</a></td></tr>
+    <tr><td>splinesteps </td><td>Siehe hierzu <a href="#LineItem">LineItem</a></td></tr>
+    </table>
+    <p>Es sind die folgenden allgemeinen Itemoptionen bekannt:dash, activedash, disableddash, dashoffset, fill,
+        activefill, disabledfill, offset, outline, activeoutline, disabledoutline, outlinestipple, activeoutlinestipple,
+        disabledoutlinestipple, stipple, activestipple, disabledstipple, state, tags, width, activewidth und disabledwidth</p>
+    <p>Das folgende Programm zeigt Polygone:</p>
+    <a href="img/tk-canvas/polygon-item-1.png" target="_blank"><img src="img/tk-canvas/polygon-item-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x200")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
+        # Canvas erzeugen
+        self.canvas = tk.Canvas(self, width=400, height=400, scrollregion=(0, 0, 400, 400))
+        self.canvas.grid(column=0, row=0, sticky=tk.N+tk.S+tk.W+tk.E)
+
+        # Polygone darstellen
+        self.canvas.create_polygon(20, 20, 100, 100, 20, 100, width=5, fill='red')
+        self.canvas.create_polygon(200, 20, 250, 50, 200, 120, 150, 50, width=5, fill='green')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3 id="RectangleItem">Rectangle Item</h3>
+    <p>Zeichnet ein Rechteck</p>
+    <p><code class="language-python">id = c.create_rectangle(x1, y1, x2, y2, optionen)</code></p>
+    <p>Es sind die folgenden allgemeinen Itemoptionen bekannt: dash, activedash, disableddash, dashoffset, fill,
+        activefill, disabledfill, offset, outline, activeoutline, disabledoutline, outlinestipple, activeoutlinestipple,
+        disabledoutlinestipple, stipple, activestipple, disabledstipple, state, tags, width, activewidth und disabledwidth</p>
+    <p>Für Beispiele siehe das Beispiel zu <a href="#CanvasMethodenTagID">Canvas-Methoden, die sich auf Tags oder Ids beziehen</a></p>
+    </section>
+
+
+    <section>
+    <h3 id="TextItem">Text Item</h3>
+    <p>Zeichnet einen Text auf dem Canvas</p>
+    <p><code class="language-python">id = c.create_text(x, y, optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>anchor</td><td>Positioniert Textitem relativ zum Inhalt, mögliche Werte sind Himmelsrichtungen 
+		(<code>tk.N</code>…) und <code>tk.CENTER</code></td></tr>
+    <tr><td>font</td><td>Der Font, siehe <a target="_blank" href="tkinter-optionen.html#Font">Font</a></td></tr>
+    <tr><td>justify</td><td>Ausrichtung bei mehrzeiligem Text: <code>tk.LEFT</code>,
+		<code>tk.RIGHT</code> oder <code>tk.CENTER</code></td></tr>
+    <tr><td>text</td><td>darzustellender Text</td></tr>
+    <tr><td>width </td><td>maximale Zeilenlänge, längere Zeilen werden beim NewLine oder 
+		Space umgebrochen. (Siehe auch: <a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionsangaben</a></td></tr>
+    </table>
+    <p>Es sind die folgenden allgemeinen Itemoptionen bekannt: fill, activefill, disabledfill, stipple,
+        activestipple, disabledstipple, state und tags</p>
+    <p>Das folgende Programm zeichnet Text auf dem Canvas:</p>
+    <a href="img/tk-canvas/text-item-1.png" target="_blank"><img src="img/tk-canvas/text-item-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x200")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
+        # Canvas erzeugen
+        self.canvas = tk.Canvas(self, width=400, height=400, scrollregion=(0, 0, 400, 400))
+        self.canvas.grid(column=0, row=0, sticky=tk.N+tk.S+tk.W+tk.E)
+
+        # Text darstellen
+        self.canvas.create_text(10, 10, text='Hallo Welt', anchor=tk.NW)
+        self.canvas.create_text(10, 50, text='Dieses ist ein sehr langer'
+                                + 'Text mit sicher mehr als einer '
+                                + 'einzelnen Zeile.',
+                                width=100,
+                                justify=tk.RIGHT,
+                                anchor=tk.NW)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3 id="WindowItem">Window Item</h3>
+    <p>Stellt ein tk- oder ttk-Widget auf dem Canvas dar. Diese Widgets liegen immer über 
+		anderen grafischen Objekten.</p>
+    <p><code class="language-python">id = c.create_window(x, y, optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>anchor</td><td>Positioniert Widgets relativ zum Inhalt, mögliche Werte sind 
+		Himmelsrichtungen (<code>tk.N</code>…) und <code>tk.CENTER</code></td></tr>
+    <tr><td>height </td><td>Höhe des Widgets, (Siehe auch: <a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionsangaben</a>)</td></tr>
+    <tr><td>width </td><td>Breite des Widgets, (Siehe auch: <a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionsangaben</a>)</td></tr>
+    <tr><td>window</td><td>darzustellendes Widget. Dieses muss Kind-Widget vom Canvas oder dem parent-Element von Canvas sein. </td></tr>
+    </table>
+    <p>Es sind die folgenden allgemeinen Itemoptionen bekannt: state und tags</p>
+    <p>Das folgende Programm stellt ein ttk.Button im Canvas dar:</p>
+    <a href="img/tk-canvas/window-item-1.png" target="_blank"><img src="img/tk-canvas/window-item-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x200")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
+        # Canvas erzeugen
+        self.canvas = tk.Canvas(self, width=400, height=400, scrollregion=(0, 0, 400, 400))
+        self.canvas.grid(column=0, row=0, sticky=tk.N+tk.S+tk.W+tk.E)
+
+        # Window erzeugen
+        w =  ttk.Button(self.canvas, text='Ein Knopf')
+
+        # Window darstellen
+        self.canvas.create_window(100, 100, window=w)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <ul>
+    <li><a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/canvas.html">
+        https://www.tcl.tk/man/tcl8.7/TkCmd/canvas.html</a></li>
+    <li><a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.4/TkLib/GetBitmap.htm">
+        Namen für Bitmaps in der Itemoption <code>stipple</code></a></li>
+    <li>Bild, Schaltkreis: 
+		<a class="extern" target="_blank" href="https://upload.wikimedia.org/wikipedia/commons/5/51/Static_CMOS_Inverter.png">Wikimedia Commons</a></li>
+	</ul>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a></p>
+    </footer>
+  </body>
+</html>

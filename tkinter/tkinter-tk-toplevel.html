@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - tk.Toplevel</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - tk.Toplevel</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navcurrent">Toplevel</li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>tk.Toplevel</h2>
+	<p>Hierbei handelt es sich um ein Hauptfenster.</p>
+
+
+    <section>
+    <h3>tk.Toplevel erzeugen</h3>
+    <p><code class="language-python">t = tk.Toplevel(parent, Optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td colspan="2" class="headline">allgemeine tk-Widget-Optionen</td></tr>
+    <tr><td>highlightbackground, highlightcolor, highlightthickness</td><td>Einstellungen für den 
+        <a target="_blank" href="tkinter-optionen.html#Highlightoptionen">Highlightrahmen</a></td></tr>
+    <tr><td>padx, pady</td><td>Abstand des Widgets vom Parent, Extra Platz. Siehe auch
+		<a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionsangaben</a></td></tr>
+	<tr><td colspan="2" class="headline">spezielle tk.Toplevel-Optionen</td></tr>
+	<tr><td>background</td><td>Normale Hintergrundfarbe</td></tr>
+	<tr><td>backgroundimage</td><td>Hintergrundbild</td></tr>
+	<tr><td>colormap</td><td>Verwendete Colormap, <code>'new'</code> oder der Name
+		eines anderen Fensters, dessen Colormap kopiert wird </td></tr>
+	<tr><td>container</td><td>Boolean, tk.Toplevel kann als Container für andere
+		Toplevel-Fenster dienen</td></tr>
+	<tr><td>height, width</td><td>Höhe, Breite, siehe auch
+		<a target="_blank" href="tkinter-optionen.html#Dimensionen">Dimensionsangaben</a></td></tr>
+	<tr><td>menu</td><td>Angabe eine Menüzeile, siehe
+		<a target="_blank" href="tkinter-menu.html#MenuitemErzeugen">Menu erzeugen</a></td></tr>
+	<tr><td>screen</td><td>Angabe eines Screens, auf dem das Fenster plaziert wird.
+		Kann nur beim Erstellen angegeben werden.</td></tr>
+	<tr><td>tile</td><td>Boolean, Angabe, ob das <code>backgroundimage</code> in
+		Tile-Darstellung (ehrfach kopiert und gekachelt) erscheinen soll.
+		<code>False</code> ist zentriert</td></tr>
+	<tr><td>use</td><td>Angabe eines Container-Fensters (s. Option <code>container</code>),
+		in dem dieses Fenster eingefügt wird. Kann nur beim Erstellen angegeben werden.
+		<strong>TODO: geht nicht?</strong></td></tr>
+	<tr><td>visual</td><td><strong>TODO</strong></td></tr>
+    </table>
+    <p>tk.Toplevel kennt außerdem die <a target="_blank" href="tkinter-optionen.html">Standardoptionen</a>:
+		class_, borderwidth, cursor, relief, und takefocus</p>
+    <p>Das folgende Programm stellt ein einfaches Toplevelfenster bereit und nutzt einige
+		der Konfigurationen aus obiger Tabelle:</p>
+    <a href="img/tk-toplevel/toplevel-1.png" target="_blank"><img src="img/tk-toplevel/toplevel-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        t = tk.Toplevel(self, background='green',
+                        width=200, height=200)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+	<section>
+    <h3>Toplevel-Methoden</h3>
+	<p>Es sind die folgenden allgemeinen
+		<a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a>
+		bekannt: <code>cget(…)</code> und <code>configure(…)</code></p>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <a class="extern" target="_blank" href="https://tcl.tk/man/tcl8.7/TkCmd/toplevel.html">
+        https://tcl.tk/man/tcl8.7/TkCmd/toplevel.html</a>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a></p>
+    </footer>
+  </body>
+</html>

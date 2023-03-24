@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - ttk.Progressbar</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - ttk.Progressbar</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navcurrent">Progressbar</li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>ttk.Progressbar</h2>
+    <p>Ein Fortschrittsbalken, der in zwei Modi arbeiten kann. Im Modus
+        <code>'determinate'</code> zeigt er den klassischen Fortschritt
+        von einem Startwert zum Maximum. Im Modus <code>'indeterminate'</code>
+        wird lediglich angezeigt, dass etwas passiert: Der Balken wandert
+        hin und her.</p>
+
+
+    <section>
+    <h3>ttk.Progressbar erzeugen</h3>
+    <p><code class="language-python">pb = ttk.Progressbar(parent, Optionen)</code></p>
+    <p>Progressbar kennt die Optionen:</p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>length</td><td>Länge der langen Achse in Pixeln oder einer
+        <a target="_blank" href="tkinter-optionen.html#Dimensionen">anderen Einheit</a></td></tr>
+    <tr><td>maximum</td><td>Maximaler Wert, default 100.0</td></tr>
+    <tr><td>mode</td><td><code>'determinate'</code> oder <code>'indeterminate'</code></td></tr>
+    <tr><td>orient</td><td><code>tk.HORIZONTAL</code> oder <code>tk.VERTICAL</code></td></tr>
+    <tr><td>phase</td><td>Readonly. Option scheint keinen Effekt zu haben. <strong>TODO</strong></td></tr>
+    <tr><td>value</td><td>Aktueller Wert der Progressbar. Im Modus <code>'determinate'</code> ist
+        dieser Wert der Teil bis zum Maximum, im Modus <code>'indeterminate'</code>
+        ist dieser Wert Modulo Maximum zu verstehen und der Wert bis zum Beenden
+        eines Zyklus</td></tr>
+    <tr><td>variable</td><td>Eine Variable, die den <code>value</code> beinhaltet</td></tr>
+    </table>
+    <p>ttk.Progressbar kennt die
+        <a target="_blank" href="tkinter-optionen.html">Standardoptionen</a>:
+		anchor, class_, cursor, font, foreground, justify, style, takefocus,
+		text (zur Zeit nicht unterstützt, das kommt mit Tcl/Tk 8.7) und wraplength</p>
+
+
+    <p>Das folgende Programm stellt Progressbars beider Modi vor:</p>
+    <a href="img/ttk-progressbar/progressbar1.png" target="_blank"><img src="img/ttk-progressbar/progressbar1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+from tkinter import font
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        pb1 = ttk.Progressbar(self, mode='determinate')
+        pb1.pack(expand=tk.YES, fill=tk.X)
+        pb2 = ttk.Progressbar(self, mode='indeterminate')
+        pb2.pack(expand=tk.YES, fill=tk.X)
+
+        pb1.start()
+        pb2.start()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Progressbar-Methoden</h3>
+    <table>
+    <tr><th>Methode</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>pb.start(interval)</td><td>interval: (optional) Intervalldauer,
+        default: 50 ms</td><td>-</td>
+        <td>Startet die Fortschrittsanzeige, alle interval Milisekunden
+        wird der Wert erhöht</td></tr>
+    <tr><td>pb.step(delta)</td><td>delta: (optional) step-Wert, default:1</td>
+        <td>-</td><td>Erhöht Wert manuell</td></tr>
+    <tr><td>pb.stop()</td><td>-</td><td>-</td>
+        <td>Stoppt automatischen Fortschritt</td></tr>
+    </table>
+	<p>Sowie die Widgetmethoden:</p>
+	<ul>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a>: <code>cget(…)</code> und <code>configure(…)</code></li>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Sonstiges">Sonstige Methoden</a>: <code>identify(…)</code>, <code>instate(…)</code> und <code>state(…)</code></li>
+    </ul>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_progressbar.html">
+        https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_progressbar.html</a>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a></p>
+    </footer>
+  </body>
+</html>

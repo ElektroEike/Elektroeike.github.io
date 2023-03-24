@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - ttk.Scale</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - ttk.Scale</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navcurrent">Scale</li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>ttk.Scale</h2>
+    <p>Ein Schieberegler</p>
+
+
+    <section>
+    <h3>ttk.Scale erzeugen</h3>
+    <p><code class="language-python">s = ttk.Scale(parent, Optionen)</code></p>
+    <p>Scale kennt die Optionen:</p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>command</td><td>Callback, die bei Änderung des Scale-Wertes ausgeführt wird. 
+        Die Callback übergibt den aktuellen Wert des Schiebereglers</td></tr>
+    <tr><td>from_</td><td>linkes oder oberes Ende des Scale-Wertes, Fließkommazahl, Minimum</td></tr>
+    <tr><td>length</td><td>Länge der Scale in Pixeln oder 
+        <a target="_blank" href="tkinter-optionen.html#Dimensionen">einer anderen Einheit</a></td></tr>
+    <tr><td>orient</td><td>Lage des Widgets: <code>tk.HORIZONTAL</code> oder 
+        <code>tk.VERTICAL</code></td></tr>
+    <tr><td>to</td><td>Wie <code>from</code>, das rechte oder untere Skalenende</td></tr>
+    <tr><td>value</td><td>Aktueller Wert als Fließkommazahl</td></tr>
+    <tr><td>variable</td><td>Variable, die dem Wert folgt.</td></tr>
+    </table>
+    <p>ttk.Scale kennt die <a target="_blank" href="tkinter-optionen.html">Standardoptionen</a>:
+        class_, cursor, style, takefocus</p>
+
+
+    <p>Das folgende Programm stellt einen Schieberegler vor, der Werte im 
+        Intervall von 0.0 bis 10.0 annehmen kann. Der Wert des Schiebereglers 
+        wird mit drei Methoden ausgelesen:</p>
+    <a href="img/ttk-scale/scale1.png" target="_blank"><img src="img/ttk-scale/scale1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+from tkinter import font
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.iVar = tk.IntVar(value='1')
+        self.s = ttk.Scale(self, from_=0.0, to = 10.0, variable=self.iVar, command=self._onChange)
+        self.s.pack()
+        
+    def _onChange(self, value):
+        print('Wert:', value, self.s.get(), self.iVar.get())
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Scale-Methoden</h3>
+    <table>
+    <tr><th>Methode</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>sc.get()</td><td>-</td><td>Fließkommazahl</td>
+        <td>Aktueller Schieberegler-Wert</td></tr>
+    <tr><td>sc.set(value)</td><td><code>value</code>: Fließkommazahl</td>
+        <td>-</td><td>Setzt den Schieberegler-Wert</td></tr>
+    </table>
+	<p>Sowie die allgemeinen Widget-Methoden:</p>
+	<ul>
+	<li><a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a>: <code>cget(…)</code> und <code>configure(…)</code></li>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Sonstiges">Sonstige Methoden</a>: <code>identify(…)</code>, <code>instate(…)</code> und <code>state(…)</code></li>
+    </ul>
+    </section>
+
+    <h2>Referenzen</h2>
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_scale.html">
+        https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_scale.html</a>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a></p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - ttk.LabeledScale</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - ttk.LabeledScale</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navcurrent">LabeledScale</li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>ttk.LabeledScale</h2>
+    <p>ttk.LabeledScale ist eine tkinter-Erweiterung, dieses Widget ist nicht in den originalen ttk-Widgets enthalten.
+		Sie besteht aus einem <a target="_blank" href="tkinter-ttk-label.html">Label</a> und einem 
+		<a target="_blank" href="tkinter-ttk-scale.html">Scale</a>, kombiniert in einem Frame.</p>
+
+
+    <section>
+    <h3>ttk.LabeledScale erzeugen</h3>
+    <p><code class="language-python">ls = ttk.LabeledScale(parent, Optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>variable</td><td>siehe <a target="_blank" href="tkinter-optionen.html#Kontrollvariablen">Kontrollvariablen</a>. 
+        Der <code>value</code>-Parameter der <code>IntVar(value)</code> kann nicht mit einem Wert vorbelegt werden, da der
+		Konstruktor diesen mit <code>from_</code> überschreibt.</td></tr>
+    <tr><td>from_</td><td>Minimaler Wert</td></tr>
+    <tr><td>to</td><td>Maximaler Wert</td></tr>
+    </table>
+    <p>ttk.LabeledScale kennt die <a target="_blank" href="tkinter-ttk-frame.html">Optionen des ttk.Frame</a>.</p>
+    <p>Per <code>value</code>-Property lassen sich Werte setzen und abfragen. Das enthaltene Label bekommt 
+        man mit <code>ls.label</code>, das Scale mit <code>ls.scale</code>.</p>
+    <p>Das folgende Programm stellt ein LabeledScale vor:</p>
+	<a href="img/ttk-labeledscale/labeledscale1.png" target="_blank"><img src="img/ttk-labeledscale/labeledscale1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x300")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.ivar = tk.IntVar()
+        self.ls = ttk.LabeledScale(self, variable=self.ivar, from_=4, to=20);
+        self.ls.pack(expand=tk.YES, fill=tk.BOTH, padx=2, pady=2)
+        self.ls.value = 15
+        ttk.Button(self, text='Frage Wert ab', command=self._onGetValue).pack()
+
+    def _onGetValue(self):
+        print(self.ivar.get(), self.ls.value)
+        
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <a class="extern" target="_blank" href="https://github.com/python/cpython/blob/08867a0bfc756b40b1d889b4edccc8137a291e81/Lib/tkinter/ttk.py#L1503">
+        https://github.com/python/cpython/blob/08867a0bfc756b40b1d889b4edccc8137a291e81/Lib/tkinter/ttk.py#L1503</a>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a> </p>
+    </footer>
+  </body>
+</html>

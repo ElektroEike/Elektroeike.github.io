@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - ttk.Treeview</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - ttk.Treeview</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navcurrent">Treeview</li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>ttk.Treeview</h2>
+    <p>Bei einerm Treeview handelt es sich um ein Widget, das ähnlich
+        wie eine <a target="_blank" href="tkinter-tk-listbox.html">tk.Listbox</a> Daten in
+        Zeilen gruppiert.</p>
+    <p>Einzelne Zeilen können zugeordnete Unterabschnitte haben, die wiederum
+        Zeilen sind und sich innerhalb des Widges aufklappen lassen und damit eine
+        Baumansicht von Daten errmöglichen.</p>
+
+
+    <section>
+    <h3>ttk.Treeview erzeugen</h3>
+    <p><code class="language-python">tv = ttk.Treeview(parent, Optionen)</code></p>
+    <p>Treeview kennt die Optionen:</p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>columns</td><td>Liste von Spaltenbeschreibungen. Diese Spalten können Tupel von
+		Namen oder von Zahlen sein. Diese Namen oder Zahlen werden nicht als Spaltenkopf
+		eingetragen. Hinzu kommt immer die Spalte <code>'#0'</code>, ohne, dass sie genannt
+		wird.</td></tr>
+    <tr><td>displaycolumns</td><td>Liste von Spalten (Nummern oder Namen), die in dieser
+		Reihenfolge angezeigt werden sollen. Darf <code>'#all'</code> (default) sein</td></tr>
+    <tr><td>height</td><td>Höhe der Treeview in Zeilen</td></tr>
+    <tr><td>selectmode</td><td><code>'browse'</code>: Nur eine Zeile darf ausgewählt werden,
+		<code>'extended'</code>: mehrere Zeilen können ausgewählt werden oder
+		<code>'none'</code>: nichts darf ausgewählt werden</td></tr>
+    <tr><td>show</td><td><code>'tree'</code>: Spaltenlabel in der speziellen Spalte
+		<code>'#0'</code>, <code>'headings'</code>: Kopfzeile anzeigen. Beide Werte sind
+		voreingestellt gesetzt.</td></tr>
+    </table>
+    <p>ttk.Treeview kennt die <a target="_blank" href="tkinter-optionen.html">Standardoptionen</a>:
+        class_, cursor, padding, style, takefocus, xscrollcommand und yscrollcommand</p>
+    <p>Das folgende Programm erzeugt eine Treeview mit drei Spalten: <code>'#0'</code> alias <code>'Hörspiel'</code>,
+		<code>'Folge'</code> und <code>'Nummer'</code>. Die erste und mittlere Spalte dürfen sich ausdehnen, die
+        Texte in den Spaltenköpfen werden ausgerichtet. Ferner werden Daten eingefügt.:</p>
+    <a href="img/ttk-treeview/tv-hoerspiele.png" target="_blank"><img src="img/ttk-treeview/tv-hoerspiele.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        tv = ttk.Treeview(self, columns=('Folge', 'Nummer'))
+        # Spalten
+        tv.column('#0', stretch=tk.YES, width=50)
+        tv.column('Folge', stretch=tk.YES, width=100)
+        tv.column('Nummer', stretch=tk.NO, width=50)
+        # Spaltenköpfe (Heading)
+        tv.heading('#0', anchor=tk.W, text='Hörspiel')
+        tv.heading('Folge', anchor=tk.CENTER, text='Folge')
+        tv.heading('Nummer', anchor=tk.E, text='Nummer der Folge')
+        # ins layout einfügen
+        tv.pack(fill=tk.X, expand=tk.YES)
+        # Daten hinzu
+        iid = tv.insert('', tk.END, text='???')
+        tv.insert(iid, tk.END, text='Drei Fragezeichen',
+                  values=('Der Super-Papagei', '1'))
+        tv.insert(iid, tk.END, text='Drei Fragezeichen',
+                  values=('Der Phantomsee', '2'))
+        tv.insert('', tk.END, text='Hui Buh',
+                  values=('Das Schlossgespenst', 1))
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Spaltenbezeichner</h3>
+    <p>Spalten einer Treeview können auf verschiedene Weisen benannt werden:</p>
+    <ul>
+    <li>symbolische Namen wie "meine Spalte 1"</li>
+    <li>numerisch, wie 1, 2, …</li>
+    <li><code>'#n'</code>, wobei <code>n</code> die N-te angezeigte Spalte ist
+        (vgl. Option <code>displaycolumns</code></li>
+    <li>Es gibt immer eine Spalte mit der Bezeichnung <code>'#0'</code>. Diese kann man
+        nicht explizit erzeugen und nicht löschen. Diese enthält ein Label und
+        gegebenfalls eine Markierung zum ausklappen von Unterabschnitten.</li>
+	</ul>
+    </section>
+
+
+	<section>
+    <h3>Itemoptionen</h3>
+    <p>Zeilen innerhalb einer Treeview heißen Items, diese haben Optionen:</p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>image</td><td>Bild in der Label-Spalte <code>'#0'</code></td></tr>
+	<tr><td>open</td><td><code>True</code>: Kindelemente sollen angezeigt werden, der Tree wird "ausgeklappt"</td></tr>
+	<tr><td>tags</td><td>Liste von Tags für das Item</td></tr>
+	<tr><td>text</td><td>Angezeigter Text in der Label-Spalte <code>'#0'</code></td></tr>
+	<tr><td>values</td><td>Liste von Daten, für jede Spalte ein Element</td></tr>
+	</table>
+    </section>
+
+
+	<section>
+    <h3>Tagoptionen</h3>
+    <p>Tags können mit folgenden Optionen konfiguriert werden:</p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+	<tr><td>background</td><td>Hintergrundfarbe der Zeile</td></tr>
+	<tr><td>font</td><td>benutzer Font</td></tr>
+	<tr><td>foreground</td><td>Vordergrundfarbe</td></tr>
+	<tr><td>image</td><td>angezeigtes Bild</td></tr>
+	</table>
+    </section>
+
+
+    <section>
+    <h3>Treeview-Methoden</h3>
+	<p>Spaltenoptionen, wie von <code>tv.column(…), …</code> verwendet:</p>
+	<table>
+	<tr><th>Spaltenoption</th><th>Beschreibung</th></tr>
+	<tr><td>anchor</td><td>Spaltenausrichtung: tk.NE, tk.N, …, tk.CENTER</td></tr>
+	<tr><td>id</td><td>Spaltenname</td></tr>
+	<tr><td>minwidth</td><td>Min. Spaltenbreite, voreingestellt: 20 Pixel</td></tr>
+	<tr><td>stretch</td><td>1: Spalte wird vergrößert, wenn Widget vergrößert wird, voreingestellt: 1. tk.YES und tk.NO funktionieren auch</td></tr>
+	<tr><td>width</td><td>Spaltenbreite zu beginn, voreingestellt ist 200 Pixel</td></tr>
+ 	</table>
+
+
+	<p>Spaltenkopfoptionen, wie von <code>tv.heading(…)</code> verwendet:</p>
+	<table>
+	<tr><th>Spaltenkopfoption</th><th>Beschreibung</th></tr>
+	<tr><td>anchor</td><td>Kopfausrichtung: tk.NE, tk.N, …, tk.CENTER</td></tr>
+	<tr><td>command</td><td>Callback, wird ausgeführt, wenn man auf den Spaltenkopf klickt</td></tr>
+	<tr><td>image</td><td>Bild im Spaltenkopf</td></tr>
+	<tr><td>text</td><td>Text im Spaltenkopf</td></tr>
+	</table>
+
+
+	<p>Methoden von ttk.Treeview():</p>
+    <table>
+    <tr><th>Methode</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+
+	<tr><td>tv.bbox(item, column=None)</td>
+		<td>item: Item-iid, column: Spaltennummer oder -Beschreibung</td>
+		<td>Rechteck</td>
+		<td>Gibt das Rechteck um die Zelle mit angegebener Item-iid und Spalte zurück oder,
+		falls <code>column</code> fehlt, um die Zeile zurück.</td></tr>
+	<tr><td>tv.cget(Option)</td><td colspan="3" class="see">
+        Siehe <a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a></td></tr>
+	<tr><td>tv.children(…)</td><td colspan="3" class="headline">Ersetzt durch <code>tv.get_children(…)</code> und <code>tv.set_children(…)</code></td></tr>
+	<tr><td>tv.column(column, option=None, …)</td><td>column: Spaltennummer oder -Bezeichner,
+		Spalte 0 ist <code>'#0'</code>. <code>option</code>: Siehe Tabelle "Spaltenoptionen":
+		<code>option=value</code></td>
+		<td>Dictionary mit Spaltenoptionen, Wert der Option oder nichts</td>
+		<td>Setzt Spaltenoptionen oder liefert ein Dictionary mit Spaltenoptionen</td></tr>
+	<tr><td>tv.configure(…)</td><td colspan="3" class="see">
+        Siehe <a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a></td></tr>
+	<tr><td>tv.delete(items)</td><td>items: Liste von Item-iids</td>
+		<td>-</td>
+		<td>Items werden gelöscht, ebenso die Child-Elemente der Items</td></tr>
+	<tr><td>tv.detach(items)</td><td>items: Liste von Item-iids</td>
+		<td>-</td>
+		<td>Items werden entfernt, aber nicht gelöscht, ebenso die Child-Elemente der Items.
+		Items können später wieder hinzugefügt werden, beispielsweise mit
+		<code>tv.move(…)</code></td></tr>
+	<tr><td>tv.exists(iid)</td><td>iid: Item-iid</td><td>Boolean</td>
+		<td><code>True</code>, wenn das Item existiert. Items existieren auch, wenn sie
+		mit <code>tv.detach(…)</code> entfernt wurden</td></tr>
+	<tr><td>tv.focus(iid)</td><td>iid: (optional) Item-iid</td><td>iid oder nichts</td>
+		<td>Legt den Fokus auf das Item. Ohne Argument liefert es die Item-iid
+		des fokussierten Items</td></tr>
+	<tr><td>tv.get_children(item)</td><td>iid: (optional) Item-iid</td>
+		<td>Tupel von Item-iids</td>
+		<td>Gibt ein Tupel aller Child-Item-iids von <code>item</code> zurück.
+		Fehlt <code>item</code>, dann werden alle Toplevel-Elemente zurückgeliefert</td></tr>
+	<tr><td>tv.heading(column, option=value,…)</td><td>column: Spaltennummer oder -Bezeichner,
+		Spalte 0 ist <code>'#0'</code>. option: Siehe Tabelle "Spaltenkopfoptionen"</td>
+		<td>Dictionary mit Spaltenkopfoptionen oder nichts</td>
+		<td>Setzt Spaltenkopfoptionen oder liefert ein Dictionary mit Spaltenkopfoptionen,
+		wenn <code>option</code> fehlt</td></tr>
+	<tr><td>tv.identify(component, x, y)</td>
+        <td><code>component</code>: 'column' (s. <code>identify_column(…)</code>),
+        'element' (s. <code>identif_element(…)</code>),
+        'item': wie <code>tv.identify_row(…)</code>
+        'region' (s. <code>tv.identify_region(…)</code>),
+        'row' (s. <code>tv.identify_row(…)</code>),
+		<code>x, y</code>: Koordinate</td>
+		<td>String</td>
+		<td>Liefert eine Beschreibung der angegebenen Position. Teilweise werden Item-IDs zurückgegeben. </td></tr>
+	<tr><td>tv.identify_column(x)</td><td>x: Koordinate</td>
+		<td>Spaltennummer in der Form <code>'#n'</code></td>
+		<td>Die Spalte, die die Koordinate enthält wird identifiziert und als String
+		zurückgegeben.</td></tr>
+	<tr><td>tv.identify_element(x, y)</td><td>x, y: Koordinaten</td>
+		<td>Element (Zeile)</td>
+		<td>Beschreibung des Typs an der angegebenen Position, beispielsweise 'text' oder 'Treeitem.indicator'.</td></tr>
+	<tr><td>tv.identify_region(x, y)</td><td><code>x, y</code>: Koordinaten</td>
+		<td>String, beschreibt die Region</td><td><code>'nothing'</code>: unbekannt,
+		<code>'heading'</code>: Spaltenkopf, <code>'separator'</code>: Im Spaltenkopf
+		auf einem Separator, <code>'tree'</code>: In der Icon-Spalte (<code>'#0'</code>),
+		<code>'cell'</code>: In einer Zeile, aber nicht der Icon-Spalte</td></tr>
+	<tr><td>tv.identify_row(y)</td><td>y: Koordinate</td><td>Item-iid</td>
+		<td>Gibt die Item-iid des Items (der Zeile) an der y-Position zurück</td></tr>
+	<tr><td>tv.index(iid)</td><td>iid: Item-iid</td><td>Index</td>
+		<td>Gibt den Item-Index relativ zum Parent-Element aus</td></tr>
+	<tr><td>tv.insert(parent, index, iid=None, optionen)</td>
+		<td>parent: Parent-iid oder leerer String für Toplevel,
+		index: Index unterhalb von parent, wenn schon Children existieren,
+		es kann <code>'end'</code> benutzt werden.
+		iid: optionale selbstgewählte Item-iid für dieses Element. optionen: Key-Value aus
+		Tabelle "Itemoptionen".</td><td>Neue Item-iid oder der übergebene iid-Parameter</td>
+		<td>Fügt ein neues Element ein</td></tr>
+	<tr><td>tv.instate(…)</td><td colspan="3" class="see">
+        Siehe <a target="_blank" href="tkinter-widgetmethoden.html#Sonstiges">Sonstige Methoden</a></td></tr>
+	<tr><td>tv.item(iid, option…)</td>
+		<td>iid: Item-iid, option (optional): Key-Value aus Tabelle "Itemoptionen"</td>
+		<td>Nichts, Wert oder Dictionary</td><td>Fragt ab oder setzt Optionen eines Items</td></tr>
+	<tr><td>tv.move(iid, parent, index)</td>
+		<td>iid: Item-iid, parent: neuer Parent-Eintrag, index: Position
+		unterhalb von <code>parent</code></td><td>-</td>
+		<td>Bewegt ein Item zu einer neuen Stelle unterhalb von <code>parent</code></td></tr>
+	<tr><td>tv.next(iid)</td><td>iid: Item-iid</td><td>Item-iid oder leerer String</td>
+		<td>Nächstes Element auf gleicher Ebene relativ zu iid</td></tr>
+	<tr><td>tv.parent(iid)</td><td>iid: Item-iid</td><td>Item-iid oder leerer String</td>
+		<td>Gibt Parent-Element zurück</td></tr>
+	<tr><td>tv.prev(iid)</td><td>iid: Item-iid</td><td>Item-iid oder leerer String</td>
+		<td>Vorhergehendes Element auf gleicher Ebene relativ zu iid</td></tr>
+	<tr><td>tv.see(iid)</td><td>iid: Item-iid</td><td>-</td>
+		<td>Item wird sichtbar, es wird gescrollt und Elemente werden aufgeklappt</td></tr>
+
+	<tr><td>tv.selection(items)</td><td>iid: Item-iids (Einzeln oder Sequenz)</td><td>Sequenz</td>
+		<td>Liefert Tupel selektierter Items</td></tr>
+
+	<tr><td>tv.selection_add(items)</td><td>iid: Item-iids (Einzeln oder Sequenz)</td><td>-</td>
+		<td>Selektiert Item(s) (zusätzlich)</td></tr>
+
+	<tr><td>tv.selection_remove(items)</td><td>iid: Item-iids (Einzeln oder Sequenz)</td>
+		<td>-</td><td>Deselektiert Item(s)</td></tr>
+
+	<tr><td>tv.selection_set(items)</td><td>iid: Item-iids (Einzeln oder Sequenz)</td>
+		<td>-</td><td>Selektiert ausschließlich diese(s) Item(s)</td></tr>
+
+	<tr><td>tv.selection_toggle(items)</td><td>iid: Item-iids (Einzeln oder Sequenz)</td>
+		<td>-</td><td>Ändert den Auswahlzustand der/des angegebenen Items</td></tr>
+
+	<tr><td>tv.set(iid, column=None, value=None)</td>
+		<td>iid: Item-iid, column: Spaltennummer oder -Beschreibung,
+		value: ein Wert für die Zelle</td><td>nichts, Wert oder Dictionary</td>
+		<td>ein Argument: Dictionary mit Spalte/Wert-Paaren, zwei Argumente: Daten der Zelle,
+		drei Argumente: Zellenwert wird beschrieben</td></tr>
+	<tr><td>tv.state(…)</td><td colspan="3" class="see">
+        Siehe <a target="_blank" href="tkinter-widgetmethoden.html#Sonstiges">Sonstige Methoden</a></td></tr>
+	<tr><td>tv.set_children(item, newChildren)</td><td>item: Item-iid,
+		newChildren: Sequenz von Item-iids</td><td>-</td>
+		<td>Es werden die Kinder von <code>item</code> ersetzt durch die angegebenen
+		Items <code>newChildren</code></td></tr>
+	<tr><td>tv.tag_bind(tagName, sequence=None, callback=None)</td>
+		<td>tagName, sequence: <code>&lt;KeyPress></code> und <code>&lt;KeyRelease></code>
+		werden an das fokussierte Item gesendet,<code>&lt;ButtonPress></code>,
+		<code>&lt;ButtonRelease></code> und <code>&lt;Motion></code> an das Item unter der Maus.
+		Andere Events werden nicht unterstützt, callback</td><td>-</td>
+		<td>Bindet ein Event/Callback an einen Tag</td></tr>
+	<tr><td>tv.tag_configure(tagName, option…)</td><td>tagname: Name eines Tags,
+		option (optional): key-value, siehe Tabelle "Tagoptionen"</td>
+		<td>nichts, Wert oder Dictionary</td><td>Setzt oder holt Optionen zu einem Tag.
+		ein Argument: Dictionary mit allen Optionen, zwei Argumente: Wert zu einer Option,
+		drei Argumente: Setzt Option</td></tr>
+	<tr><td>tv.tag_has(tagName, iid)</td><td>tagname: Name eines Tags,
+		iid (optional): Item-iid</td><td>Liste oder Boolean</td>
+		<td>Ein Argument: Liste aller Items, die mit <code>tagName</code> gekennzeichnet sind,
+		zwei Argumente: <code>True</code>, wenn Item mit <code>tagName</code> gekennzeichnet ist</td></tr>
+
+	<tr><td>tv.xview(args)</td><td colspan="3" class="see"><code>command</code>
+		der horizontalen Scrollbar wird mit dieser Metdode verbunden</td></tr>
+	<tr><td>tv.yview(args)</td><td colspan="3" class="see"><code>command</code>
+		der vertikalen Scrollbar wird mit dieser Metdode verbunden</td></tr>
+    </table>
+	
+	<p id="tag-click-beispiel">Im folgenden Beispiel wird ein Mausklick-Ereignis an einen Tag gebunden, das 
+		angeklickte und aktive Element wird in einem Label angezeigt</p>: 
+	<a href="img/ttk-treeview/tv-hoerspiele-2.png" target="_blank"><img src="img/ttk-treeview/tv-hoerspiele-2.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.tv = ttk.Treeview(self, columns=('Folge', 'Nummer'))
+        self.tv.pack(fill=tk.X, expand=tk.YES)
+        # Daten hinzu
+        self.tv.insert('', tk.END, text='Drei Fragezeichen',
+                  values=('Der Super-Papagei', '1'), tags=('hoerspiel',))
+        self.tv.insert('', tk.END, text='Hui Buh',
+                  values=('Das Schlossgespenst', 1), tags=('hoerspiel',))
+
+        self.tv.tag_bind('hoerspiel', '&lt;1>', callback=self._onClick)
+
+        self.tVar = tk.StringVar()
+        label = ttk.Label(self, textvariable=self.tVar)
+        label.pack(fill=tk.X, expand=tk.YES)
+
+
+    def _onClick(self, event):
+        text = ''
+        for selectedElem in self.tv.selection():
+            item = self.tv.item(selectedElem)
+            text += item['text'] + ' '
+        self.tVar.set(text)
+
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    
+    
+    <p>Im folgenden Beispiel werden Tags farbig konfiguriert.</p>
+    <p>Hinweis: TK-Versionen vor 8.6.9 können 
+        <a class="extern" target="_blank" href="https://stackoverflow.com/questions/56329342/tkinter-treeview-background-tag-not-working">
+        Tags auf diese Weise nicht verändern</a>.</p>
+	<a href="img/ttk-treeview/tv-hoerspiele-tag-configure-1.png" target="_blank"><img src="img/ttk-treeview/tv-hoerspiele-tag-configure-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.tv = ttk.Treeview(self, columns=('Folge', 'Nummer'))
+        self.tv.pack(fill=tk.X, expand=tk.YES)
+        # Daten hinzu
+        self.tv.insert('', tk.END, text='Drei Fragezeichen',
+                  values=('Der Super-Papagei', '1'), tags=('serie1',))
+        self.tv.insert('', tk.END, text='Hui Buh',
+                  values=('Das Schlossgespenst', 1), tags=('serie2',))
+
+        self.tv.tag_configure('serie1', background='green')
+        self.tv.tag_configure('serie2', background='yellow')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    
+    </section>
+
+
+    <section>
+    <h3>Virtuelle Ereignisse</h3>
+	<ul>
+    <li>&lt;&lt;TreeviewSelect>> -- Auswahlt wird geändert</li>
+    <li>&lt;&lt;TreeviewOpen>> -- ein Tree wird geöffnet</li>
+    <li>&lt;&lt;TreeviewClose>> -- ein Tree wird geschlossen</li>
+    </ul>
+	</section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <a class="extern" target="_blank" href="https://tcl.tk/man/tcl8.7/TkCmd/ttk_treeview.html">
+        https://tcl.tk/man/tcl8.7/TkCmd/ttk_treeview.html</a>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a></p>
+    </footer>
+  </body>
+</html>

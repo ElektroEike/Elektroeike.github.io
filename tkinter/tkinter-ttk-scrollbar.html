@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - ttk.Scrollbar</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - ttk.Scrollbar</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navcurrent">Scrollbar</li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>ttk.Scrollbar</h2>
+    <p>Eine Scrollleiste. Für Beispiele, wie man eine Scrollbar mit anderen Widgets
+        nutzt, siehe beispielsweise <a target="_blank" href="tkinter-tk-canvas.html">Canvas</a> oder
+        <a target="_blank" href="tkinter-tk-listbox.html">Listbox</a>.</p>
+
+
+    <section>
+    <h3>ttk.Scrollbar erzeugen</h3>
+    <p><code class="language-python">sb = ttk.Scrollbar(parent, Optionen)</code></p>
+    <p>Scrollbar kennt die Optionen:</p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>command</td><td>Callback, die bei Änderung aufgerufen wird.
+        Parameter variieren:
+        <ul>
+        <li>Zieht man am Anfasser, werden zwei Parameter übergeben:
+        <code>(tk.MOVETO, value)</code>. <code>value</code> ist ein Wert zwischen 0.0 und 1.0, der angibt, um wie weit der
+        Schieberegler gezogen wird.</li>
+        <li>Klickt man in den grauen Bereich neben dem Anfasser, wird
+        <code>(tk.SCROLL, &plusmn;1, tk.PAGES)</code> übergeben, wobei hier +1 oder -1 übergeben wird.</li>
+        <li>Klickt man auf die Pfeile am Ende des Schiebereglers, wird <code>(tk.SCROLL, &plusmn;1, tk.UNITS)</code>
+        übergeben. Auch hier ist das Vorzeichen abhängig davon, wo genau man hinklickt.</li>
+        </ul></td></tr>
+    <tr><td>orient</td><td>Ausrichtung der Scrollbar: <code>tk.VERTICAL</code>, <code>tk.HORIZONTAL</code></td></tr>
+    </table>
+    <p>ttk.Scrollbar kennt die <a target="_blank" href="tkinter-optionen.html">Standardoptionen</a>:
+        class_, cursor, style, takefocus</p>
+    <p>Das folgende Programm stellt eine Scrollbar vor und reagiert auf Mausklicks:</p>
+    <a href="img/ttk-scrollbar/scrollbar1.png" target="_blank"><img src="img/ttk-scrollbar/scrollbar1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+from tkinter import font
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        sb = ttk.Scrollbar(self, orient=tk.HORIZONTAL, command=self._onScroll)
+        sb.pack(expand=tk.YES, fill=tk.X)
+        sb.set(0.2, 0.3)
+
+    def _onScroll(self, A, B, C='unused'):
+        print('Wert:', A, B, C)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Scrollbar-Methoden</h3>
+    <table>
+    <tr><th>Methode</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>sb.get()</td><td>-</td><td>Liste</td><td>Scrollbar-Einstellungen werden als Liste zurückgegeben</td></tr>
+    <tr><td>sb.set(first, last)</td><td>Werte zwischen 0…1</td><td>-</td>
+        <td>Diese Methode wird typischerweise intern von <code>xscrollcommand</code>
+        und <code>yscrollcommand</code> des zugehörigen Widgets verwendet.
+        Es wird der sichtbare Bereich gesetzt.</td></tr>
+    </table>
+	<p>Sowie die allgemeinen Widgetmethoden:</p>
+	<ul>
+
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a>: <code>cget(…)</code> und <code>configure(…)</code></li>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Sonstiges">Sonstige Methoden</a>: <code>identify(…)</code>, <code>instate(…)</code> und <code>state(…)</code></li>
+    </ul>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_scrollbar.html">
+        https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_scrollbar.html</a>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a></p>
+    </footer>
+  </body>
+</html>

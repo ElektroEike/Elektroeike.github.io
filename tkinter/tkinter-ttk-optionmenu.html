@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - ttk.OptionMenu</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - ttk.OptionMenu</h1>
+    </header>
+    
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navcurrent">OptionMenu</li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+	
+    <main>
+
+
+    <h2>ttk.OptionMenu</h2>
+    <p>Das <code>ttk.OptionMenu</code> ist eine Erweiterung von tkinter, die nicht in den Tcl/Tk-Quellen 
+        vorkommt. Hierbei handelt es sich um einen Nachbau von <code>tk.OptionMenu</code>, der
+        sich in allen Bereichen wie ein <a target="_blank" href="tkinter-menu.html#Menubutton">ttk.Menubutton</a> verhält und auch stylen
+        lässt plus einem klassischen Menü. Die Api ist <code>tk.OptionMenu</code> nachempfunden.</p>
+
+
+    <section>
+    <h3>ttk.OptionMenu erzeugen</h3>
+    <p><code class="language-python">optm = ttk.OptionMenu(self, Variable, DefaultValue, *Values, Command)</code></p>
+    
+    
+    <p>Das folgende Programm zeigt ein Optionsmenü:</p>
+    <a href="img/ttk-optionmenu/optionmenu-1.png" target="_blank"><img src="img/ttk-optionmenu/optionmenu-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+from tkinter import font
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        values = ('Äpfel', 'Bananen', 'Pfirsiche')
+        self.svar = tk.StringVar(value=values[0])
+        optm = ttk.OptionMenu(self, self.svar, values[0], *values,
+                              command=self._onMenu)
+        optm.pack()
+
+    def _onMenu(self, event):
+        print('Frucht ausgewählt:', self.svar.get() )
+        
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+    
+	
+	<h2>Referenzen</h2>
+
+    
+    <section>
+    <h3>Siehe Auch</h3>
+	<ul>
+	
+    <li><a class="extern" target="_blank" href="https://github.com/python/cpython/blob/master/Lib/tkinter/ttk.py">
+        https://github.com/python/cpython/blob/master/Lib/tkinter/ttk.py</a></li>
+	<li><a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/optionMenu.html">
+		https://www.tcl.tk/man/tcl8.7/TkCmd/optionMenu.html</a></li>
+	</ul>
+    </section>
+    
+    
+    </main>
+    
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a></p>
+    </footer>
+  </body>
+</html>

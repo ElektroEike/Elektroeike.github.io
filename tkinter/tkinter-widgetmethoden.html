@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - Widgetmethoden</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - Widgetmethoden</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navcurrent">Widgetmethoden</li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>Widgetmethoden</h2>
+
+
+    <section>
+    <h3>Clipboard und Auswahl</h3>
+    <table>
+    <tr><th>Methode</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>w.clipboard_append(text)</td><td>text wird ans Clipboard gehängt</td><td>-</td><td>Hängt gegebenen Text ans Clipboard</td></tr>
+    <tr><td>w.clipboard_clear()</td><td>-</td><td>-</td><td>Löscht den Inhalt vom Clipboard</td></tr>
+    <tr><td>w.selection_clear()</td><td>-</td><td>-</td><td>Entfernt die Auswahlmarkierung (nicht den ausgewählten Text) aus etwa ttk.Edit und co</td></tr>
+    <tr><td>w.selection_get()</td><td>-</td><td>Text</td><td>Gibt den ausgewählten Text zurück, TclError, wenn kein Text markiert wurde</td></tr>
+    <tr><td>w.selection_own()</td><td>-</td><td>-</td><td>Macht w zum Besitzer des ausgewählten Textes</td></tr>
+    <tr><td>w.selection_own_get()</td><td>-</td><td>Widget</td><td>Gibt den Eigentümer des ausgewählten Textes zurück, TclError, wenn kein Text ausgewählt wurde </td></tr>
+    </table>
+    </section>
+
+
+    <section>
+    <h3>Fokus</h3>
+    <table>
+    <tr><th>Methode</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>w.focus_displayof()</td><td>-</td><td>Name des Widgets, das den Fokus hat oder None</td><td>Gibt den Names des Widgets zurück, das den aktuellen Inputfokus hat</td></tr>
+    <tr><td>w.focus_force()</td><td>-</td><td>-</td><td>w erhält sofort den Inputfokus</td></tr>
+    <tr><td>w.focus_get()</td><td>-</td><td>Widgets, das den Fokus hat</td><td>Gibt das Widgets zurück, das den aktuellen Inputfokus hat</td></tr>
+    <tr><td>w.focus_lastfor()</td><td>-</td><td>Name des Widgets, das zuletzt den Fokus hatte</td><td>Ergibt den Namen des letzten Elementes, das den Fokus hatte oder den Namen des Toplevel-Elementes. Hatte dieses niemals den Fokus, dann wird der Name desjenigen Elementes zurückgegeben, das den Fokus in Zukunft bekommt.</td></tr>
+    <tr><td>w.focus_set()</td><td>-</td><td>-</td><td>Wenn die Anwendung Fokus hat, bekommt w den Fokus. Sonst wird w für den Fokus vorgemerkt</td></tr>
+    <tr><td>w.tk_focusFollowsMouse()</td><td>-</td><td>-</td><td>Fokus folgt Mausbewegung</td></tr>
+    <tr><td>w.tk_focusNext()</td><td>-</td><td>Widget</td><td>Gibt dasjenige Widget zurück, das als nächstes den Fokus erhält</td></tr>
+    <tr><td>w.tk_focusPrev()</td><td>-</td><td>Widget</td><td>Gibt dasjenige Widget zurück, das vorher den Fokus erhalten hätte</td></tr>
+    </table>
+    </section>
+
+
+    <section>
+    <h3>Grab</h3>
+	<p>Maus- und Tastaturgrabbing: Jedes Maus- oder Tastaturereignis wird an das gegrabbte Widget geliefert.</p>
+    <table>
+    <tr><th>Methode</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>w.grab_current()</td><td>Widget oder <code>None</code></td><td>Rückgabe des Widgets, das aktuell den Grab hat</td></tr>
+    <tr><td>w.grab_release()</td><td>-</td><td>Entfernt grabbing wieder</td></tr>
+    <tr><td>w.grab_set()</td><td>-</td><td>Ereignisse der Anwendung werden an <code>w</code> deligiert</td></tr>
+    <tr><td>w.grab_set_global()</td><td>-</td><td>Ereignisse aller Anwendungen werden an <code>w</code> deligiert. <strong>Vorsicht</strong></td></tr>
+    <tr><td>w.grab_status()</td><td>Grab-Status</td><td><code>'none'</code>: kein Grabbing,
+		<code>'local'</code>: lokales Grabbing oder <code>'global'</code></td></tr>
+    </table>
+    </section>
+
+
+    <section>
+    <h3 id="Konfiguration">Konfiguration</h3>
+    <table>
+    <tr><th>Methode</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>w.cget(option)</td>
+		<td>Gesetzte option (beispielsweise ('text') für Labels) des Widgets</td>
+		<td>Aktuell gesetzte Option</td><td>Fragt option beim Widget ab</td></tr>
+    <tr><td>w.config(option=wert, …)</td><td colspan="3" class="see">Siehe w.configure</td></tr>
+    <tr><td>w.configure(option=wert, …)</td><td>option=wert Typische Widgetoptionen (optional)</td>
+		<td>5-Tupel</td><td>Wie w.['option']=wert. Ohne Parameter erhält man alle Optionen
+		des Widgets in der Form: (OptionName, DbName, DbClass, DefaultValue, CurrentValue)
+		mit DbName: dem Datenbanknamen, DbClass: der Datenbankklasse</td></tr>
+    <tr><td>w.keys()</td><td>-</td><td>Liste mit Optionen von w</td><td>Gibt eine Liste aller Optionen von w aus</td></tr>
+    </table>
+    </section>
+
+
+    <section>
+    <h3>Window- und Widgetinformationen</h3>
+    <table>
+    <tr><th>Methode</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>w.winfo_*</td><td colspan="2" class="see">Diverse Widget-Methoden, um Positions-,
+		Größen-, Farb- und weitere Verwaltungsangaben abzufragen.
+		Siehe <a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/winfo.html">winfo-Beschreibung</a></td></tr>
+    <tr><td>w.winfo_children()</td><td>Liste</td><td>Gibt eine Liste mit Kind-Elementen eines Widgets zurück.</td></tr>
+    <tr><td>w.winfo_height()</td><td>Höhe des Fensters</td><td>Gibt die Höhe des Fensters zurück. Die korrekte Fenstergröße steht erst
+        nach einem Durchlauf der Ereigniswarteschlange zur Verfügung.</td></tr>
+	<tr><td>w.winfo_pointerxy()</td><td>Tupel</td><td>Gibt Mausposition zurück</td></tr>
+    <tr><td>w.winfo_toplevel()</td><td>Widget</td><td>Gibt Toplevel-Fenster,
+		das <code>w</code> enthält, zurück</td></tr>
+    <tr><td>w.winfo_width()</td><td>Breite des Fensters</td><td>Gibt die Breite des Fensters zurück. Die korrekte Fenstergröße steht erst
+        nach einem Durchlauf der Ereigniswarteschlange zur Verfügung.</td></tr>
+	</table>
+    </section>
+
+
+    <section>
+    <h3>Zeit</h3>
+    <table>
+    <tr><th>Methode</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>w.after(zeitMs, callback, *args)</td><td>zeitMs Zeit in Millisekunden, callback eine Funktion, die nach der Zeit aufgerufen wird, arg eine Liste von Argumenten, die der callback mitgegeben wird</td><td>Eine id, die man beispielsweise zum Stoppen des Timers benutzen kann</td><td>Ruft nach der angegebenen Zeit callback auf</td></tr>
+    <tr><td>w.after_cancel(id)</td><td>id, wie sie von w.after(…) zurückggeeben wurde</td><td>-</td><td>Stoppt den Timer</td></tr>
+    <tr><td>w.after_idle(callback, *args)</td><td>callback: Funktion, die aufgerufen wird und args Liste von Argumenten der callback</td><td>-</td><td>Ruft einmalig callback auf, wenn die Event-Warteschlange leer ist</td></tr>
+    <tr><td>w.wait_variable(var)</td><td>var zu setzende Variable</td><td>-</td><td>Wartet, bis der Wert der Variablen var gesetzt wurde, var muss sich dabei nicht ändern</td></tr>
+    <tr><td>w.wait_visibility(widget)</td><td>widget auf das gewartet wird</td><td>-</td><td>Wartet, bis Widget sichtbar wird</td></tr>
+    <tr><td>w.wait_window(widget)</td><td>widget auf das gewartet wird</td><td>-</td><td>Wartet, bis Fenster entfernt (destroy) wurde</td></tr>
+    </table>
+    </section>
+
+
+    <section>
+    <h3 id="Sonstiges">Sonstiges</h3>
+    <table>
+    <tr><th>Methode</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>w.bell()</td><td>-</td><td>-</td><td>Lässt auf manchen Systemen einen Klang ertönen</td></tr>
+    <tr><td>w.bindtags(tagList=None)<td colspan="3" class="todo">TODO</td></tr>
+    <tr><td>w.destroy()</td><td>-</td><td>-</td><td>Entfernt ein Widget und enthaltene Elemente</td></tr>
+    <tr><td>w.identify(x, y)</td><td>x, y: Position auf einem Widget</td><td>Beschreibung oder leeren String</td><td>Gibt Beschreibung eines Elementes an der Stelle zurück oder einen leeren String</td></tr>
+    <tr><td>w.instate(stateSpec, callback=None, *args, **kw)</td><td>stateSpec: siehe w.state(…), callback: Callback</td><td>Boolean</td><td>callback wird aufgerufen, wenn der Widget-State dem stateSpec entspricht. In dem Fall wird auch True zurückgegeben, sonst False. *args und **kw werden der Callback mitgegeben</td></tr>
+    <tr><td>w.nametowidget(name)</td><td>name: der Pfad (TCL) des Widgets</td><td>Widget</td><td>Gibt das Widget aus, das zum Pfad gehört. KeyError, wenn der Pfad nicht gefunden wurde</td></tr>
+    <tr><td>w.register(function)<td colspan="3" class="todo">TODO</td></tr>
+    <tr><td>w.state(stateSpec=None)</td><td>stateSpec: '!disabled', 'focus', 'pressed', '!pressed', 'selected', …</td><td>State eines Widgets</td><td>
+    </table>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+	<ul>
+		<li><a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_widget.html">
+			https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_widget.html</a></li>
+		<li><a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/grab.html">
+			https://www.tcl.tk/man/tcl8.7/TkCmd/grab.html</a></li>
+		<li><a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/winfo.html">
+			https://www.tcl.tk/man/tcl8.7/TkCmd/winfo.html</a></li>
+        <li><a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TclCmd/after.html">
+			https://www.tcl.tk/man/tcl8.7/TclCmd/after.html</a></li>
+	</ul>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a></p>
+    </footer>
+  </body>
+</html>

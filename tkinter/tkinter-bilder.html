@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - Bilder</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - Bilder</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navcurrent">Bilder<ul class="navul">
+		<li class="navli"><a class="nava" href="#PhotoImage">Bilder mit PhotoImage</a></li>
+		<li class="navli"><a class="nava" href="#BitmapImage">Bilder mit BitmapImage</a></li>
+		<li class="navli"><a class="nava" href="#PIL">Bilder mit PIL</a></li>
+	</ul></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2 id="PhotoImage">Bilder mit PhotoImage</h2>
+    <p>Bilder im Format GIF, PNG und PPM/PGM</p>
+
+    <section>
+    <h3>Ein PhotoImage erzeugen</h3>
+    <p><code class="language-python">img = tk.PhotoImage(name=None, optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>data</td><td>Die Bilddaten als String</td></tr>
+    <tr><td>format</td><td>Name des Formats, wenn die Daten per
+        <code>data</code> übergeben wurden</td></tr>
+    <tr><td>file</td><td>Dateiname der Bilddatei</td></tr>
+    <tr><td>gamma</td><td>Gamma-Wert zur Farbkorrektur</td></tr>
+    <tr><td>height, width</td><td>Größe des angezeigten Bildes, <code>0</code> (default)
+        bedeutet: die originale Bildgröße. Es wird lediglich ein Ausschnitt des Bildes
+        angezeigt, das Bild wird nicht gezoomt oder gekachelt</td></tr>
+    <tr><td>palette</td><td>Angabe der Auflösung in durch "/" (Schrägstriche)
+        nach Farben getrennter Form</td></tr>
+    </table>
+    <p>Das folgende Programm stellt ein PhotoImage in einem Label vor:</p>
+    <a href="img/t-bilder/PI-label-simple-1.png" target="_blank"><img src="img/t-bilder/PI-label-simple-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('200x200')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.img = tk.PhotoImage(file="test.png")
+        label = ttk.Label(image=self.img)
+        label.pack()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>PhotoImage-Methoden</h3>
+    <table>
+    <tr><th>Methode</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>img.blank()</td><td>-</td><td>-</td><td>Entfernt alle Bilddaten, das Bild wird vollständig transparent</td></tr>
+    <tr><td>img.copy()</td><td>-</td><td>PhotoImage</td><td>Kopiert Das Image</td></tr>
+    <tr><td>img.data(…)</td><td colspan="3" class="todo">Zur Zeit nicht unterstützt</td></tr>
+    <tr><td>img.get(x, y)</td><td>x, y: Bildpunkt</td><td>3-Tupel</td><td>Farbinformation (RGB) am Bildpunkt</td></tr>
+    <tr><td>img.height(), img.width()</td><td>-</td><td>Ganze Zahl</td><td>aktuelle Größe des Bildes</td></tr>
+    <tr><td>img.put(data, to)</td><td>data: Farbcodes als Liste der Form <code>{red #ff0000 …}</code>, to ist eine Position oder ein Rechteck</td><td>-</td><td>Färbt Teile einer Zeile oder ein Rechteck des Bildes ein</td></tr>
+    <tr><td>img.read(…)</td><td colspan="3" class="todo">Zur Zeit nicht unterstützt</td></tr>
+    <tr><td>img.redither(…)</td><td colspan="3" class="todo">Zur Zeit nicht unterstützt</td></tr>
+    <tr><td>img.subsample(x, y)</td><td>x, y: Pixel zum Überspringen (jedes x-te Pixel). Ist <code>y</code> nicht angegeben, dann ist <code>y=x</code></td><td>PhotoImage</td><td>Gibt ein neues PhotoImage zurück, bei dem nur jeder x-te und y-te Bildpunkt berücksichtigt wird. Das Bild wird auf diese Weise verkleinert.</td></tr>
+    <tr><td>img.transparency_get(x, y)</td><td>x, y: Bildpunkt</td><td><code>True</code>, wenn das Bild am Bildpunkt transparent ist</td><td>Liefert die Transparenz an einem Bildpunkt als Boolean</td></tr>
+    <tr><td>img.transparency_set(x, y, value)</td><td>x, y: Bildpunkt, value: <code>True</code>, wenn der Bildpunkt transparent sein soll</td><td>-</td><td>Setzt die Transparenz für einen Bildpunkt</td></tr>
+    <tr><td>img.type()</td><td>-</td><td>'photo' oder 'bitmap'</td><td>Liefert den Typ des Bildes als String</td></tr>
+    <tr><td>img.write(filename, format=None, from_coords=None)</td><td>Dateiname, Formatangaben, from_coords: Position oder Rechteck: (x1, y1, x2, y2)</td><td>-</td><td>Schreibt das Bild in eine Datei. Bild kann dabei beschnitten werden: Entweder von einer Koordinate bis in die untere rechte Ecke oder ein Rechteck wird angegeben.</td></tr>
+    <tr><td>img.zoom(x, y)</td><td>x, y: Zoomfaktoren. Ist <code>y</code> nicht angegeben, dann ist <code>y=x</code></td><td>PhotoImage</td><td>Gibt ein gezoomtes PhotoImage zurück</td></tr>
+    </table>
+	<p>Dazu werden die <a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a>: <code>cget(…)</code> und <code>configure(…)</code> unterstützt.</p>
+    <p>Das folgende Programm zeigt ein gezoomtes PhotoImage:</p>
+    <a href="img/t-bilder/PI-zoomed-img-1.png" target="_blank"><img src="img/t-bilder/PI-zoomed-img-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('200x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.img = tk.PhotoImage(file='test.png')
+        self.img2 = self.img.zoom(1, 2)
+        label = ttk.Label(image=self.img)
+        label.pack()
+        label2 = ttk.Label(image=self.img2)
+        label2.pack()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+
+
+    <p>Das folgende Programm färbt ein Rechteck ein:</p>
+    <a href="img/t-bilder/PI-put-img-1.png" target="_blank"><img src="img/t-bilder/PI-put-img-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('200x200')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.img = tk.PhotoImage(file='test.png')
+        self.img.put("{#00ff00}", to=(0, 0, 10, 10))
+        label = ttk.Label(image=self.img)
+        label.pack()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+
+    <p>Das folgende Programm speichert eine Bilddatei in einer anderen Datei ab, das Bild wird dabei beschnitten:</p>
+    <a href="img/t-bilder/PI-write-img-1.png" target="_blank"><img src="img/t-bilder/PI-write-img-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('200x200')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.img = tk.PhotoImage(file='test.png')
+        self.img.write('test2.png', from_coords=(50, 5))
+        self.img2 = tk.PhotoImage(file='test2.png')
+        label = ttk.Label(image=self.img2)
+        label.pack()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+	</section>
+
+
+	<h2 id="BitmapImage">Bilder mit BitmapImage</h2>
+    <p>Bilder im zweifarbigen Format XBM, bei dem ein Bildpunkt entweder gesetzt oder nicht gsetzt ist.</p>
+
+
+    <section>
+    <h3>Ein BitmapImage erzeugen</h3>
+    <p><code class="language-python">img = tk.BitmapImage(name=None, optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>background</td><td>Hintergrundfarbe</td></tr>
+    <tr><td>data</td><td>Bilddaten als String im XBM-Format</td></tr>
+    <tr><td>file</td><td>Dateiname der Bilddatei im XBM-Format</td></tr>
+    <tr><td>foreground </td><td>Vordergrundfarbe</td></tr>
+    <tr><td>maskdata</td><td>Bildmaske</td></tr>
+    <tr><td>maskfile</td><td>Bildmaske als Datei, muss ebenfalls im XBM-Format vorliegen</td></tr>
+    </table>
+    <p>Das folgende Programm stellt ein BitmapImage in einem Label vor:</p>
+    <a href="img/t-bilder/BI-label-simple-1.png" target="_blank"><img src="img/t-bilder/BI-label-simple-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('200x200')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.img = tk.BitmapImage(file='test.xbm')
+        label = ttk.Label(image=self.img)
+        label.pack()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+	</section>
+
+
+	<h2 id="PIL">Bilder mit PIL</h2>
+    <p>PIL/Pillow ist eine Grafikbibliothek, mit der man Bilder manipulieren kann. Es
+        können Bilder in sehr vielen pixelbasierten Grafikformaten geladen werden,
+        diese Bilder lassen sich anzeigen, man kann in ihnen malen, sie transformieren,
+        und in anderen Formaten ausgeben.</p>
+
+
+    <section>
+    <h3>Bilder mit PIL darstellen</h3>
+    <p><code class="language-python">img = ImageTk.PhotoImage(image=None, size=None, optionen)</code></p>
+    <p>Die Klasse <code>ImageTk.PhotoImage</code> kann als Ersatz für die entsprechenden 
+        <code>PhotoImage</code>- und <code>BitmapImage</code>-Klassen in Tkinter angesehen werden.
+        Es kann mit dem Parameter <code>image</code> ein anderes Image dargestellt werden, mit 
+        <code>file</code> kann eine Datei geladen werden.</p>
+    <p>Das folgende Programm lädt entsprechend einem früheren Beispiel ein Bild:</p>
+    <pre><code class="language-python">import tkinter  as tk
+from tkinter import ttk
+from PIL import Image, ImageDraw, ImageTk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('200x200')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.img = ImageTk.PhotoImage(file='test.png')
+        label = ttk.Label(image=self.img)
+        label.pack()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+	
+    <p>Folgendes Beispiel erzeugt ein Mandelbrot-Fraktal. Es wird dazu mit <code>Image.new(…)</code> ein
+        PIL-Image erzeugt. Dieses Image wird mit <code>ImageTk.PhotoImage(…)</code> in ein kompatibles
+        tkinter-Image eingebunden. Dieses PhotoImage kann nun in einem Canvas oder anderem Widget 
+        dargestellt werden.
+    <p>Damit man auf dem Image malen kann, muss der Umweg über ein <code>drawImage</code> genanntes 
+        Image vom Typ <code>ImageDraw.Draw(…)</code> gegangen werden.</p>
+    <a href="img/t-bilder/PIL-mandelbrot-1.png" target="_blank"><img src="img/t-bilder/PIL-mandelbrot-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">""" Mandelbrot """
+import tkinter  as tk
+from tkinter import ttk
+from PIL  import Image, ImageDraw, ImageTk
+
+class Mandelbrot(tk.Tk):
+    def __init__(self, width, height):
+        super().__init__()
+        self.width = width
+        self.height = height
+        self.geometry('400x400')
+        self.title('Mandelbrot')
+        # config for rows, columns
+        self.rowconfigure(0, weight=10)
+        self.rowconfigure(1, weight=0)
+        self.columnconfigure(0, weight=10)
+        self.columnconfigure(1, weight=0)
+        # canvas
+        self.canvas = tk.Canvas(
+            self, bd=1, relief=tk.SUNKEN, width=200, height=200,
+            scrollregion=(0, 0, self.width, self.height),
+            background='white')
+        self.canvas.grid(column=0, row=0, sticky=tk.E+tk.W+tk.N+tk.S)
+        # scrollbars for canvas
+        scrollH = ttk.Scrollbar(self, orient=tk.HORIZONTAL,
+                                command=self.canvas.xview)
+        scrollH.grid(column=0, row=1, sticky=tk.E+tk.W)
+        scrollV = ttk.Scrollbar(self, orient=tk.VERTICAL,
+                                command=self.canvas.yview)
+        scrollV.grid(column=1, row=0, sticky=tk.N+tk.S)
+        self.canvas['xscrollcommand'] = scrollH.set
+        self.canvas['yscrollcommand'] = scrollV.set
+        #
+        # run
+        self.image = Image.new('RGB', (self.width, self.height))
+        self.photoImage = ImageTk.PhotoImage(self.image)
+        self.drawImage = ImageDraw.Draw(self.image)
+        self.canvas.create_image(0, 0,
+                                 anchor=tk.NW,
+                                 image=self.photoImage)
+        # calculate region of image
+        self.scaleXMin = int(self.width * 3 // 4)
+        self.scaleXMax = self.width - self.scaleXMin
+        self.scaleXDivider = self.scaleXMax
+        self.scaleYMin = int(self.height // 2)
+        self.scaleYMax = self.scaleYMin
+        self.scaleYDivider = self.scaleYMax // 2
+        
+        self.makeIteration()
+
+    def mandelbrotIteration(self, x, y, count):
+        z0 = complex(0, 0)
+        c = complex(x, y)
+        for n in range(0, count):
+            z = z0 * z0 + c
+            z0 = z
+            if abs(z) > 10:
+                return n
+        return count
+
+    def plotPixel(self, x, y, value):
+        v = 255 - value * 20    # rgb color value
+        color = (v, v, v)       # set color to grey mode
+        self.drawImage.point((x+self.scaleXMin, y+self.scaleYMin),
+                             fill=color)
+
+    def makeIteration(self):
+        for x in range(-self.scaleXMin, self.scaleXMax+1):
+            for y in range(-self.scaleYMin, self.scaleYMax+1):
+                xi = x / self.scaleXDivider
+                yi = y / self.scaleYDivider
+                count = self.mandelbrotIteration(xi, yi, 10)
+                self.plotPixel(x, y, count)
+        self.photoImage.paste(self.image)
+
+if __name__ == '__main__':
+    app = Mandelbrot(500, 500)
+    app.mainloop()</code></pre>
+	</section>
+
+
+	<h2>Sonstige Image-Funktionen</h2>
+    <ul>
+    <li>image_names(): Listet die bekannten Bildnamen auf. Ein Bildname ist beispielsweise
+        der erste Parameter vom PhotoImage- oder BitmapImage-Konstruktor</li>
+    <li>image_types(): Listet die verfügbaren Typen von Imageklassen in tk auf:
+        <code>('photo', 'bitmap')</code></li>
+    </ul>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <ul>
+    <li>BitmapImage:  <a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/bitmap.html">
+        https://www.tcl.tk/man/tcl8.7/TkCmd/bitmap.html</a></li>
+    <li>PhotoImage: <a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/photo.html">
+        https://www.tcl.tk/man/tcl8.7/TkCmd/photo.html</a></li>
+    <li><a class="extern" target="_blank" href="https://github.com/python/cpython/blob/main/Lib/tkinter/__init__.py">
+        https://github.com/python/cpython/blob/main/Lib/tkinter/__init__.py</a></li>
+    <li>Bild, Schaltkreis: 
+        <a class="extern" target="_blank" href="https://upload.wikimedia.org/wikipedia/commons/5/51/Static_CMOS_Inverter.png">
+        https://upload.wikimedia.org/wikipedia/commons/5/51/Static_CMOS_Inverter.png</a></li>
+    <li>Installation PIL/Pillow unter diversen Betriebssystemen: 
+        <a class="extern" target="_blank" href="https://blog.finxter.com/python-install-pil/">
+        https://blog.finxter.com/python-install-pil/</a></li>
+    <li>Dokumentation PIL/Pillow (Python Image Library): 
+        <a class="extern" target="_blank" href="https://pillow.readthedocs.io/en/stable/">
+        https://pillow.readthedocs.io/en/stable/</a></li>
+    <li>Von PIL/Pillow unterstützte Dateiformate: 
+        <a class="extern" target="_blank" href="https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html">
+        https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html</a></li>
+    </ul>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a> </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - ttk.Combobox</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - ttk.Combobox</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navcurrent">Combobox</li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>ttk.Combobox</h2>
+	<p>Textfeld mit einer Drop-Down-Liste</p>
+
+    <section>
+    <h3>ttk.Combobox erzeugen</h3>
+    <p><code class="language-python">cb = ttk.Combobox(parent, Optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>exportselection</td><td><code>tk.YES</code>: Ausgewählter Text kann per
+        <code>STRG-C</code> ins Clipboard exportiert werden (default)</td></tr>
+    <tr><td>justify</td><td>Ausrichtung des Textes: <code>tk.LEFT</code>,
+		<code>tk.CENTER</code> oder <code>tk.RIGHT</code></td></tr>
+    <tr><td>height</td><td>Höhe der Listbox in Zeilen</td></tr>
+    <tr><td>postcommand</td><td>Funktion, die vor der Anzeige der Listbox aufgerufen wird</td></tr>
+    <tr><td>state</td><td><code>'readonly'</code>: Werte sind im Entry nicht editierbar,
+		<code>'normal'</code>: Werte sind editierbar (default) oder
+        <code>'disabled'</code>: Combobox wird grau hinterlegt, keine Interaktion möglich</td></tr>
+    <tr><td>textvariable</td><td>Variable, die den Inhalt der Auswahl festhält</td></tr>
+    <tr><td>values</td><td>Tupel von möglichen Werten</td></tr>
+    <tr><td>width</td><td>Breite der Combobox in mittlerer Zeichenbreite</td></tr>
+    </table>
+    <p>ttk.Combobox kennt die <a target="_blank" href="tkinter-optionen.html">Standardoptionen</a>: class_,
+        cursor, placeholder, style und takefocus</p>
+    <p>Das folgende Programm stellt eine Combobox dar und reagiert auf die Auswahl:</p>
+	<a href="img/ttk-combobox/combobox1.png" target="_blank"><img src="img/ttk-combobox/combobox1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x200")
+        self._createWidgets()
+
+    def _createWidgets(self):
+
+        self.svar = tk.StringVar()
+        fruits = ('Banane', 'Pfirsich', 'Zitrone')
+        self.svar = tk.StringVar(value=fruits[0])
+        cBox = ttk.Combobox(self,
+                            textvariable=self.svar,
+                            values=fruits,
+                            postcommand=self._onPost,
+                            state='readonly')
+        cBox.pack()
+        cBox.bind('&lt;&lt;ComboboxSelected>>', self._onSelectCombo )
+
+    def _onPost(self):
+        print('Listbox offen...')
+
+    def _onSelectCombo(self, event):
+        print(self.svar.get())
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Methoden</h3>
+    <p>Combobox kennt folgende Methoden:</p>
+    <table>
+    <tr><th>Methode</th><th>Beschreibung</th></tr>
+    <tr><td>cb.current(index)</td><td>Die Combobox markiert den Wert aus <code>values</code>,
+		die dem <code>index</code> entspricht</td></tr>
+    <tr><td>cb.current()</td><td>Es wird ein Index von <code>values</code> ausgegeben,
+		oder <code>-1</code></td></tr>
+    <tr><td>cb.get()</td><td>Aktueller Wertwird zurückgeliefert</td></tr>
+    <tr><td>cb.set(value)</td><td>Setzt den Wert der Combobox auf <code>value</code>.
+		Dieser braucht nicht in <code>values</code> vorzukommen. </td></tr>
+    </table>
+    <p>Es werden die folgenden allgemeinen Widgetmethoden unterstützt:</p>
+    <ul>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a>: <code>cget(…)</code> und <code>configure(…)</code></li>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Sonstiges">Sonstige Methoden</a>: <code>identify(…)</code>, <code>instate(…)</code> und <code>state(…)</code></li>
+    </ul>
+    <p>Combobox kennt darüberhinaus die <a target="_blank" href="tkinter-ttk-entry.html#EntryMethoden">Entry-Methoden</a>.</p>
+    </section>
+
+
+    <section>
+    <h3>Virtuelle Ereignisse</h3>
+    <p>Combobox kennt das virtuelle Ereignis '&lt;&lt;ComboboxSelected>>' -- ein Element wird ausgewählt.</p>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_combobox.html">
+        https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_combobox.html</a>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a> </p>
+    </footer>
+  </body>
+</html>

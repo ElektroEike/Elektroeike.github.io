@@ -1,0 +1,6 @@
+<a href="img/ttk-button/ersterbutton.png" target="_blank"><img src="img/ttk-button/ersterbutton.png" alt="Bild der Anwendung" class="bild" /></a>
+
+Suchen (Gruppe geklammert):
+<img src=\"([^\"]*)\" style="width:200px" alt="Bild der Anwendung" />
+Ersetzen (Gruppe ist \1):
+<a href="\1" target="_blank"><img src="\1" alt="Bild der Anwendung" class="bild" /></a>

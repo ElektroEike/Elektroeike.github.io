@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - tk.Listbox</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - tk.Listbox</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navcurrent">Listbox</li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>tk.Listbox</h2>
+
+
+    <section>
+    <h3>tk.Listbox erzeugen</h3>
+    <p><code class="language-python">lb = tk.Listbox(parent, Optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td colspan="2" class="headline">allgemeine tk-Widget-Optionen</td></tr>
+    <tr><td>background</td><td>Normale Hintergrundfarbe</td></tr>
+    <tr><td>disabledforeground</td><td>Vordergrundfarbe, wenn das Widget den Status <code>tk.DISABLED</code> hat</td></tr>
+    <tr><td>exportselection</td><td><code>tk.YES</code>: Ausgewählter Text kann per
+        <code>STRG-C</code> ins Clipboard exportiert werden (default)</td></tr>
+    <tr><td>highlightbackground, highlightcolor, highlightthickness</td><td>Einstellungen für den 
+        <a target="_blank" href="tkinter-optionen.html#Highlightoptionen">Highlightrahmen</a></td></tr>
+    <tr><td>selectbackground</td><td>Hintergrundfarbe, wenn Elemente ausgewählt werden</td></tr>
+    <tr><td>selectborderwidth</td><td>Rahmenbreite, wenn Elemente ausgewählt werden</td></tr>
+    <tr><td>selectforeground</td><td>Vordergrundfarbe, wenn Elemente ausgewählt werden</td></tr>
+    <tr><td>setgrid</td><td><code>tk.YES</code>: Widget verändert seine Größe in Vielfachen der Zeichen- oder Zeilengröße</td></tr>
+    <tr><td colspan="2" class="headline">spezielle tk.Listbox-Optionen</td></tr>
+    <tr><td>activestyle</td><td><code>'dotbox'</code>, <code>'none'</code> oder <code>'underline'</code>, beschreibt, wie aktivierte Elemente dargestellt werden sollen</td></tr>
+    <tr><td>height</td><td>Höhe der Listbox in Zeilen</td></tr>
+    <tr><td>listvariable</td><td>Inhalt der Listbox als Liste. Geänderte Werte werden von der Listbox übernommen.</td></tr>
+    <tr><td>selectmode</td><td>Möglichkeiten der Auswahl:
+        <code>tk.SINGLE</code>: Nur eine Zeile kann ausgewählt werden,
+        <code>tk.BROWSE</code>: nur eine Zeile kann ausgewählt werden, diese kann aber verschoben werden,
+        <code>tk.MULTIPLE</code>: Mehrfachauswahl, kann getoggelt werden oder
+        <code>tk.EXTENDED</code>: Mehrfachauswahl</td></tr>
+    <tr><td>state</td><td><code>tk.NORMAL</code> oder <code>tk.DISABLED</code></td></tr>
+    <tr><td>width</td><td>Breite in Vielfachen des Zeichens 0 (Null)</td></tr>
+    </table>
+    <p>tk.Listbox kennt außerdem die <a target="_blank" href="tkinter-optionen.html">Standardoptionen</a>: borderwidth, cursor, font,
+        foreground, justify, relief, takefocus, xscrollcommand und yscrollcommand</p>
+    <p>Das folgende Programm stellt eine Listbox vor und reagiert auf Auswahl. Der Inhalt der Listbox ist der
+        Inhalt des Moduls tkinter. </p>
+    <a href="img/tk-listbox/listbox-1.png" target="_blank"><img src="img/tk-listbox/listbox-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x500')
+        self.grid_columnconfigure(0, weight = 1)
+        self.grid_rowconfigure(0, weight = 1)
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.lbvar = tk.StringVar(value=dir(tk))
+        self.lb = tk.Listbox(self, activestyle='dotbox',
+                             selectbackground='green',
+                             selectmode=tk.EXTENDED,
+                             listvariable=self.lbvar)
+        self.lb.grid(row=0, column=0, sticky=tk.N+tk.S+tk.W+tk.E)
+        self.lb.bind('&lt;&lt;ListboxSelect>>', self._onSelect)
+        # scrollbars
+        self.scrollY = ttk.Scrollbar(self, orient=tk.VERTICAL,
+                                     command=self.lb.yview)
+        self.scrollY.grid(row=0, column=1, sticky=tk.N+tk.S)
+        self.scrollX = ttk.Scrollbar(self, orient=tk.HORIZONTAL,
+                                     command=self.lb.xview)
+        self.scrollX.grid(column=0, row=1, sticky=tk.W+tk.E)
+        self.lb['xscrollcommand'] = self.scrollX.set
+        self.lb['yscrollcommand'] = self.scrollY.set
+
+    def _onSelect(self, event):
+        selectedRows = self.lb.curselection()
+        print('{')
+        for lineNum in selectedRows:
+            print('selected:', lineNum, self.lb.get(lineNum) )
+        print('}')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Listbox-Methoden</h3>
+    <p>Indextyp:</p>
+    <ul>
+    <li>Zahl: numerischer Index der Reihe, startet mit 0</li>
+    <li><code>active</code>: Das Element mit der Positionsmarkierung. Die Positionsmarkierung ist nicht das Highlight.
+        Die Darstellung dieser Positionsmarkierung kann mit der Option <code>activestyle</code> angepasst werden und
+        ist nur sichtbar, wenn die Listbox den Eingabefokus hat</li>
+    <li><code>anchor</code>: Ankerpunkt bei Auswahl</li>
+    <li><code>end</code>: das letzte Element in der Liste, oder eine gedachte Position nach dem Ende der Liste</li>
+    <li><code>@x,y</code>: Das nächste Element zur Pixelposition</li>
+    </ul>
+
+    <table>
+    <tr><th>Funktion</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>    <tr><td>lb.activate(index)</td><td><code>index</code>: Indextyp</td><td>-</td><td>Wählt eine Zeile per <code>index</code> aus</td></tr>    <tr><td>lb.bbox(index)</td><td><code>index</code>: Indextyp</td><td>4-Tupel</td><td>Gibt ein Rechteck zurück, der die beschriebene sichtbare Zeile umfasst, oder <code>None</code></td></tr>    <tr><td>lb.cget(…)</td><td colspan="3" class="see">Siehe <a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a></td></tr>	<tr><td>lb.configure(…)</td><td colspan="3" class="see">Siehe <a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a></td></tr>
+    <tr><td>lb.curselection()</td><td>-</td><td>Tupel</td><td>Gibt ein Tupel zurück, das alle aktivierten Zeilennummern umfasst</td></tr>
+    <tr><td>lb.delete(first, last=None)</td><td><code>first</code>, <code>last</code>: Indextyp</td><td>-</td><td>Löscht von <code>first</code> bis <code>last</code> einschließlich. Ohne <code>last</code> wird nur <code>first</code> gelöscht</td></tr>    <tr><td>lb.get(first, last=None)</td><td><code>first</code>, <code>last</code>: Indextyp</td><td>Tupel</td><td>Gibt den Text der Zeilen <code>first</code> bis <code>last</code> zurück, oder nur <code>first</code></td></tr>    <tr><td>lb.index(i)</td><td><code>i</code>: Indextyp</td><td>-</td><td>Positioniert die Liste so, dass nach Möglichkeit Zeile <code>i</code>zuoberst steht</td></tr>    <tr><td>lb.insert(index, *elements)</td><td><code>index</code>: Indextyp, <code>*elements</code>: Liste von Elementen</td><td>-</td><td>Fügt die Elemente vor dem <code>index</code> an</td></tr>    <tr><td>lb.itemcget(index, option), lb.itemconfigure(index, option=value, …)</td><td><code>index</code>: Indextyp, <code>option</code>: eine sich auf Zeilen beziehende Option</td><td>Wert der Option</td><td>Fragt die Zeilenoption ab oder setzt sie. Zeilenoptionen sind: <code>background</code>, <code>foreground</code>, <code>selectbackground</code>, <code>selectforeground</code></td></tr>    <tr><td>lb.nearest(y)</td><td><code>y</code>: Y-Koordinate</td><td>Index</td><td>Fragt den Index der Zeile ab, die am nächsten zu <code>y</code> liegt</td></tr>    <tr><td>lb.scan_dragto(x, y), lb.scan_mark(x, y)</td><td><code>x, y</code>: Koordinaten</td><td>-</td><td>Scrollen der List durch Bewegen mit der Maus: Mausknopf wird an <code>scan_mark(…)</code> gebunden, <code>&lt;Motion></code> an <code>scan_dragto(…)</code></td></tr>    <tr><td>lb.see(index)</td><td><code>index</code>: Indextyp</td><td>-</td><td>Positioniert die Liste so, dass <code>index</code> zu sehen ist</td></tr>    <tr><td>lbox.selection_anchor(index)</td><td><code>index</code>: Indextyp</td><td>-</td><td>Legt den Auswahl-Anker fest, ein Index, der als Referenz für weitere Auswahl herangeogen wird. Dieser Anker kann als Index per <code>tk.ANCHOR</code> referenziert werden</td></tr>    <tr><td>lb.selection_clear(first, last=None)</td><td><code>first</code>, <code>last</code>: Indextyp</td><td>-</td><td>Deselektiert von <code>first</code> bis <code>last</code> einschließlich</td></tr>    <tr><td>lb.selection_includes(index)</td><td><code>index</code>: Indextyp</td><td>1 oder 0</td><td>Gibt <code>1</code> zurück, wenn die Zeile <code>index</code> aktuell selektiert ist</td></tr>    <tr><td>lb.selection_set(first, last=None)</td><td><code>first</code>, <code>last</code>: Indextyp</td><td>-</td><td>Wählt alle Zeilen von <code>first</code> bis <code>last</code> einschließlich aus</td></tr>    <tr><td>lb.size()</td><td>-</td><td>Zahl</td><td>Gibt Anzahl der Zeilen zurück</td></tr>    <tr><td>lb.xview()</td><td>-</td><td>-</td><td>Verbindung mit <code>command</code> der horizontalen Scrolleiste</td></tr>    <tr><td>lb.xview_moveto(fraction)</td><td><code>fraction</code>: 0…1</td><td>-</td><td>Scrollt horizontal zur relativen Position <code>fraction</code></td></tr>    <tr><td>lb.xview_scroll(number, what)</td><td><code>n</code>: Zahl, <code>what</code>:<code>tk.UNITS</code> oder <code>tk.PAGES</code></td><td>-</td><td>Scrollt Listbox links/rechts um <code>n</code> <code>what</code>.</td></tr>    <tr><td>lb.yview()</td><td colspan="3" class="see"> Wie <code>lb.xview()</code></td></tr>    <tr><td>lb.yview_moveto(fraction)</td><td colspan="3" class="see">Wie <code>lb.xview_moveto(fraction)</code></td></tr>    <tr><td>lb.yview_scroll(number, what)</td><td colspan="3" class="see">Wie <code>lb.xview_scroll(number, what)</code></td></tr>
+    </table>
+
+    <p>Das folgende Programm färbt nach Knopfdruck jede zweite Zeile der Listbox rot ein:</p>
+    <a href="img/tk-listbox/listbox-streifen-1.png" target="_blank"><img src="img/tk-listbox/listbox-streifen-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x500')
+        self.grid_columnconfigure(0, weight = 1)
+        self.grid_rowconfigure(0, weight = 1)
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.lbvar = tk.StringVar(value=dir(tk))
+        self.lb = tk.Listbox(self, activestyle='dotbox',
+                             selectbackground='green',
+                             selectmode=tk.MULTIPLE,
+                             listvariable=self.lbvar)
+        self.lb.grid(row=0, column=0, sticky=tk.N+tk.S+tk.W+tk.E)
+        # scrollbars
+        self.scrollY = ttk.Scrollbar(self, orient=tk.VERTICAL,
+                                     command=self.lb.yview)
+        self.scrollY.grid(row=0, column=1, sticky=tk.N+tk.S)
+        self.scrollX = ttk.Scrollbar(self, orient=tk.HORIZONTAL,
+                                     command=self.lb.xview)
+        self.scrollX.grid(column=0, row=1, sticky=tk.W+tk.E)
+        self.lb['xscrollcommand'] = self.scrollX.set
+        self.lb['yscrollcommand'] = self.scrollY.set
+
+        ttk.Button(self, text='klick', command=self._onclick).grid(row=2)
+
+    def _onclick(self):
+        for index in range(0, self.lb.size()):
+            if index % 2 == 0:
+                self.lb.itemconfigure(index, background='red')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Virtuelle Ereignisse</h3>
+    <p>tk.Listbox kennt das virtuelle Ereignis '&lt;&lt;ListboxSelect>>' -- ein Element wird selektiert.</p>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <a class="extern" target="_blank" href="https://tcl.tk/man/tcl8.7/TkCmd/listbox.html">
+        https://tcl.tk/man/tcl8.7/TkCmd/listbox.html</a>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a> </p>
+    </footer>
+  </body>
+</html>

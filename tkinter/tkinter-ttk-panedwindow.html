@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - ttk.PanedWindow</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - ttk.PanedWindow</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navcurrent">PanedWindow</li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>ttk.PanedWindow</h2>
+
+
+    <section>
+    <h3>ttk.PanedWindow erzeugen</h3>
+    <p><code class="language-python">pw = ttk.PanedWindow(parent, Optionen)</code></p>
+    <p>PanedWindow kennt die Optionen:</p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>height, width</td><td>Höhe/Breite in Pixel</td></tr>
+    <tr><td>orient</td><td>Anordnung der Panes: <code>tk.HORIZONTAL</code>: Panes werden von links nach rechts angeordnet,
+        <code>tk.VERTICAL</code>: von oben nach unten</td></tr>
+    </table>
+    <p>ttk.PanedWindow kennt die
+        <a target="_blank" href="tkinter-optionen.html">Standardoptionen</a>:
+        class_, cursor, style und takefocus</p>
+    <p>Dazu kommt die Paneoption für jedes Teilfenster: <code>weight</code>:
+        relativer Stretchfaktor für das Teilfenster, kann bei <code>pw.add(…)</code>
+        angegeben werden.</p>
+
+    <p>Das folgende Programm stellt ein PaneWindow vor, bei dem zwei Frames von links nach rechts angeordnet werden:</p>
+    <a href="img/ttk-panedwindow/panedwindow1.png" target="_blank"><img src="img/ttk-panedwindow/panedwindow1.png" alt="Bild der Anwendung" class="bild" /></a>
+	<pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+from tkinter import font
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        pw = ttk.PanedWindow(self, orient=tk.HORIZONTAL)
+        pw.pack(fill=tk.BOTH, expand=tk.YES)
+
+        f = ttk.Frame(pw, relief=tk.SUNKEN)
+        ttk.Label(f, text='Oben', background='green').pack(fill=tk.BOTH, expand=tk.YES)
+        pw.add(f, weight=3)
+
+        g = ttk.Frame(pw, relief=tk.RAISED)
+        ttk.Label(g, text='Unten', background='blue').pack(fill=tk.BOTH, expand=tk.YES)
+        pw.add(g, weight=5)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>PanedWindow-Methoden</h3>
+    <table>
+    <tr><th>Methode</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>p.add(w, weight=N)</td><td><code>w</code>: Widget (bspw. ein Frame), <code>weight</code>: (optional) Gewichtung</td><td>-</td><td>Fügt ein neues Pane-Widget ein</td></tr>
+    <tr><td>p.forget(pane)</td><td><code>pane</code>: Index oder Widget</td><td>-</td><td>Entfernt ein Pane-Widget</td></tr>
+    <tr><td>p.insert(where, w, weight=N)</td><td><code>where</code>: Index, 'end' oder Widget,
+        <code>w</code>: neues Pane, <code>weight</code>: (optional) Gewichtung</td><td>-</td>
+        <td>Fügt ein neues Pane-Widget an einer Position ein</td></tr>
+    <tr><td>p.panes()</td><td>-</td><td>Liste</td><td>Liste der Child-Widgets in Tcl/Tk-Notation</td></tr>
+    <tr><td>p.sashpos(leiste, pos)</td><td>Nummer der Leiste / des Anfassers und eine Position
+		als ganze Zahl</td><td>Aktuelle Position als ganze Zahl</td>
+		<td>Verschiebt die Leiste, also den Trenner zwischen Panes, auf <code>pos</code>.</td></tr>
+    </table>
+
+	<p>Folgende allgemeine Widget-Methoden werden unterstüzt:</p>
+	<ul>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a>: <code>cget(…)</code> und <code>configure(…)</code></li>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Sonstiges">Sonstige Methoden</a>: <code>identify(…)</code>, <code>instate(…)</code> und <code>state(…)</code></li>
+    </ul>
+	</section>
+
+
+    <section>
+    <h3>Virtuelle Ereignisse</h3>
+    <p>PanedWindow kennt das virtuelle Ereignis '&lt;&lt;EnteredChild>>' -- Wechselt die Maus
+        von einem Pane zu einem anderen und kreuzt dabei den Trenner, dann wird dieses
+        Ereignis ausgelöst.</p>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_panedwindow.html">
+        https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_panedwindow.html</a>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a></p>
+    </footer>
+  </body>
+</html>

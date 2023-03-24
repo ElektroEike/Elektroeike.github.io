@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - ttk.Notebook</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - ttk.Notebook</h1>
+    </header>
+
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-optionen.html">Optionen</a></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navcurrent">Notebook</li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+
+    <main>
+
+
+    <h2>ttk.Notebook</h2>
+    
+
+    <section>
+    <h3>ttk.Notebook erzeugen</h3>
+    <p><code class="language-python">nb = ttk.Notebook(parent, Optionen)</code></p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>height, width</td><td>Höhe, Breite in Pixeln</td></tr>
+    <tr><td>padding</td><td>Extra Platz um das Notebook, Anzahl der Parameter bestimmen, 
+		welcher Platz gemeint ist, es sind maximal 4 Angaben erlaubt: 
+        links-oben-rechts-unten oder 
+        links-oben/unten-rechts oder horizontal-vertikal oder einfach nur Randplatz</td></tr>
+    </table>
+    <p>ttk.Notebook kennt die <a target="_blank" href="tkinter-optionen.html">Standardoptionen</a>: class_, 
+        cursor, style und takefocus</p>
+    </section>
+
+    
+    <section>
+    <h3>Notebook Tabs</h3>
+    <p>Die folgende Tabelle zeigt die Tab-Optionen. Diese werden bei <code>nb.add(…)</code> angegeben, siehe unten:</p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>state</td><td><code>tk.NORMAL</code>, <code>tk.HIDDEN</code> (versteckt) oder
+        <code>tk.DISABLED</code></td></tr>
+    <tr><td>sticky</td><td>Positionierung: Kombinationen aus <code>tk.N</code>, 
+        <code>tk.S</code>, <code>tk.W</code> und <code>tk.E</code></td></tr>
+    <tr><td>padding</td><td>Platz zwischen Notebook und Tab-Fenster</td></tr>
+    <tr><td>text</td><td>Titel des Tabs</td></tr>
+    <tr><td>image</td><td>Bild im Titel</td></tr>
+    <tr><td>compound</td><td>Anordnung von Text und Bild im Titelbereich, wenn beides vorhanden 
+        ist. Siehe <a target="_blank" href="tkinter-optionen.html#Labeloptionen">Labeloptionen</a></td></tr>
+    <tr><td>underline</td><td>Positiver ganzzahlige Index, der den zu unterstreichenden 
+        Buchstaben referenziert.</td></tr>
+    </table>
+    <p>Das folgende Programm stellt ein Notebook vor:</p>
+	<a href="img/ttk-notebook/notebook1.png" target="_blank"><img src="img/ttk-notebook/notebook1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('400x400')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        nb = ttk.Notebook(self)
+        nb.pack(fill=tk.BOTH, expand=tk.YES)
+        f = ttk.Frame(nb, relief=tk.SUNKEN)
+        ttk.Label(f, text='Erster Tab').pack(fill=tk.BOTH, expand=tk.YES)
+        nb.add(f, text='Test1', sticky=tk.S)
+        
+        f = ttk.Frame(nb, relief=tk.SUNKEN)
+        ttk.Label(f, text='Zweiter Tab').pack(fill=tk.BOTH, expand=tk.YES)
+        nb.add(f, text='Test2', sticky=tk.N+tk.S, padding=5)
+
+        f = ttk.Frame(nb, relief=tk.SUNKEN)
+        ttk.Label(f, text='Dritter Tab').pack(fill=tk.BOTH, expand=tk.YES)
+        nb.add(f, text='Test3', padding=5)
+        
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Notebook-Methoden</h3>
+    
+    <p>tabId:</p>
+    <ul>
+    <li>Nummer: ein Index zwischen 0 und der Anzahl der Tabs</li>
+    <li>name: Tabname (s. <code>nb.tabs()</code></li>
+    <li><code>@x,y</code>: Eine Position</li>
+    <li><code>'current'</code>: der aktuell hervorgehobene Tab</li>
+    <li><code>'end'</code>: nur für <code>nb.index()</code>, liefert dort die Anzahl der Tabs zurück</li>
+    </ul>
+    <table>
+    <tr><th>Funktion</th><th>Parameter</th><th>Rückgabewert</th><th>Beschreibung</th></tr>
+    <tr><td>nb.add(child, optionen)</td>
+        <td><code>child</code>: Widget wie etwa ein Frame, <code>optionen</code>: Tab-Optionen</td>
+        <td>-</td>
+        <td><code>child</code> wird als neuer Tab angehängt. War der Tab dort lediglich versteckt, dann 
+        wird er wieder an der ursprünglichen Stelle sichtbar</td></tr>
+    <tr><td>nb.enable_traversal()</td><td>-</td><td>-</td>
+        <td>Fügt ergänzende Tasturbindungen hinzu: Strg-Tab: Nächster Tab, 
+        Shift-Strg-Tab: vorheriger Tab, Alt-X wählt einen Tab aus, der mit <code>text</code> 
+        und <code>underline</code> entsprechend markiert wurde. x ist dann der unterstrichene Buchstabe</td></tr>
+    <tr><td>nb.forget(tabId)</td><td>tabId</td><td>-</td><td>Tab wird entfernt</td></tr>
+    <tr><td>nb.hide(tabId)</td><td>tabId</td><td>-</td>
+        <td>Versteckt den Tab mit gegebener ID. Kann mit <code>add(…)</code> wieder sichtbar gemacht werden</td></tr>
+    <tr><td>nb.identify(x, y)</td><td>Position</td><td>Name eines Tabs oder leerer String</td>
+        <td>Gibt den Namen eines Tabs an der Position zurück, oder einen leeren String. (<strong>TODO:</strong> Zur Zeit nicht vollständig unterstützt)</td></tr>
+    <tr><td>nb.index(tabId)</td><td>tabId</td><td>Index oder Anzahl</td>
+        <td>Zu einer gegebenen <code>tabId</code> wird der Index des Tabs zurückgegeben. 
+        Der String <code>'end'</code> fragt die Anzahl der Tabs ab</td></tr>
+    <tr><td>nb.insert(tabId, child,optionen)</td><td>tabId, child: Widget, optionen: Tab-Optionen</td>
+        <td>-</td><td>Fügt einen neuen Tab an einer angegebenen Position ein. 
+        Ist der Tab schon vorhanden, dann wird er an die entsprechnde Position verschoben.</td></tr>
+    <tr><td>nb.select(tabId)</td><td>tabId (optional)</td><td>Nichts oder Fenstername in Tcl/Tk Schreibweise</td>
+        <td>Ohne Argument: Fenstername wird zurückgegeben, Mit <code>tabId</code> wird dieser Tab ausgewählt</td></tr>
+    <tr><td>nb.tab(tabId, option=None, …)</td><td>tabId, option: Tab-Option als Optionsname oder 
+        Schlüssel-Wert-Paare</td>
+        <td>nichts, Wert oder Dictionary</td>
+        <td>Setzt Tab-Optionen für einen Tab. Kann eine Option abfragen: <code>option='text'</code> gibt 
+        den Wert zurück. Ohne Optionen/Keyword liefert die Funktion ein Dictionary mit allen 
+        gesetzten Optionen</td></tr>
+    <tr><td>nb.tabs()</td><td>-</td><td>Liste von Fensternamen in Tcl/Tk-Schreibweise</td>
+        <td>Gibt eine Liste von Tab-Fensternamen zurück. Dieses ist zur Zeit die einzige Möglichkeit, an den Tabnamen eines Tabs zu kommen.</td></tr>
+    </table>
+	<p>Es werden ferner die Standardmethoden:</p>
+	<ul>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Konfiguration">Konfigurationsmethoden</a>: <code>cget(…)</code> und <code>configure(…)</code></li>
+    <li><a target="_blank" href="tkinter-widgetmethoden.html#Sonstiges">Sonstige Methoden</a>: <code>identify(…)</code>, <code>instate(…)</code> und <code>state(…)</code></li>
+    </ul>
+	<p>unterstützt.</p>
+    </section>
+
+
+    <section>
+    <h3>Virtuelle Ereignisse</h3>
+    <p>Notebook kennt das virtuelle Ereignis '&lt;&lt;NotebookTabChanged>>' -- ein neuer Tab wurde ausgewählt.</p>
+    </section>
+
+
+    <h2>Referenzen</h2>
+
+
+    <section>
+    <h3>Siehe Auch</h3>
+    <a class="extern" target="_blank" href="https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_notebook.html">
+        https://www.tcl.tk/man/tcl8.7/TkCmd/ttk_notebook.html</a>
+    </section>
+
+
+    </main>
+
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a> </p>
+    </footer>
+  </body>
+</html>

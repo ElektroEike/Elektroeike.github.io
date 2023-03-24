@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkinter - Optionen</title>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="tkinter.css">
+    <script src="prism.js"></script>
+  </head>
+  <body class="grid-container">
+    <header>
+  	<h1>tkinter - Optionen</h1>
+    </header>
+    
+	<nav>
+	<h2>Inhalt</h2>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter.html">Startseite</a></li>
+    <li class="navli"><a class="nava" href="tkinter-grundlagen.html">Grundlagen</a></li>
+    <li class="navcurrent">Optionen<ul class="navul">
+		<li class="navli"><a class="nava" href="#Optionen">Optionen</a></li>
+		<li class="navli"><a class="nava" href="#Dimensionen">Dimensionen</a></li>
+		<li class="navli"><a class="nava" href="#Farben">Farben</a></li>
+		<li class="navli"><a class="nava" href="#Font">Font</a></li>
+		<li class="navli"><a class="nava" href="#Kontrollvariablen">Kontrollvariablen</a></li>
+		<li class="navli"><a class="nava" href="#Zustaende">Zustände</a></li>
+	</ul></li>
+    <li class="navli"><a class="nava" href="tkinter-layout.html">Layout</a></li>
+    </ul>
+    <h3>Widgets</h3>
+    <ul class="navul">
+    <li class="navli"><a class="nava" href="tkinter-ttk-button.html">Button</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-canvas.html">Canvas</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-checkbutton.html">Checkbutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-combobox.html">Combobox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-entry.html">Entry</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-frame.html">Frame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-label.html">Label</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labeledscale.html">LabeledScale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-labelframe.html">LabelFrame</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-listbox.html">Listbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-menu.html">Menuwidgets</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-message.html">Message</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-notebook.html">Notebook</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-optionmenu.html">OptionMenu</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-panedwindow.html">PanedWindow</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-progressbar.html">Progressbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-radiobutton.html">Radiobutton</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scale.html">Scale</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-scrollbar.html">Scrollbar</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-separator.html">Separator</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-sizegrip.html">Sizegrip</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-spinbox.html">Spinbox</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-text.html">Text</a></li>
+    <li class="navli"><a class="nava" href="tkinter-tk-toplevel.html">Toplevel</a></li>
+    <li class="navli"><a class="nava" href="tkinter-ttk-treeview.html">Treeview</a></li>
+    <li class="navli"><a class="nava" href="tkinter-dialoge.html">Dialoge</a></li>
+    <li class="navli">–</li>
+    <li class="navli"><a class="nava" href="tkinter-events.html">Events</a></li>
+    <li class="navli"><a class="nava" href="tkinter-widgetmethoden.html">Widgetmethoden</a></li>
+    <li class="navli"><a class="nava" href="tkinter-bilder.html">Bilder</a></li>
+    </ul>
+	</nav>
+	
+    <main>
+
+
+    <h2 id="Optionen">Optionen</h2>
+
+
+    <section>
+    <h3>Setzen und Abfragen von Optionen</h3>
+    <p>Alle Widgets werden über Optionen konfiguriert. ttk- und tk-Widgets haben teilweise 
+        unterschiedliche Optionen.</p>
+    <p>Die folgenden Schreibweisen zum Setzen der Option <code>text</code> sind gleichwertig:</p>
+    <pre><code class="language-python">button = ttk.Button(parent, text='Klick mich bitte!')
+button["text"] = 'Klick mich bitte!'
+button.configure(text='Klick mich bitte!')</code></pre>
+
+    <p>Man erhält mit <code class="language-python">button.cget('text')</code> den aktuellen 
+        Wert der Option <code>text</code> des Widgets <code>button</code>.</p>
+    </section>
+
+
+    <section>
+    <h3 id="AllgemeineOptionen">Allgemeine Optionen</h3>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>class_</td><td>Widgetklasse, dient beispielsweise als Gruppenname 
+		für gemeinsame Befehle.</td></tr>
+    <tr><td>command</td><td>Einige Widgets, wie etwa ttk.Button, können Ereignisse auslösen. 
+            In diesem Fall wird ein Callback aufgerufen, dessen Namen man mit dieser 
+			Option setzen kann. 
+            Callbacks von Widgets haben keine Parameter</td></tr>
+    <tr><td>cursor</td><td>Festlegen eines Mauszeigers</td></tr>
+    <tr><td>takefocus</td><td>0 oder 1, legt fest, ob das Widget den Fokus akzeptiert.</td></tr>
+    <tr><td>state</td><td>Kompatibilitätsoption für tk-Widgets, siehe auch 
+        <a href="#state">Beschreibung für Zustände</a></td></tr>
+    <tr><td>style</td><td>einen Style auf dieses Widget anwenden, nur für ttk-Widgets</td></tr>
+    <tr><td>placeholder</td><td>Für Entries, es wird ein Text als Platzhalter eingefügt
+		(Ab tk 8.7 für ttk-Widgets unterstützt)</td></tr>
+	<tr><td>placeholderforeground </td><td>Vordergrundfarbe des Platzhalters 
+		(Ab tk 8.7 für ttk-Widgets unterstützt)</td></tr>
+    </table>
+    </section>
+
+
+    <section>
+    <h3 id="Labeloptionen">Labeloptionen</h3>
+    <p>Dieses gilt für ttk.Button und ttk.Label gleichermaßen</p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>compound</td><td>Hat man gleichzeitig ein Bild und einen Text in einem Widget anzuzeigen, 
+        legt <code class="language-python">compound</code> die relative Lage der zwei Elemente fest: 
+        <ul>
+        <li><code>tk.TOP</code> – Bild über Text,</li>
+        <li><code>tk.BOTTOM</code> – Bild unter Text,</li>
+        <li><code>tk.LEFT</code> – Bild links neben Text und</li>
+        <li><code>tk.RIGHT</code> – Bild rechts neben Text.</li>
+        </ul>
+        <code>compound</code> muss man angeben, wenn Bild und Text vorkommen.</td></tr>
+    <tr><td>font</td><td>Angabe eines Fonts</td></tr>
+    <tr><td>foreground</td><td>Vordergrundfarbe</td></tr>
+    <tr><td>image</td><td>Angabe eines Bildes</td></tr>
+    <tr><td>justify</td><td>Mehrzeiligen Text ausrichten: <code>tk.LEFT</code>, <code>tk.CENTER</code>, <code>tk.RIGHT</code></td></tr>
+    <tr><td>padding</td><td>zusätzlicher innerer Abstand zum Text oder Bild</td></tr>
+    <tr><td>text</td><td>Der Text eines Labels oder Buttons. <code class="language-python">textvariable</code>
+        hat Vorrang vor <code>text</code></td></tr>
+    <tr><td>textvariable</td><td>Der Inhalt der Variablen gibt den Inhalt des Widgets an</td></tr>
+    <tr><td>underline</td><td>Gibt den Index desjenigen Buchstaben an, der unterstrichen werden soll</td></tr>
+    <tr><td>width</td><td>Legt feste Breite fest </td></tr>   
+	<tr><td>wraplength</td><td>Maximale Zeilenlänge <a href="#Dimensionen">in Pixel oder einer anderen Einheit</a>, 
+		ab der umgebrochen wird. 
+		Werte kleiner gleich 0 bedeuten keinen Umbruch.</td></tr>	
+    </table>
+	
+	<p>Das folgende Programm zeigt die Auswirkung der Option <code>padding</code>:</p>
+    <a href="img/t-optionen/label-option-padding-1.png" target="_blank"><img src="img/t-optionen/label-option-padding-1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('200x200')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        label1= ttk.Label(text='Label1', relief=tk.SUNKEN, padding=0)
+        label1.pack(expand=tk.YES, fill=tk.BOTH)
+
+        label2= ttk.Label(text='Label2', relief=tk.SUNKEN, padding=10)
+        label2.pack(expand=tk.YES, fill=tk.BOTH)
+
+        label3= ttk.Label(text='Label3', relief=tk.SUNKEN, padding=50)
+        label3.pack(expand=tk.YES, fill=tk.BOTH)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+	
+	
+    </section>
+    
+    
+    <section>
+    <h3 id="Scrolloptionen">Scrolloptionen</h3>
+    <p>Optionen für das Zusammenspiel mit Scrollbars</p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>xscrollcommand</td><td><code class="language-python">xscrollcommand</code> 
+        eines Widgets wird mit der <code class="language-python">s.set(…)</code>-Methode 
+        einer Scrollbar (horizontal) verknüpft </td></tr>
+    <tr><td>yscrollcommand</td><td><code class="language-python">yscrollcommand</code> 
+        eines Widgets wird mit der <code class="language-python">s.set(…)</code>-Methode 
+        einer Scrollbar (vertikal) verknüpft </td></tr>
+    </table>
+    <p>Folgendes reduzierte Beispiel zeigt, wie es funktioniert:</p>
+    <pre><code class="language-python">listbox= tk.Listbox(…)
+scrollX = ttk.Scrollbar(parent, orient=tk.HORIZONTAL, command=listbox.xview)
+scrollY = ttk.Scrollbar(parent, orient=tk.VERTICAL, command=listbox.yview)
+
+listbox['xscrollcommand'] = scrollX.set
+listbox['yscrollcommand'] = scrollY.set</code></pre>
+    </section>
+    
+    
+    <section>
+    <h3 id="Rahmenoptionen">Rahmenoptionen</h3>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>borderwidth</td><td>Breite des Randes, für <code>relief</code> benötigt</td></tr>
+    <tr><td>relief</td><td>Rahmenart, <code>borderwidth</code>
+        muss ebenfalls gesetzt werden: 
+        <code>tk.FLAT</code>, <code>tk.GROOVE</code>, <code>tk.RAISED</code>,
+		<code>tk.RIDGE</code>, <code>tk.SOLID</code> und <code>tk.SUNKEN</code></td></tr>
+    </table>
+    <p>Beispiel:</p>
+    <a href="img/t-optionen/rahmenoptionen.png" target="_blank"><img src="img/t-optionen/rahmenoptionen.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x300")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        label1 = ttk.Label(self, relief=tk.FLAT, text="tk.FLAT");
+        label1.pack(expand=tk.YES, fill=tk.BOTH, padx=2, pady=2)
+        label2 = ttk.Label(self, relief=tk.GROOVE, text="tk.GROOVE");
+        label2.pack(expand=tk.YES, fill=tk.BOTH, padx=2, pady=2)
+        label3 = ttk.Label(self, relief=tk.RAISED, text="tk.RAISED");
+        label3.pack(expand=tk.YES, fill=tk.BOTH, padx=2, pady=2)
+        label4 = ttk.Label(self, relief=tk.RIDGE, text="tk.RIDGE");
+        label4.pack(expand=tk.YES, fill=tk.BOTH, padx=2, pady=2)
+        label5 = ttk.Label(self, relief=tk.SOLID, text="tk.SOLID");
+        label5.pack(expand=tk.YES, fill=tk.BOTH, padx=2, pady=2)
+        label6 = ttk.Label(self, relief=tk.SUNKEN, text="tk.SUNKEN");
+        label6.pack(expand=tk.YES, fill=tk.BOTH, padx=2, pady=2)
+        button = ttk.Button(self, text='Quit', command=self.destroy)
+        button.pack(expand=tk.YES, fill=tk.BOTH, padx=2, pady=2)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+	<section>
+    <h3 id="Highlightoptionen">Highlightoptionen (nur tk-Widgets)</h3>
+	<p>tk Widgets haben einen Highlightrahmen. Diesen Rahmen kann man farblich markieren.
+		Der Rahmen kann seine Farbe ändern, wenn das Widget den Input-Fokus erhält, also
+		beispielsweise wenn die Option <code>takefocus</code> zusätzlich gesetzt wurde.</p>
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>highlightbackground</td><td>Hintergrundarbe des Highlight-Rahmens, wenn das Widget keinen Input-Fokus hat</td></tr>
+	<tr><td>highlightcolor</td><td>Hintergrundarbe des Highlight-Rahmens, wenn das Widget Input-Fokus hat</td></tr>
+	<tr><td>highlightthickness</td><td>Breite des Highlightrahmens</td></tr>
+    </table>
+    <p>Um die Färbung im folgenden Beispiel zu sehen, kann man per <code>TAB</code>-Taste zwischen den Widgets
+		wechseln:</p>
+    <a href="img/t-optionen/highlightrahmen1.png" target="_blank"><img src="img/t-optionen/highlightrahmen1.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry('600x500')
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=2)
+        self.grid_rowconfigure(1, weight=2)
+        self.grid_rowconfigure(2, weight=1)
+        
+        msg1 = tk.Message(self,
+                          background='black',
+                          fg='white',
+                          highlightbackground='green',
+                          highlightcolor='yellow',
+                          highlightthickness=5,
+                          takefocus=tk.YES)
+        msg1['text']='Beispieltext\n#1'
+        msg1.grid(column=0, row=0, sticky=tk.W+tk.E+tk.N+tk.S)
+        msg2 = tk.Message(self,
+                          background='black',
+                          fg='white',
+                          highlightbackground='green',
+                          highlightcolor='yellow',
+                          highlightthickness=5,
+                          takefocus=tk.YES)
+        msg2['text']='Beispieltext\n#2'
+        msg2.grid(column=0, row=1, sticky=tk.W+tk.E+tk.N+tk.S)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <section>
+    <h3 id="Anchor">Anker (anchor)</h3>
+    <p>Anchor als Option hat verschiedene Bedeutungen in tkinter.</p>
+    <ul>
+    <li>In einem <code>ttk.Label</code> dient die Option 
+        <code>anchor</code> dazu, die Ausrichtung des 
+        Textes festzulegen, für zentriert beispielsweise <code>tk.CENTER</code>.</li>
+    <li>In einem <code>ttk.LabelFrame</code> ist die Option 
+        <code>labelanchor</code> dazu da, das Label an sich zu positionieren.</li>
+    <li>Im Place-Layout dient <code>anchor</code> dazu, einen Ort im Widget
+        zu festzulegen. Dieser Ort im Widget, beispielsweise die untere rechte Ecke (tk.SE), wird an einen Punkt 
+        positioniert.</li>
+    </ul>
+    <p>Tkinter kennt Konstanten (Himmelsrichtungen) für den Anker: 
+        tk.NW, tk.N, tk.NE, tk.W, tk.CENTER, tk.E, tk.SW, tk.S und tk.SE</p>
+    </section>
+
+
+    <h2 id="Dimensionen">Dimensionen</h2>
+
+
+    <section>
+    <h3>Dimensionsangaben</h3>
+    <p>Numerische Angaben zu Optionen können sowohl in Pixel wie auch in anderen 
+        Einheiten angegeben werden:</p>
+    <ul>
+    <li><code class="language-python">x=10</code>  -- meint 10 Pixel,</li>
+    <li><code class="language-python">x='10c'</code> -- meint 10 Zentimeter,</li>
+    <li><code class="language-python">x='20i'</code> -- meint 20 Zoll,</li>
+	<li><code class="language-python">x='30m'</code> -- meint 20 Millimeter,</li>
+    <li><code class="language-python">x='10p'</code> -- meint 10 Printer Points (1/72 Zoll).</li>
+    </ul>
+    
+    <p>Beispiel:</p>
+    <a href="img/t-optionen/dimensionsangaben.png" target="_blank"><img src="img/t-optionen/dimensionsangaben.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x300")
+        self._createWidgets()
+        
+    def _createWidgets(self):
+        self.label1 = ttk.Label(self, relief=tk.GROOVE, text="1 Zentimeter");
+        self.label1.place(x=10, y='1c')
+ 
+        self.label2 = ttk.Label(self, relief=tk.GROOVE, text="2 Inch");
+        self.label2.place(x=10, y='2i')
+ 
+        self.label3 = ttk.Label(self, relief=tk.GROOVE, text="30 mm");
+        self.label3.place(x=10, y='30m')
+ 
+        self.label4 = ttk.Label(self, relief=tk.GROOVE, text="10 Printers Points");
+        self.label4.place(x=10, y='10p')
+ 
+        self.quit = ttk.Button(self, text='Quit', command=self.destroy)
+        self.quit.place(x=100,y=100)
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+    <h2 id="Farben">Farben</h2>
+
+
+    <section>
+    <h3>Farbangaben</h3>
+    <p>Farben können auf verschiedene Weisen notiert werden:</p>
+    <ul>
+    <li>als Farbname wie 'red', 'green', 'blue', …,</li>
+    <li>als 12-Bit-Farbe: '#RgB',</li>
+    <li>als 24-Bit-Farbe: '#RRggBB',</li>
+    <li>als 36-Bit-Farbe: '#RRRgggBBB'.</li>
+    </ul>
+
+    <p>Beispiel:</p>
+    <a href="img/t-optionen/farben.png" target="_blank"><img src="img/t-optionen/farben.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x300")
+        self._createWidgets()
+        
+    def _createWidgets(self):
+        label1 = ttk.Label(self, relief=tk.GROOVE, text="Ich bin rot", background='red');
+        label1.pack(fill=tk.BOTH, expand=tk.YES)
+        label2 = ttk.Label(self, relief=tk.GROOVE, text="Ich bin blau", background='#00F');
+        label2.pack(fill=tk.BOTH, expand=tk.YES)
+        label3 = ttk.Label(self, relief=tk.GROOVE, text="Ich bin grün", background='#00aa00');
+        label3.pack(fill=tk.BOTH, expand=tk.YES)
+        label4 = ttk.Label(self, relief=tk.GROOVE, text="Ganz Weiß", background='#fffffffff');
+        label4.pack(fill=tk.BOTH, expand=tk.YES)
+        
+        button = ttk.Button(self, text='Quit', command=self.destroy)
+        button.pack()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+    
+
+    <h2 id="Font">Font</h2>
+
+
+    <section>
+    <h3>Font als Tupel</h3>
+    <p>Ein Font kann beschrieben werden als ein Tupel aus Familie, Größe und Optionen. Beispiele sind
+        <code class="language-python">('Helvetica', 10, 'bold')</code> und 
+        <code class="language-python">('Courier', 20, font.BOLD, font.ITALIC)</code>.</p>
+    <p>Beispiel:</p>
+    <a href="img/t-optionen/fonttupel.png" target="_blank"><img src="img/t-optionen/fonttupel.png" alt="Bild der Anwendung" class="bild" /></a>
+    <pre><code class="language-python">import tkinter as tk
+import tkinter.font as font
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x300")
+        self._createWidgets()
+ 
+    def _createWidgets(self):
+        label1 = ttk.Label(self, anchor=tk.CENTER, text="Helvetica 10",
+                           font=('Helvetica', 10));
+        label1.pack(fill=tk.BOTH, expand=tk.YES)
+        label2 = ttk.Label(self, anchor=tk.CENTER, text="Helvetica 20",
+                           font=('Helvetica', 20));
+        label2.pack(fill=tk.BOTH, expand=tk.YES)
+        label3 = ttk.Label(self, anchor=tk.CENTER, text="Helvetica 10 Bold",
+                           font=('Helvetica', 10, font.BOLD));
+        label3.pack(fill=tk.BOTH, expand=tk.YES)
+        label4 = ttk.Label(self, anchor=tk.CENTER, text="Helvetica 10 Italic",
+                           font=('Helvetica', 10, font.ITALIC));
+        label4.pack(fill=tk.BOTH, expand=tk.YES)
+        label5 = ttk.Label(self, anchor=tk.CENTER, text="Helvetica 10 Bold+Italic",
+                           font=('Helvetica', 10, font.BOLD, font.ITALIC));
+        label5.pack(fill=tk.BOTH, expand=tk.YES)
+        button = ttk.Button(self, text='Quit', command=self.destroy)
+        button.pack()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()
+</code></pre>
+    </section>
+
+
+    <section>
+    <h3>Fontobjekt</h3>
+    <p>Ein Fontobjekt lässt sich mit 
+        <code class="language-python">font.Font(root=None, font=None, name=None, exists=False, **options)</code>
+        erzeugen. Die Parameter bedeuten:</p>
+    <ul>
+    <li>font: ist dabei ein Fonttupel in der Form: <code class="language-python">(family, size, options)</code> 
+        wie oben,</li>
+    <li>name: ein eindeutiger Name. Einige Fonts sind vorbenannt, mit 
+        <code class="language-python">font.names()</code> erhält man ein Tupel dieser Namen.
+    <li>options: Optionen aus der folgenden Tabelle.</li>
+	</ul>
+
+    <table>
+    <tr><th>Optionsname</th><th>Beschreibung</th></tr>
+    <tr><td>family</td><td>Fontfamilie, mögliche Werte: 
+        'Bahnschrift Light', 'Courier', 'Times New Roman'… 
+        Mit <code class="language-python">font.families()</code> erhält man eine Tupel 
+        von dem System bekannten Fontfamilien</td></tr>
+    <tr><td>overstrike</td><td>Durchsteichen, mögliche Werte: 0 oder 1</td></tr>
+    <tr><td>size</td><td>Größe des Fonts. Positive Werte werden in „Punkten“ 
+        gemessen, bei negativen Werten wird der Absolutbetrag in Pixeln gemessen</td></tr>
+    <tr><td>slant</td><td>Kursivschrift, <code class="language-python">font.ITALIC</code>, 
+        <code class="language-python">font.ROMAN</code></td></tr>
+    <tr><td>weight</td><td>Fontgewicht, mögliche Werte: 
+        <code class="language-python">font.NORMAL</code>, <code class="language-python">font.BOLD</code></td></tr>
+    <tr><td>underline</td><td>Unterstreichen, mögliche Werte: 0 oder 1</td></tr>
+    </table>
+    <p>Beispiel:</p>
+    <pre><code class="language-python">import tkinter as tk
+import tkinter.font as font
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x200")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        f = font.Font(family='Courier', size=50)
+        label1 = ttk.Label(self, anchor=tk.CENTER, text="Courier 20", font=f);
+        label1.pack(fill=tk.BOTH, expand=tk.YES)
+        
+        button = ttk.Button(self, text='Quit', command=self.destroy)
+        button.pack()
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    
+    <p>Für einen gegebenen Font <code class="language-python">f</code> gibt es die folgenden Methoden:</p>
+    <table>
+    <tr><th>Fontmethoden</th><th>Beschreibung</th></tr>
+    <tr><td><code class="language-python">f.actual(option=None, displayof=None)</code></td><td>
+        Fontattribute werden zurückgegeben. Dictionary mit den Schlüsseln: 'family', 'size', 
+        'weight', 'slant', 'underline' und 'overstrike'</td></tr>
+    <tr><td><code class="language-python">f.cget(option)</code></td><td>Ein bestimmtes Attribut 
+        wird zurückgegeben</td></tr>
+    <tr><td><code class="language-python">f.config(**options)</code></td><td>Optionen werden 
+        konfiguriert</td></tr>
+    <tr><td><code class="language-python">f.copy()</code></td><td>Eine Kopie des Fonts (neues 
+        Objekt) wird zurückgegeben</td></tr>
+    <tr><td><code class="language-python">f.measure(text, displayof=None)</code></td><td>Vermisst 
+        einen Text mit dem Font</td></tr>
+    <tr><td><code class="language-python">f.metrics(*options, **kw)</code></td><td>ascent: Höhe des 
+        Fonts von Basislinie bis zum höchsten Punkt des Fonts, descent: Höhe Basislinie bis zum tiefsten 
+        Punkt des Fonts, linespace: minimaler Zeilenabstand, damit Zeilen nicht überlappen, 
+        fixed: 1 oder 0 </td></tr>
+    </table>
+    </section>
+
+
+    <section>
+    <h3>Weitere Fontmethoden</h3>
+    <p>Das Fontmodul kennt die Funktionen:</p>
+    <table>
+    <tr><th>Fontfunktion</th><th>Beschreibung</th></tr>
+    <tr><td><code class="language-python">font.families(root=None, displayof=None)</code></td><td>Tupel aller bekannten Fontfamilien</td></tr>
+    <tr><td><code class="language-python">font.names(root=None)</code></td><td>Liste von bekannten Fontnamen</td></tr>
+    <tr><td><code class="language-python">font.nametofont(name, root=None)</code></td><td>Gibt einen Font() zurück auf der Basis eines Fontnamen</td></tr>
+    </table>
+    </section>
+
+
+    <h2 id="Kontrollvariablen">Kontrollvariablen</h2>
+
+
+    <section>
+    <h3>Kontrollvariablen</h3>
+    <p>Für die Kommunikation mit manchen Widgets werden Kontrollvariablen eingesetzt. 
+        Mit denen kann beispielsweise der Text eines Labels an anderer Stelle geändert werden. </p>
+    <p>Es gibt folgende Kontrollvariablen, die mit dem optionalen Parameter <code class="language-python">value</code>
+        vorbelegt werden können:</p>
+    <ul>
+    <li><code class="language-python">tk.BooleanVar(value=True)</code></li>
+    <li><code class="language-python">tk.DoubleVar(value=7.0)</code></li>
+    <li><code class="language-python">tk.IntVar(value=3)</code></li>
+    <li><code class="language-python">tk.StringVar(value='Hallo, Welt!')</code></li>
+    </ul>
+    
+    <p>Zu diesen Kontrollvariablen gehören die Methoden <code class="language-python">var.get()</code> 
+        sowie <code class="language-python">var.set(value)</code></p>
+    <p>Gebrauch:</p>
+    <ul>
+    <li>Button, Entry, Label, Menubutton: Option <code class="language-python">textvariable</code>,</li>
+    <li>Radiobutton: Option <code class="language-python">variable</code>, mehrere Radiobuttons 
+            teilen sich eine Variable und bilden dadurch eine Buttongroup,</li>
+    <li>Scale: Option <code class="language-python">variable</code>, die den Wert enthält,</li>
+    <li>Checkbutton: Option <code class="language-python">variable</code></li>
+    <li>LabeledScale: Option <code class="language-python">variable</code></li>
+    </ul>
+    <p>Manche Widgets, wie Checkbutton, haben noch die Optionen <code class="language-python">onvalue</code>
+        und <code class="language-python">offvalue</code>, um diese angegebenen Werte in der 
+        Variablen zu speichern: Einen Wert, der der Kontrollvariable als on- oder off-Wert übergeben wird.</p>
+    <pre><code class="language-python">import tkinter as tk
+import tkinter.font as font
+from tkinter import ttk
+
+class A(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("300x200")
+        self._createWidgets()
+
+    def _createWidgets(self):
+        self._textVar = tk.StringVar(value='Drück mich bitte.')
+        button1 = ttk.Button(self, textvariable=self._textVar, command=self._onPress)
+        button1.pack(fill=tk.X, expand=tk.YES)
+        
+        button = ttk.Button(self, text='Quit', command=self.destroy)
+        button.pack()
+
+    def _onPress(self):
+        self._textVar.set('Danke!')
+
+if __name__ == '__main__':
+    window = A()
+    window.mainloop()</code></pre>
+    </section>
+
+
+	<h2 id="Zustaende">Zustände</h2>
+
+
+	<section>
+    <h3 id="state">Zustand - state</h3>
+	<p>Ein Widget kann in einem von vielen Zuständen sein. Für ttk-Widget sind diese Zustände:</p>
+	<ul>
+	<li><code>active</code>: Maus schwebt über einem Widget, wie einem Button, zumeist ändert das Widget daraufhin seine Farbe,</li>
+	<li><code>disabled</code>: Widget ist deaktiviert und keine Interaktion ist mit diesem Widget möglich,</li>
+	<li><code>focus</code>: Widget hat Keyboard-Fokus, drückt man Tasten landen sie im Widget,</li>
+	<li><code>pressed</code>: das Widget wird gerade gedrückt, zumeist ändert sich dann seine Farbe,</li>
+	<li><code>selected</code>: das Widget ist "eingeschaltet" oder "ausgewählt". Radiobuttons oder Checkbuttons kennen diesen Zustand,</li>
+	<li><code>background</code>: das Widgets ist in einem "Hintergrundfenster". Dieser Zustand wird nur von einigen Betriebssystemen unterstützt,</li>
+	<li><code>readonly</code>: das Widget ist grundsätzlich nicht beschreibbar, etwa eine Eingabezeile, aus der man nur Text mit ins Clipboard kopieren kann</li>
+	<li><code>alternate</code>: etwa der dritte Zustand bei Checkbuttons, bevor er selektiert/deselektiert wurde,</li>
+	<li><code>invalid</code>: beispielsweise ungültiger Wert in einem Entry nach Validierung,</li>
+	<li><code>hover</code>: ähnlich wie <code>active</code>, zumeist bei Themes benutzt</li>		
+	</ul>
+	<p>Die Zustände werden mit Methoden wie <code class="language-python">instate(…)</code> oder 
+		<code class="language-python">state(…)</code> abgefragt / verändert.</p>
+	
+	<p>Tk-Widgets kennen nur die States <code>disabled</code>, <code>normal</code> und 
+		<code>readonly</code>. Diese gibt man üblicherweise als Option 
+		<code>state</code> an und ändert sie mit <code>w.configure(…)</code></p>
+	</section>
+
+
+    </main>
+ 
+ 
+    <footer>
+    <p>&copy;2021 <a href="mailto:eike9000@web.de">E.Lange</a></p>
+    </footer>
+  </body>
+</html>
